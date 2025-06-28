@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.22)  29 MAY 2025 11:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.6.28)  28 JUN 2025 17:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -177,20 +177,20 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 ) (Thesis_LaTeX.aux)
 \openout1 = `Thesis_LaTeX.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
 
 (C:\Users\jerem\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -232,22 +232,12 @@ Overfull \hbox (13.42802pt too wide) in paragraph at lines 14--14
 
 ]
 Chapter 1.
-
-Underfull \hbox (badness 10000) in paragraph at lines 59--61
-
- []
-
 [3
 
 ]
 Chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--71
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 64--71
+Underfull \hbox (badness 10000) in paragraph at lines 67--73
 
  []
 
@@ -264,25 +254,24 @@ Chapter 4.
 ]
 Chapter 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--91
+Underfull \hbox (badness 10000) in paragraph at lines 90--92
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 96--98
+Underfull \hbox (badness 10000) in paragraph at lines 97--99
 
  []
 
 [9
 
 ]
-<Images&Graphs/image_channels.jpg, id=43, 1505.625pt x 1036.87375pt>
-File: Images&Graphs/image_channels.jpg Graphic file (type jpg)
-<use Images&Graphs/image_channels.jpg>
-Package pdftex.def Info: Images&Graphs/image_channels.jpg  used on input line 1
-21.
-(pdftex.def)             Requested size: 113.81102pt x 78.36339pt.
- [10 <./Images&Graphs/image_channels.jpg>] [11] (Thesis_LaTeX.aux)
+<images/CNN_filters.png, id=43, 982.67125pt x 470.75874pt>
+File: images/CNN_filters.png Graphic file (type png)
+<use images/CNN_filters.png>
+Package pdftex.def Info: images/CNN_filters.png  used on input line 122.
+(pdftex.def)             Requested size: 113.81102pt x 54.52042pt.
+ [10 <./images/CNN_filters.png>] (Thesis_LaTeX.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -290,12 +279,12 @@ L3 programming layer <2024-01-04>
  ) 
 Here is how much of TeX's memory you used:
  3655 strings out of 474486
- 57946 string characters out of 5743755
+ 57839 string characters out of 5743755
  1936542 words of memory out of 5000000
  25920 multiletter control sequences out of 15000+600000
  570553 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,8n,65p,3367b,275s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,8n,65p,3360b,275s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm
 0800.pk> <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecbx1440.pk> <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -311,9 +300,9 @@ rem/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
 Users/jerem/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.p
 fb><C:/Users/jerem/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb>
-Output written on Thesis_LaTeX.pdf (12 pages, 270008 bytes).
+Output written on Thesis_LaTeX.pdf (11 pages, 181629 bytes).
 PDF statistics:
- 320 PDF objects out of 1000 (max. 8388607)
+ 342 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
