@@ -1,0 +1,19 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{3}{}%
+\contentsline {chapter}{\numberline {2}Literature Review}{4}{}%
+\contentsline {chapter}{\numberline {3}Research Question}{7}{}%
+\contentsline {chapter}{\numberline {4}Machine Learning}{8}{}%
+\contentsline {chapter}{\numberline {5}Methodology}{9}{}%
+\contentsline {section}{\numberline {5.1}Model Selection}{9}{}%
+\contentsline {section}{\numberline {5.2}Volatility}{9}{}%
+\contentsline {section}{\numberline {5.3}Stock Selection}{10}{}%
+\contentsline {section}{\numberline {5.4}Data Preprocessing}{10}{}%
+\contentsline {subsection}{\numberline {5.4.1}Feature Engineering}{10}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.1}Relative Strength Index (RSI)}{10}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.2}Rate of Change (ROC)}{10}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.3}Moving Average Convergence Divergence (MACD)}{10}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.4}Stochastic Oscillator}{10}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.5}Commodity Channel Index (CCI)}{10}{}%
+\contentsline {subsection}{\numberline {5.4.2}}{10}{}%
+\contentsline {subsection}{\numberline {5.4.3}Formula}{10}{}%
+\contentsline {subsubsection}{\numberline {5.4.3.1}subsub}{10}{}%
