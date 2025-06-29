@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.6.28)  29 JUN 2025 21:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.6.28)  29 JUN 2025 23:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -261,6 +261,12 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count289
 \l__pdf_internal_box=\box60
 ) (Thesis_LaTeX.aux
+
+LaTeX Warning: Label `fig:fullwidth' multiply defined.
+
+
+LaTeX Warning: Label `fig:fullwidth' multiply defined.
+
 
 LaTeX Warning: Label `fig:fullwidth' multiply defined.
 
@@ -1055,18 +1061,90 @@ Underfull \hbox (badness 10000) in paragraph at lines 750--752
 
  []
 
-[51 <./images/vol_of_vol.png>] [52] [53
+[51 <./images/vol_of_vol.png>]
+<images/bins.png, id=228, 732.8178pt x 438.6789pt>
+File: images/bins.png Graphic file (type png)
+<use images/bins.png>
+Package pdftex.def Info: images/bins.png  used on input line 755.
+(pdftex.def)             Requested size: 390.0pt x 233.46259pt.
+ [52 <./images/bins.png>]
+<images/volatility_bins.png, id=233, 732.8178pt x 438.6789pt>
+File: images/volatility_bins.png Graphic file (type png)
+<use images/volatility_bins.png>
+Package pdftex.def Info: images/volatility_bins.png  used on input line 787.
+(pdftex.def)             Requested size: 390.0pt x 233.46259pt.
+ [53 <./images/volatility_bins.png>]
 
-] [54
+LaTeX Warning: Citation `ref36' on page 54 undefined on input line 804.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 827--828
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 827--828
+
+ []
+
+[54
+
+] [55]
+Underfull \hbox (badness 10000) in paragraph at lines 835--836
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 848--849
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 854--855
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 863--865
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 874--875
+
+ []
+
+[56
 
 ]
-File: images/CNN_filters.png Graphic file (type png)
-<use images/CNN_filters.png>
-Package pdftex.def Info: images/CNN_filters.png  used on input line 788.
-(pdftex.def)             Requested size: 113.81102pt x 54.52042pt.
- [55
+Underfull \hbox (badness 10000) in paragraph at lines 888--889
 
-] [56
+ []
+
+
+Overfull \hbox (2.28888pt too wide) in paragraph at lines 901--902
+\T1/cmr/m/n/12 The stochas-tic Os-cil-la-tor is an-other mo-men-tum in-di-ca-to
+r that mea-sures where
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 913--914
+
+ []
+
+[57]
+Underfull \hbox (badness 10000) in paragraph at lines 929--930
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 943--944
+
+ []
+
+[58] [59] [60
+
+] [61] [62] [63
 
 ] (Thesis_LaTeX.aux)
  ***********
@@ -1075,17 +1153,20 @@ L3 programming layer <2024-01-04>
  ***********
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4939 strings out of 474486
- 80384 string characters out of 5743755
+ 4953 strings out of 474486
+ 80767 string characters out of 5743755
  1941542 words of memory out of 5000000
- 27169 multiletter control sequences out of 15000+600000
+ 27183 multiletter control sequences out of 15000+600000
  571656 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,13n,65p,3932b,271s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,13n,65p,3932b,348s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm
 0800.pk> <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm1200.pk> <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -1104,9 +1185,9 @@ fb><C:/Users/jerem/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 fonts/cm/cmr8.pfb><C:/Users/jerem/AppData/Local/Programs/MiKTeX/fonts/type1/pub
 lic/amsfonts/cm/cmsy10.pfb><C:/Users/jerem/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Thesis_LaTeX.pdf (57 pages, 2572363 bytes).
+Output written on Thesis_LaTeX.pdf (64 pages, 2659767 bytes).
 PDF statistics:
- 586 PDF objects out of 1000 (max. 8388607)
+ 642 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 116 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
 

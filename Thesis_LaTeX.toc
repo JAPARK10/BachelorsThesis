@@ -25,13 +25,30 @@
 \contentsline {subsection}{\numberline {5.1.5}XGBoost}{45}{}%
 \contentsline {section}{\numberline {5.2}Volatility}{46}{}%
 \contentsline {section}{\numberline {5.3}Stock Selection}{50}{}%
-\contentsline {section}{\numberline {5.4}Data Preprocessing}{53}{}%
-\contentsline {subsection}{\numberline {5.4.1}Feature Engineering}{54}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.1}Relative Strength Index (RSI)}{54}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.2}Rate of Change (ROC)}{54}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.3}Moving Average Convergence Divergence (MACD)}{54}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.4}Stochastic Oscillator}{54}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.5}Commodity Channel Index (CCI)}{54}{}%
-\contentsline {subsection}{\numberline {5.4.2}}{55}{}%
-\contentsline {subsection}{\numberline {5.4.3}Formula}{56}{}%
-\contentsline {subsubsection}{\numberline {5.4.3.1}subsub}{56}{}%
+\contentsline {section}{\numberline {5.4}Data Preprocessing}{54}{}%
+\contentsline {subsection}{\numberline {5.4.1}Feature Engineering}{56}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.1}Relative Strength Index (RSI)}{56}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.2}Rate of Change (ROC)}{56}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.3}Moving Average Convergence Divergence (MACD)}{56}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.4}Stochastic Oscillator}{57}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.5}Commodity Channel Index (CCI)}{58}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.6}Moving Averages}{59}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.7}Average True Range (ATR)}{59}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.8}Average Directional Index (ADI)}{59}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.9}Bollinger Bands}{59}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.10}On-Balance Volume (OBV)}{59}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.11}Volume Price Trend (VPT)}{59}{}%
+\contentsline {subsection}{\numberline {5.4.2}Macro-economic features}{60}{}%
+\contentsline {subsubsection}{\numberline {5.4.2.1}S\&P 500}{60}{}%
+\contentsline {subsubsection}{\numberline {5.4.2.2}GDP (USA)}{60}{}%
+\contentsline {subsubsection}{\numberline {5.4.2.3}unemployment rate}{60}{}%
+\contentsline {subsubsection}{\numberline {5.4.2.4}Consumer price index (CPI)}{60}{}%
+\contentsline {subsubsection}{\numberline {5.4.2.5}Personal consumption expenditures (PCE)}{60}{}%
+\contentsline {subsubsection}{\numberline {5.4.2.6}Industrial Production index (IPI)}{61}{}%
+\contentsline {subsubsection}{\numberline {5.4.2.7}federal funds rate}{61}{}%
+\contentsline {subsubsection}{\numberline {5.4.2.8}10Y treasury rate}{61}{}%
+\contentsline {subsubsection}{\numberline {5.4.2.9}Retail sales}{61}{}%
+\contentsline {subsubsection}{\numberline {5.4.2.10}housing starts}{61}{}%
+\contentsline {subsubsection}{\numberline {5.4.2.11}exchange rates}{61}{}%
+\contentsline {subsubsection}{\numberline {5.4.2.12}Calendar features}{61}{}%
+\contentsline {subsection}{\numberline {5.4.3}}{63}{}%

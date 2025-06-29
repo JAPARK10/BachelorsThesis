@@ -750,29 +750,256 @@ Having these metrics available we can now choose the stocks or ETFs and retrieve
 	We see that the volatility of the volatility seems to correlate on average with the volatility. The greater the volatility of the volatility the greater the pure volatility. Now, for us two things are most important. The first is, we want to have stocks from volatilities within a range that is as wide as possible to have a more meaningful result of our experiment. The second is, we want the volatility of the volatility to be as low as possible. We explained before why we want that. That means we need to look for a threshold at which we cut off the data. Since the volatility seems to correlate with the volatility of the volatility, we need to make a compromise when deciding for a threshold. We will drop every stock or ETF that has a volatility of volatility greater than that. We take into consideration that we only need a relatively small number of stocks and ETFs per bin, about 15. Besides that, we take into consideration that the volatility of volatility seems to increase dramatically on the right side of the graph so we definitely want to cut off at some point before it’s dramatic increase. After careful consideration we decide to cut off all stocks and ETFs that have a volatility of their volatility of more than 0.01. This is pretty much at stock 4800 in the graph. Like that we ensure to have constant oscillation based on the given volatility while still being able to capture a wide range of stocks and ETFs with different volatilities. \\
 	Across the range of volatility, we want to evenly pick 5 values for each of which we again pick 15 stocks or ETFs that are as close as possible to the values in terms of volatility of the historical data. To get a sense for that we first construct bins of volatility and sort our stocks and ETFs into these bins. We plot the distribution of all assets and how they fit into steps of volatility.\\
 		
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{images/bins.png}
+  \caption{Distribution of assets according to volatility intervals}
+  \label{fig:fullwidth}
+\end{figure}
+
+
+We now want to manually choose 5 bins and 15 stocks or ETFs for each bin for training. To make the results as meaningful as possible we define the ranges of our bins in a way so that we capture the widest possible range of volatility. In other words, we want bin1 and bin5 to be as far apart as possible on the graph and the remaining 3 bins to be in between them while having equal distances to their neighbors. At the same time, we want the stocks and ETFs within one bin to be as similar as possible in terms of their volatility. Based on the distribution which is visible in the plot, we choose five volatility bins to be:
+
+
+\textbf{\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{0.4\textwidth}{@{}>{\centering\arraybackslash}X@{}}
+\toprule
+\textbf{Volatility bins} \\
+\midrule
+1. 0.00235 -- 0.00270 \\
+2. 0.01243 -- 0.01248 \\
+3. 0.02243 -- 0.02250 \\
+4. 0.03242 -- 0.03260 \\
+5. 0.04500 -- 0.04600 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+}
+
+
+
+
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{images/volatility_bins.png}
+  \caption{approximate selected ranges for 5 bins}
+  \label{fig:fullwidth}
+\end{figure}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	This will allow us to train and evaluate the models based on multiple stock data for each value of volatility which we expect to give us a statistically better and closer to the average measurement compared to just using one stock for each step which is susceptible to outliers and noise. We especially expect the models to have a similar predictive accuracy for stocks within the same volatility interval and to show clear jumps in performance when trained based on stocks of different intervals. 
 	
 	\section{Data Preprocessing}
+	
+During the previous section we selected the stocks that can be grouped into 5 intervals or bins of different volatility and which we want our models to be evaluated on. Since we already dropped stocks with missing values, we don't need to perform any further imputation. Our historical data so far has the features: open, high, close, low, vwap, volume, trade\_count, symbol – where symbol is the ticker symbol of the stock and will not be used for training.\\
+The other features are:
 
+
+\begin{itemize}
+  \item \textbf{trade\_count} --- which tells how many transactions have been made in a period.
+  \item \textbf{Volume} --- which is the number of shares that have been traded within a period.
+  \item \textbf{Volume Weighted Average Price (VWAP)} --- which is the typical price of a stock or ETF weighted by its volume \cite{ref36}.
+  \item \textbf{Open} --- the price at which the first trade occurred during the period.
+  \item \textbf{Close} --- the price at which the last trade occurred during the period.
+  \item \textbf{High} --- the highest traded price during the period.
+  \item \textbf{Low} --- the lowest traded price during the period.
+\end{itemize}
+
+\vspace{1em}
+
+The VWAP is calculated as:
+
+\[
+\mathrm{VWAP} = \frac{\sum_{i=1}^n P_i \cdot V_i}{\sum_{i=1}^n V_i}
+\]
+
+where:
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $P_i$ & the price of the trade $i$ \\
+  $V_i$ & the volume of the trade $i$ \\
+  $n$   & the total number of trades in the period \\
+\end{tabularx}
+
+	So, if within one period particularly many trades are executed at a certain price than this price is weighted more than a price at which fewer trades were executed. That means while the close only tells you the price at which the last trade executed, VWAP is averaged over all trades in that day.\\\\
+	
+	The next step is to preprocess the historical data from each asset by adding other features. Some of those are retrieved from APIs and some are calculated using the existing features. We choose the features based on those, the review study by Kumbure et al. [5] has shown to be mainly used in stock price forecasting. We also add some indicators mentioned in the articles “Template:Technical analysis” from Wikipedia [20] and “Technical Indicator: Definition, Analyst Uses, Types and Examples” from Investopedia [21]. 
+	
 		\subsection{Feature Engineering}
+		
 			\subsubsection{Relative Strength Index (RSI)}
+			
+The RSI is a way to measure speed and directions of price movements. The RSI always lies in the range of zero to 100 and it is commonly considered overbought when above 70 and oversold when below 30. It is a measure that carries a value for every period and is calculated as:\\
+
+
+\[
+\mathrm{RSI} = 100 - \frac{100}{1 + RS}
+\]
+
+where
+
+\[
+RS = \frac{\text{Average Gain over } n \text{ periods}}{\text{Average Loss over } n \text{ periods}}
+\]
+
+and\\
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $n$ & number of periods (typically 14) \\
+  Average Gain & average of all absolute gains over the last $n$ periods \\
+  Average Loss & average of all absolute losses over the last $n$ periods \\
+\end{tabularx}\\
+			
+Where Average Gain and Average Loss are Exponentially weighted moving averages [22]. Exponentially weighted moving averages are averages that weigh the recent component more than previous components. 
+			
 			\subsubsection{Rate of Change (ROC)}
+			The ROC is an indicator that shows the return in percent compared to the price n periods ago. A common number for n is 14. [23]
+			
+\[
+\text{ROC}_t = \frac{P_t - P_{t-n}}{P_{t-n}} \times 100\%
+\]
+where..:\\
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $P_t$     & is the price at the current period $t$ \\
+  $P_{t-n}$ & is the price $n$ periods ago \\
+  $n$       & is the number of periods over which the change is calculated \\
+\end{tabularx}
+
+			
 			\subsubsection{Moving Average Convergence Divergence (MACD)}
+			The MACD is used to measure both the momentum and direction of a price movement. It consists of a the MACD line and the signal line. The MACD line measures the difference between a shorter exponential moving average and a longer exponential moving average. The signal line is again an exponential moving average of the MACD line. Due to the fact that both lines crossing has implications for the price movement and we want the model to better identify that relation, we also add a histogram feature that simply is calculated as the difference between MACD line and signal line. [24]\\
+			
+\[
+\text{MACD}(t) = \text{EMA}_{\text{short}}(t) - \text{EMA}_{\text{long}}(t)
+\]
+
+\[
+\text{Signal}(t) = \text{EMA}_{\text{signal period}} \big(\text{MACD}(t)\big)
+\]
+
+\[
+\text{Histogram}(t) = \text{MACD}(t) - \text{Signal}(t)
+\]
+
+where..:\\
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $\text{EMA}_{\text{short}}$       & is the exponential moving average over a short period (e.g., 12 days) \\
+  $\text{EMA}_{\text{long}}$        & is the exponential moving average over a long period (e.g., 26 days) \\
+  $\text{EMA}_{\text{signal period}}$ & is the exponential moving average of the MACD line over the signal period (e.g., 9 days) \\
+  $\text{MACD}(t)$                  & is the MACD value at time $t$ \\
+  $\text{Signal}(t)$                & is the Signal line value at time $t$ \\
+  $\text{Histogram}(t)$             & is the Difference between MACD and Signal line at time $t$ \\
+\end{tabularx}
+
 			\subsubsection{Stochastic Oscillator}
+			
+The stochastic Oscillator is another momentum indicator that measures where the current closing price lies in the range of the highest high of a certain past period and the lowest low of that same period in percent. This value is called %K. A second value which is called %D contains the moving average of %K for a short period. Since again the relation of those two lines is of importance to us and we need to make the machine learning model aware of it, we add a stochastic difference value that is calculated as the difference of these 2 values. [25]\\
+
+\[
+\begin{aligned}
+  \%K(t) &= 100 \times \frac{P(t) - L_n(t)}{H_n(t) - L_n(t)} \quad & \text{(fast stochastic)} \\
+  \%D(t) &= \text{SMA}_m(\%K(t)) \quad & \text{(slow stochastic or signal line)} \\
+  \text{StochDiff}(t) &= \%K(t) - \%D(t) \quad & \text{(difference between \%K and \%D)} \\
+\end{aligned}
+\]
+
+\begin{minipage}{\textwidth}
+
+where..:\\
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $P(t)$         & is the current closing price at time $t$ \\
+  $H_n(t)$       & is the highest price over the last $n$ periods up to time $t$ \\
+  $L_n(t)$       & is the lowest price over the last $n$ periods up to time $t$ \\
+  $\%K(t)$       & is the fast stochastic oscillator value at time $t$ \\
+  $\%D(t)$       & is the moving average (usually simple) of $\%K(t)$ over $m$ periods \\
+  $\text{SMA}_m$ & is the simple moving average over $m$ periods \\
+  $\text{StochDiff}(t)$ & is the difference between $\%K(t)$ and $\%D(t)$ at time $t$ \\
+\end{tabularx}
+
+\end{minipage}
+
 			\subsubsection{Commodity Channel Index (CCI)}
+
+The CCI measures how far a price is from its statistical average indicating overbought or oversold market conditions. [26]\\
+
+\[
+\begin{aligned}
+  TP(t) &= \frac{H(t) + L(t) + C(t)}{3} \\\\
+  SMA_{TP}(t) &= \frac{1}{n} \sum_{i=0}^{n-1} TP(t-i) \\\\
+  MAD(t) &= \frac{1}{n} \sum_{i=0}^{n-1} |TP(t-i) - SMA_{TP}(t)| \\\\
+  CCI(t) &= \frac{TP(t) - SMA_{TP}(t)}{0.015 \times MAD(t)} \\\\
+\end{aligned}
+\]
+
+
+\begin{minipage}{\textwidth}
+
+where..:\\
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $H(t)$         & is the highest price at time $t$ \\
+  $L(t)$         & is the lowest price at time $t$ \\
+  $C(t)$         & is the closing price at time $t$ \\
+  $TP(t)$        & is the typical price at time $t$ \\
+  $SMA_{TP}(t)$  & is the simple moving average of typical prices over $n$ periods at time $t$ \\
+  $MAD(t)$       & is the mean absolute deviation of typical prices over $n$ periods at time $t$ \\
+  $CCI(t)$       & is the Commodity Channel Index at time $t$ \\
+  $n$            & is the number of periods used for SMA and MAD calculations \\
+  $0.015$        & is a constant to ensure that approximately 70-80\% of CCI values fall between -100 and +100 \\
+\end{tabularx}
+
+\end{minipage}
+
+			\subsubsection{Moving Averages}
+			\subsubsection{Average True Range (ATR)}
+			\subsubsection{Average Directional Index (ADI)}
+			\subsubsection{Bollinger Bands}
+			\subsubsection{On-Balance Volume (OBV)}
+			\subsubsection{Volume Price Trend (VPT)}
+		\subsection{Macro-economic features}
+		We add Macro-economic features to capture global or US wide circumstances and market context [38]. We use the “FRED API” version 0.5.2 to retrieve them [37]. Some of the indicators are not published daily. For example, the GDP is published quarterly. We therefore use the interpolate function that comes with the pandas library. It looks for brackets of NaN values and draws a line from the valid value before and the valid value after the bracket to fill the rows in between linearly. So, if we have a list such as [10, NaN, NaN, NaN, 18, NaN, 26] then the interpolation of this list would return this list: [10, 12, 14, 16, 18, 22, 26]. This allows us to simulate a realistic and smooth course of the features.
+			\subsubsection{S\&P 500}
+			One important macro-economic indicator is the S\&P 500 index. Since it includes the biggest 500 US companies it is an important measure of the health of the overall us economy.
+			\subsubsection{GDP (USA)}
+			The Gross domestic Product is the value of all goods and services produced by a country in a given period. It is a meaningful indicator since it reflects the economic performance of a country [38].
+			\subsubsection{unemployment rate}
+			The unemployment rate can capture strengths and weaknesses in the economy. It is a great indicator for economic activity [38].
+			\subsubsection{Consumer price index (CPI)}
+			The consumer price index measures the monthly change in prices paid by urban US customers for different basic products and services [39].
+			\subsubsection{Personal consumption expenditures (PCE)}
+			The personal consumption expenditures is an indicator that measures how much US households spend on goods and services [41].
+			\subsubsection{Industrial Production index (IPI)}
+			The industrial production index measures the output in manufacturing, gas, oil, mining and electric industries [42].
+			\subsubsection{federal funds rate}
+			The federal funds rate is the target interest rate range at which commercial banks are supposed to borrow money [43].
+			\subsubsection{10Y treasury rate}
+			The 10-year treasury is the interest rate which the US government pays to borrow money over a decade. It is an important benchmark for other interest rates and it talks about expectations of the US government about inflation and economic growth [44].
+			\subsubsection{Retail sales}
+			Retail sales is a main indicator for economic health because it provides information about the buying power of consumers. Bigger retail sales usually lead to more profit for companies which has a positive effect on the stock price [40]. 
+			\subsubsection{housing starts}
+			Housing starts is the number of newly started construction projects in a given period that provides information about the housing market and general economic activity [45]. 
+			\subsubsection{exchange rates}
+Exchange rates are a good way to measure the economic health in comparison to economies from other countries [46] [47]. We include the exchange rates USD-EUR, USD-GBP and USD-JPY.
+		\subsubsection{Calendar features}
+We also add the following calendar features to capture patterns for example the Monday effect [28] and the January effect [29].
+
+\begin{itemize}
+  \item Day of week (1--7)
+  \item Day of year (1--365)
+  \item Month (1--12)
+  \item Year (yyyy)
+  \item Quarter (1--4)
+\end{itemize}
+
+
+In total we now have included 60 features in our data set that are products or byproducts of our calculations. We also add a ‘target’ column with the next days close price which will be our target value during training. We perform further preprocessing steps, but we have to perform them in separate pipelines since the LSTM and the CNN model need distinct preprocessing steps compared to an XGBoost model. 
+
 
 		\subsection{}
 
@@ -782,27 +1009,6 @@ Having these metrics available we can now choose the stocks or ETFs and retrieve
 
 
 
-Introduction to my thesis
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=4cm]{images/CNN_filters.png}
-\caption{Trading Strategy}
-\label{trading_strategy}
-\end{center}
-\end{figure}
-
-One trading strategy is channels pictured in \ref{trading_strategy}
-
-\subsection{Formula}
-sdsd 
-\subsubsection{subsub}
-sdsd
-
-\LaTeX{} is the program we are using right now
-it is good to write 
-\begin{align}
-E=mc^2
-\end{align}
 
 
 
