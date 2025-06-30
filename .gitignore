@@ -1,5 +1,5 @@
 *.csv
-*.pkl
 *.pdf
+preprocessed_data/
 
 !results/
