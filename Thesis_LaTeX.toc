@@ -1,54 +1,62 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{\numberline {1}Introduction}{4}{}%
-\contentsline {chapter}{\numberline {2}Literature Review}{6}{}%
-\contentsline {chapter}{\numberline {3}Research Question}{8}{}%
-\contentsline {chapter}{\numberline {4}Machine Learning}{9}{}%
-\contentsline {section}{\numberline {4.1}Supervised Learning}{11}{}%
-\contentsline {section}{\numberline {4.2}Unsupervised Learning}{12}{}%
-\contentsline {section}{\numberline {4.3}Reinforcement Learning}{14}{}%
-\contentsline {chapter}{\numberline {5}Methodology}{16}{}%
-\contentsline {section}{\numberline {5.1}Model Selection}{17}{}%
-\contentsline {subsection}{\numberline {5.1.1}Neural Networks}{18}{}%
-\contentsline {subsubsection}{\numberline {5.1.1.1}Activation Functions}{19}{}%
-\contentsline {subsubsection}{\numberline {5.1.1.2}Non-linearity}{20}{}%
-\contentsline {subsubsection}{\numberline {5.1.1.3}weights and biases}{21}{}%
-\contentsline {subsubsection}{\numberline {5.1.1.4}backpropagation}{22}{}%
-\contentsline {subsection}{\numberline {5.1.2}Recurrent Neural Networks}{25}{}%
-\contentsline {subsubsection}{\numberline {5.1.2.1}Long Short-Term Memory (LSTM)}{27}{}%
-\contentsline {subsection}{\numberline {5.1.3}Convolutional Neural Networks}{30}{}%
-\contentsline {subsubsection}{\numberline {5.1.3.1}Convolutional layer}{30}{}%
-\contentsline {subsubsection}{\numberline {5.1.3.2}Pooling Layer}{36}{}%
-\contentsline {subsubsection}{\numberline {5.1.3.3}Viewed as a whole}{39}{}%
-\contentsline {subsection}{\numberline {5.1.4}Ensemble learning}{42}{}%
-\contentsline {subsubsection}{\numberline {5.1.4.1}Decision Trees}{42}{}%
-\contentsline {subsubsection}{\numberline {5.1.4.2}Random Forests}{43}{}%
-\contentsline {subsection}{\numberline {5.1.5}XGBoost}{45}{}%
-\contentsline {section}{\numberline {5.2}Volatility}{46}{}%
-\contentsline {section}{\numberline {5.3}Stock Selection}{50}{}%
-\contentsline {section}{\numberline {5.4}Data Preprocessing}{54}{}%
-\contentsline {subsection}{\numberline {5.4.1}Feature Engineering}{56}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.1}Relative Strength Index (RSI)}{56}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.2}Rate of Change (ROC)}{56}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.3}Moving Average Convergence Divergence (MACD)}{56}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.4}Stochastic Oscillator}{57}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.5}Commodity Channel Index (CCI)}{58}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.6}Moving Averages}{59}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.7}Average True Range (ATR)}{59}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.8}Average Directional Index (ADI)}{59}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.9}Bollinger Bands}{59}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.10}On-Balance Volume (OBV)}{59}{}%
-\contentsline {subsubsection}{\numberline {5.4.1.11}Volume Price Trend (VPT)}{59}{}%
-\contentsline {subsection}{\numberline {5.4.2}Macro-economic features}{60}{}%
-\contentsline {subsubsection}{\numberline {5.4.2.1}S\&P 500}{60}{}%
-\contentsline {subsubsection}{\numberline {5.4.2.2}GDP (USA)}{60}{}%
-\contentsline {subsubsection}{\numberline {5.4.2.3}unemployment rate}{60}{}%
-\contentsline {subsubsection}{\numberline {5.4.2.4}Consumer price index (CPI)}{60}{}%
-\contentsline {subsubsection}{\numberline {5.4.2.5}Personal consumption expenditures (PCE)}{60}{}%
-\contentsline {subsubsection}{\numberline {5.4.2.6}Industrial Production index (IPI)}{61}{}%
-\contentsline {subsubsection}{\numberline {5.4.2.7}federal funds rate}{61}{}%
-\contentsline {subsubsection}{\numberline {5.4.2.8}10Y treasury rate}{61}{}%
-\contentsline {subsubsection}{\numberline {5.4.2.9}Retail sales}{61}{}%
-\contentsline {subsubsection}{\numberline {5.4.2.10}housing starts}{61}{}%
-\contentsline {subsubsection}{\numberline {5.4.2.11}exchange rates}{61}{}%
-\contentsline {subsubsection}{\numberline {5.4.2.12}Calendar features}{61}{}%
-\contentsline {subsection}{\numberline {5.4.3}}{63}{}%
+\contentsline {chapter}{\numberline {1}Introduction}{5}{}%
+\contentsline {chapter}{\numberline {2}Literature Review}{7}{}%
+\contentsline {chapter}{\numberline {3}Research Question}{9}{}%
+\contentsline {chapter}{\numberline {4}Machine Learning}{10}{}%
+\contentsline {section}{\numberline {4.1}Supervised Learning}{10}{}%
+\contentsline {section}{\numberline {4.2}Unsupervised Learning}{11}{}%
+\contentsline {section}{\numberline {4.3}Reinforcement Learning}{12}{}%
+\contentsline {chapter}{\numberline {5}Methodology}{14}{}%
+\contentsline {section}{\numberline {5.1}Model Selection}{14}{}%
+\contentsline {subsection}{\numberline {5.1.1}Neural Networks}{15}{}%
+\contentsline {subsubsection}{Activation Functions}{16}{}%
+\contentsline {subsubsection}{Non-linearity}{16}{}%
+\contentsline {subsubsection}{weights and biases}{18}{}%
+\contentsline {subsubsection}{backpropagation}{18}{}%
+\contentsline {subsection}{\numberline {5.1.2}Recurrent Neural Networks}{20}{}%
+\contentsline {subsubsection}{Long Short-Term Memory (LSTM)}{22}{}%
+\contentsline {subsection}{\numberline {5.1.3}Convolutional Neural Networks}{24}{}%
+\contentsline {subsubsection}{Convolutional layer}{24}{}%
+\contentsline {subsubsection}{Pooling Layer}{29}{}%
+\contentsline {subsubsection}{Viewed as a whole}{32}{}%
+\contentsline {subsection}{\numberline {5.1.4}Ensemble learning}{33}{}%
+\contentsline {subsubsection}{Decision Trees}{34}{}%
+\contentsline {subsubsection}{Random Forests}{35}{}%
+\contentsline {subsection}{\numberline {5.1.5}XGBoost}{36}{}%
+\contentsline {section}{\numberline {5.2}Volatility}{36}{}%
+\contentsline {section}{\numberline {5.3}Stock Selection}{39}{}%
+\contentsline {section}{\numberline {5.4}Data Preprocessing}{43}{}%
+\contentsline {subsection}{\numberline {5.4.1}Feature Engineering}{44}{}%
+\contentsline {subsubsection}{Relative Strength Index (RSI)}{44}{}%
+\contentsline {subsubsection}{Rate of Change (ROC)}{44}{}%
+\contentsline {subsubsection}{Moving Average Convergence Divergence (MACD)}{44}{}%
+\contentsline {subsubsection}{Stochastic Oscillator}{45}{}%
+\contentsline {subsubsection}{Commodity Channel Index (CCI)}{45}{}%
+\contentsline {subsubsection}{Moving Averages}{46}{}%
+\contentsline {subsubsection}{Average True Range (ATR)}{46}{}%
+\contentsline {subsubsection}{Average Directional Index (ADI)}{46}{}%
+\contentsline {subsubsection}{Bollinger Bands}{46}{}%
+\contentsline {subsubsection}{On-Balance Volume (OBV)}{46}{}%
+\contentsline {subsubsection}{Volume Price Trend (VPT)}{46}{}%
+\contentsline {subsection}{\numberline {5.4.2}Macro-economic features}{46}{}%
+\contentsline {subsubsection}{S\&P 500}{47}{}%
+\contentsline {subsubsection}{GDP (USA)}{47}{}%
+\contentsline {subsubsection}{unemployment rate}{47}{}%
+\contentsline {subsubsection}{Consumer price index (CPI)}{47}{}%
+\contentsline {subsubsection}{Personal consumption expenditures (PCE)}{47}{}%
+\contentsline {subsubsection}{Industrial Production index (IPI)}{47}{}%
+\contentsline {subsubsection}{federal funds rate}{47}{}%
+\contentsline {subsubsection}{10Y treasury rate}{47}{}%
+\contentsline {subsubsection}{Retail sales}{48}{}%
+\contentsline {subsubsection}{housing starts}{48}{}%
+\contentsline {subsubsection}{exchange rates}{48}{}%
+\contentsline {subsubsection}{Calendar features}{48}{}%
+\contentsline {subsection}{\numberline {5.4.3}Connection pipeline for LSTM and CNN preprocessing}{48}{}%
+\contentsline {subsection}{\numberline {5.4.4}Connection pipeline for XGBoost preprocessing}{50}{}%
+\contentsline {subsection}{\numberline {5.4.5}Hyperparameter Tuning}{51}{}%
+\contentsline {subsubsection}{Optuna}{51}{}%
+\contentsline {subsubsection}{Our Optuna use case}{51}{}%
+\contentsline {section}{\numberline {5.5}Metrics}{54}{}%
+\contentsline {chapter}{\numberline {6}Results \& Discussion}{56}{}%
+\contentsline {chapter}{\numberline {7}Further Research}{60}{}%
+\contentsline {chapter}{\numberline {8}Abstract}{63}{}%

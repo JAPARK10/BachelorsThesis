@@ -13,13 +13,22 @@
 \usepackage{etoolbox}
 \usepackage{tabularx}
 \usepackage{placeins}
+\usepackage{setspace}
 \usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage[
+  inner=3cm,        % gewünschter Innenrand
+  outer=2.5cm,      % Außenrand
+  top=2.5cm,
+  bottom=2.5cm,
+  bindingoffset=5mm,% extra Einzug für Bindung, wenn benötigt
+]{geometry}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{references.bib}
 
 
 
 \setlength{\parindent}{0pt}
-\pretocmd{\subsection}{\clearpage}{}{}
-\pretocmd{\section}{\clearpage}{}{}
 
 \titleformat{\chapter}[hang]
   {\normalfont\huge\bfseries}
@@ -29,40 +38,114 @@
 
 
 
-
-
-
-
-\title{Bachelor's Thesis\\ \
-\\
-Comparative Study about predictive performance of Machine Learning algorithms in forecasting prices of stocks with different volatility}
-\author{Jeremias Lukas Aechtner}
-\date{June 29, 2025}
-
-\setcounter{secnumdepth}{6}
-\setcounter{tocdepth}{6}
-
-
-
-
-
-
 \begin{document}
 
 
 
-\maketitle
 
 
+\thispagestyle{empty}
+
+% Fakultät (oben, mitte)
+\begin{center}
+  \large
+University of Leipzig\\
+Faculty of Mathematics and Computer Science\\[0.3cm]
+Institute of Computer Science
+\end{center}
+
+\vspace{3cm}
+
+% Title (Mitte, mitte)
+\begin{center}
+  \LARGE\bfseries
+  Bachelor's Thesis\\[1cm]
+  Comparative Study about predictive performance of Machine Learning algorithms\\
+  in forecasting stock prices of different volatility
+\end{center}
+
+\vspace{3cm}
+
+% Author (unter Titel mitte)
+\begin{center}
+  \large
+  Jeremias Lukas Aechtner
+\end{center}
+
+\vfill
+
+% Bottom left and right lines
+\noindent
+\begin{minipage}[t]{0.5\textwidth}
+  Leipzig, 07.2025
+\end{minipage}%
+\begin{minipage}[t]{0.5\textwidth}
+  \raggedleft
+  submitted by Jeremias Lukas Aechtner,\\
+  Course of study: Informatik B. SC.
+\end{minipage}
+
+\vspace{2cm}
+
+% Supervisors (ganz unten links)
+\noindent
+\begin{minipage}[t]{\textwidth}
+  \small
+  \textbf{Supervising university lecturer:}\\
+  Prof. Gregory Provan, School of Computer Science and Information Technology, University College Cork\\
+  Prof. Dr. Andreas Maletti, Fakultät für Mathematik und Informatik, Universität Leipzig
+\end{minipage}
+
+
+
+
+
+\begin{center}
+\begin{minipage}{0.8\textwidth}
 \section*{Acknowledgment}
-First I would like to thank Professor Gregory Provan and Professor Dr. Andreas Maletti who agreed to supervise me on this topic that I wanted to work on so badly. I always received their guidance and honest opinions as an invaluable support for both the development of the content of the thesis and the general process of writing this thesis. I would like to express my sincere gratitude towards my friends and family that supported me in many ways throughout the entire process. \\
-\\
-\\
-I want to mention that in order to not let this thesis get too long I decided to not explain code related methods in closer detail because they can be looked at in the codebase which is commented throughout.
+
+\vspace{1cm}
 
 
+I would like to thank Professor Gregory Provan from the School of Computer Science and Information Technology at the University College Cork and Professor Andreas Maletti, PhD from the faculty for mathematics and computer science at the University Leipzig who agreed to supervise me on this topic. I always received their guidance and honest opinion as an invaluable support for both the development of the content of the thesis and the general process. I would like to thank the School of Computer Science and Information Technology from the University College Cork and the Faculty for Mathematics and Computer Science from the University Leipzig who have been very supportive with all formal matters. Furthermore I would like to thank the international office at the UCC and the Office of International Affairs at the University Leipzig that made it possible for me to write this thesis in the context of my Erasmus exchange stay in Ireland. I would like to express my sincere gratitude towards my friends and family that supported me in many different ways throughout the entire process. \\
+\\
+\\
+
+
+\end{minipage}
+\end{center}
 
 \newpage
+
+\section*{Glossary}
+
+\begin{description}
+  \item[Self‑updating system] A system that automatically adjusts its internal parameters based on incoming data (i.e.\ it “learns”).
+
+  \item[Prediction error] The difference between the system’s predicted value and the true value.
+
+  \item[Learning] The process by which a system updates its parameters in response to the prediction error in order to improve over time.
+
+  \item[Data point] A single observation in the dataset, represented by a feature vector (one row in a table).
+
+  \item[Period] A time interval corresponding to one measurement instance. (e.g.\ Day, minute, hour).
+
+  \item[Feature] An individual measurable property or characteristic of a data point.
+
+  \item[Data set] A collection of data points, typically organized as a table whose rows are periods and whose columns are features.
+
+  \item[Adding a feature] Introducing a new variable to the dataset—i.e.\ appending a column so that each data point can gain that attribute.
+
+  \item[Classification] A supervised learning task where the target output is categorical (e.g.\ “spam” vs.\ “not spam”).
+
+  \item[Regression] A supervised learning task where the target output is a continuous value (e.g.\ predicting a house price).
+
+  \item[Overfitting] When a model learns characteristics of only the training data too well, capturing noise or random fluctuations, resulting in poor performance on new, unseen data.
+
+  \item[Generalization] The ability of a trained model to make accurate predictions on new, unseen data — not just on its training set.
+\end{description}
+
+
 
 \tableofcontents
 
@@ -72,18 +155,17 @@ I want to mention that in order to not let this thesis get too long I decided to
 
 
 
-
 \chapter{Introduction}
-Machine learning has become a very important technology. It is applied to many tasks which can be split into different subareas. One of those areas is time series forecasting where people try to predict a future sequence or element based on a past sequence or element. There it is applied it to a variety of real-world challenges. These fields include Healthcare [1], Energy [2], Agriculture [3], Climate \& Weather [4] and financial data. Machine Learning is a currently rapidly evolving technology for which people find new use cases permanently. The ways it can be applied to problems and challenges are various and numerous. Besides predicting customer behavior in stores, predicting energy consumption over time or analyzing biometric data to conclude about health status, it is also widely applied to predict economic parameters. Business consultancy companies make big use of these algorithms to facilitate and improve the quality of their service. A similar sector in which this technology is applied regularly is finance. Machine learning is used to flag in real time anomalies in transactions to detect fraud or money laundry which allows for immediate intervention [58]. It is used to calculate credit scores and manage risk of credits based on a wider range of borrower data than traditional credit-bureau scores [59]. Besides that, it is widely used in trading to asses the quality of an asset, the risk of an investment, the potential upside of a stock or simply to give recommendations on buy or sell orders for traders. Many big trading companies apply algorithms that execute orders automatically given certain circumstances. There is a lot of potential profit in this area which is why many parties are chasing the idea of creating a trading algorithm that can outperform the market. The efficient market hypothesis contradicts this vision. It is a hypothesis after which at any given moment the prices of assets fully reflect all possibly available information about that asset [60]. After that it would be impossible to outperform the market since the price only changes with information which was impossible to foresee. There are three forms of this hypothesis. The weak form states that prices reflect all past market data. Based on that it would be impossible to outperform the market by only using past market data. The semi-strong form says that prices reflect all publicly available information. Following that means it would be only possible to outperform the market if you had insider information. And finally, there is the strong form. Considering the strong form, prices reflect all information including public and insider information which makes it overall impossible to outperform the market. Often the prices change when new unexpected information become publicly available. This is why time and speed matter a lot in these trading firms and it is the reason they optimize their infrastructure and reaction speed as much as possible. There are certain traders and companies who in fact do consistently outperform the market. That leads to the assumption that the hypothesis’ strong form isn’t the one representing the stock market dynamics of our world. A currently realistic form would probably be located somewhere between the semi-strong and strong form but we don’t know it exactly. Because of that, people still are looking for ways to outperform the market which leads to this huge research area of stock and asset price forecasting. There are many different ways to employ machine learning in this area. From forecasting concrete stock prices over analyzing the risk of one asset to only giving binary recommendations whether one should sell short or buy long of an ETF. Stock price forecasting is one of those many fields that are heavily developing. Many findings have already been made in this area in applying machine learning algorithms. \\
+Machine learning has become a very important technology. It is applied to many tasks which can be split into different subareas. One of those areas is time series forecasting where people try to predict a future sequence or element based on a past sequence or element. There it is applied it to a variety of real-world challenges. These fields include Healthcare \cite{1}, Energy \cite{2}, Agriculture \cite{3}, Climate \& Weather \cite{4} and financial data. Machine Learning is a currently rapidly evolving technology for which people find new use cases permanently. The ways it can be applied to problems and challenges are various and numerous. Besides predicting customer behavior in stores, predicting energy consumption over time or analyzing biometric data to conclude about health status, it is also widely applied to predict economic parameters. Business consultancy companies make big use of these algorithms to facilitate and improve the quality of their service. A similar sector in which this technology is applied regularly is finance. Machine learning is used to flag in real time anomalies in transactions to detect fraud or money laundry which allows for immediate intervention \cite{58}. It is used to calculate credit scores and manage risk of credits based on a wider range of borrower data than traditional credit-bureau scores \cite{59}. Besides that, it is widely used in trading to asses the quality of an asset, the risk of an investment, the potential upside of a stock or simply to give recommendations on buy or sell orders for traders. Many big trading companies apply algorithms that execute orders automatically given certain circumstances. There is a lot of potential profit in this area which is why many parties are chasing the idea of creating a trading algorithm that can outperform the market. The efficient market hypothesis contradicts this vision. It is a hypothesis after which at any given moment the prices of assets fully reflect all possibly available information about that asset \cite{60}. After that it would be impossible to outperform the market since the price only changes with information which was impossible to foresee. There are three forms of this hypothesis. The weak form states that prices reflect all past market data. Based on that it would be impossible to outperform the market by only using past market data. The semi-strong form says that prices reflect all publicly available information. Following that means it would be only possible to outperform the market if you had insider information. And finally, there is the strong form. Considering the strong form, prices reflect all information including public and insider information which makes it overall impossible to outperform the market. Often the prices change when new unexpected information become publicly available. This is why time and speed matter a lot in these trading firms and it is the reason they optimize their infrastructure and reaction speed as much as possible. There are certain traders and companies who in fact do consistently outperform the market. That leads to the assumption that the hypothesis’ strong form isn’t the one representing the stock market dynamics of our world. A currently realistic form would probably be located somewhere between the semi-strong and strong form but we don’t know it exactly. Because of that, people still are looking for ways to outperform the market which leads to this huge research area of stock and asset price forecasting. There are many different ways to employ machine learning in this area. From forecasting concrete stock prices over analyzing the risk of one asset to only giving binary recommendations whether one should sell short or buy long of an ETF. Stock price forecasting is one of those many fields that are heavily developing. Many findings have already been made in this area in applying machine learning algorithms. \\
 \\
 We will briefly discover the current state of the art throughout the following literature review and following that we want to contribute with this thesis to this research area.
 
 
 
 \chapter{Literature Review}
-The paper [5] from Kumbure et al. (2022) showed in a comprehensive review the technological development in the field of stock forecasting. The review includes 138 articles that have been published between 2000 and 2019. It looks on machine learning techniques that have been applied, features that were considered for training and metrics with which results have been measured. Like that they propose a differentiation of features into 4 categories which are “Technical Indicators”, “Macro-Economy”, “Fundamental Indicators” and “others”. They explain the importance of these features and how often they are used. In section 5.4.8 that review [5] illustrates what families of machine learning models have been applied to the task of forecasting stock prices. It shows that at least since the year 2000 Artificial Neural Networks (ANNs) in various forms were experimented with heavily. \\
+The paper \cite{5} from Kumbure et al. (2022) showed in a comprehensive review the technological development in the field of stock forecasting. The review includes 138 articles that have been published between 2000 and 2019. It looks on machine learning techniques that have been applied, features that were considered for training and metrics with which results have been measured. Like that they propose a differentiation of features into 4 categories which are “Technical Indicators”, “Macro-Economy”, “Fundamental Indicators” and “others”. They explain the importance of these features and how often they are used. In section 5.4.8 that review \cite{5} illustrates what families of machine learning models have been applied to the task of forecasting stock prices. It shows that at least since the year 2000 Artificial Neural Networks (ANNs) in various forms were experimented with heavily. \\
 \\\
-One representative of Artificial Neural Networks is mentioned very regularly in research – Long Short-Term Memory (LSTM). The paper [6] by Matharasi et al. (2025) evaluates two models against each other which are LSTM and XGBoost. Both delivered promising accuracy in forecasting AMD inc. stock data. While the LSTM model delivered slightly better accuracy in forecasts, the XGBoost model could excel in computational efficiency. Both models have been shown to have outstanding in predictive performance when forecasting certain stock or index data. Teixeira, D. M., \& Barbosa, R. S. (2025) have conducted another experiment [13] that shows their effectiveness in capturing the complexity of stock prices. They evaluate the models LSTM and XGBoost as well as other architectures such as GRU, CNN, RNN, but also different hybrid combinations of these like LSTM + CNN, RNN + GRU, GRU + CNN, LSTM + GRU, and RNN + LSTM. The study trains all of these models on historical stock data from Apple inc. and comes to the result that the standalone models of GRU, LSTM and XGBoost perform the best for the Apple inc. stock data. This is a little counterintuitive since one might think that hybrid models usually outperform their standalone component models since they might merge strengths of both models, but as evidenced that is not generally the case and it strongly depends on how they are combined. Under section 5 they discuss that the performance depends furthermore on the timeframe of the training data. They state that the gap of the performance between the models is smaller for a shorter time frame of training data. When choosing a longer time frame for training with a more complex data course, the three earlier mentioned models GRU, LSTM and XGBoost outperform the other models. Another paper [7] by Li, Siyuan. (2024) investigates the performance of a Kalman Filter and different types of LSTM models such as a single layer LSTM, a stacked LSTM, a bidirectional LSTM and a hybrid convolutional neural network (CNN)-LSTM. From those the bidirectional LSTM performed best for low-volatility stocks and the CNN-LSTM model performed best for high volatility stocks. Here the hybrid CNN-LSTM model in fact outperformed the standalone LSTM model. XGBoost models as mentioned in the two papers above seem to have a reasonable performance in forecasting stock prices under certain circumstances. This is evidenced by another experiment [10] by Aiyegbeni Gifty, \& Dr. Yang Li. (2024) that was conducted to compare the performance of LSTM, ARIMA and XGBoost models. They also come to the conclusion that the XGBoost model outstands in performance under certain circumstances. They trained and evaluated the models on Google inc. stock data. This again emphasizes the impact that the data has on the performance of each model and it shows as the other studies mention as well, that certain models have advantages in dealing with certain characteristics in data like volatility making the choice of a suitable model very much not trivial. They also emphasize the importance of hyperparameter tuning. Applying it they could reduce the Mean Absolute Error (MAE) from 17.63 without hyperparameter tuning down to 15.98 and the Root Mean Squared Error (RMSE) from 30.24 down to 27.34.\\
+One representative of Artificial Neural Networks is mentioned very regularly in research – Long Short-Term Memory (LSTM). The paper \cite{6} by Matharasi et al. (2025) evaluates two models against each other which are LSTM and XGBoost. Both delivered promising accuracy in forecasting AMD inc. stock data. While the LSTM model delivered slightly better accuracy in forecasts, the XGBoost model could excel in computational efficiency. Both models have been shown to have outstanding in predictive performance when forecasting certain stock or index data. Teixeira, D. M., \& Barbosa, R. S. (2025) have conducted another experiment \cite{13} that shows their effectiveness in capturing the complexity of stock prices. They evaluate the models LSTM and XGBoost as well as other architectures such as GRU, CNN, RNN, but also different hybrid combinations of these like LSTM + CNN, RNN + GRU, GRU + CNN, LSTM + GRU, and RNN + LSTM. The study trains all of these models on historical stock data from Apple inc. and comes to the result that the standalone models of GRU, LSTM and XGBoost perform the best for the Apple inc. stock data. This is a little counterintuitive since one might think that hybrid models usually outperform their standalone component models since they might merge strengths of both models, but as evidenced that is not generally the case and it strongly depends on how they are combined. Under section 5 they discuss that the performance depends furthermore on the timeframe of the training data. They state that the gap of the performance between the models is smaller for a shorter time frame of training data. When choosing a longer time frame for training with a more complex data course, the three earlier mentioned models GRU, LSTM and XGBoost outperform the other models. Another paper \cite{7} by Li, Siyuan. (2024) investigates the performance of a Kalman Filter and different types of LSTM models such as a single layer LSTM, a stacked LSTM, a bidirectional LSTM and a hybrid convolutional neural network (CNN)-LSTM. From those the bidirectional LSTM performed best for low-volatility stocks and the CNN-LSTM model performed best for high volatility stocks. Here the hybrid CNN-LSTM model in fact outperformed the standalone LSTM model. XGBoost models as mentioned in the two papers above seem to have a reasonable performance in forecasting stock prices under certain circumstances. This is evidenced by another experiment \cite{10} by Aiyegbeni Gifty, \& Dr. Yang Li. (2024) that was conducted to compare the performance of LSTM, ARIMA and XGBoost models. They also come to the conclusion that the XGBoost model outstands in performance under certain circumstances. They trained and evaluated the models on Google inc. stock data. This again emphasizes the impact that the data has on the performance of each model and it shows as the other studies mention as well, that certain models have advantages in dealing with certain characteristics in data like volatility making the choice of a suitable model very much not trivial. They also emphasize the importance of hyperparameter tuning. Applying it they could reduce the Mean Absolute Error (MAE) from 17.63 without hyperparameter tuning down to 15.98 and the Root Mean Squared Error (RMSE) from 30.24 down to 27.34.\\
 \\\
 \underline{Conclusion of the literature review:} \\
 In general, the advantages and superiorities of different ML algorithms depend strongly on circumstances such as dynamics in the data, feature selection, architecture tuning and hyperparameter tuning. Furthermore, and among others XGBoost, LSTM, CNN and GRU are architectures that have been shown to regularly deliver outstanding performance in forecasting stock prices which makes them relevant in this area.
@@ -92,11 +174,11 @@ In general, the advantages and superiorities of different ML algorithms depend s
 As mentioned in the previous section, to make useful statements about predictive performance of ML algorithms, we need to set the performance of the predictions into perspective with respect to the data which is used. We observed the dependency of predictive performance on data characteristics during our literature review where we recognized that different ML models can perform best among a variety of models depending on the parameters, input data and setting of the study. For our experiment we will look at the performance of ML algorithms in forecasting stock and ETF prices based on the volatility of the certain asset. We want to understand how volatility of a stock or ETF impacts the forecasting performance of the chosen ML algorithms and we also want to understand which of the chosen models is most suitable for which degree of volatility in the data. To be more precise we are looking for results about the difference in performance of forecasts when using one ML algorithm and stocks of different volatility as input and we want to draw conclusions about the difference in predictive performance when using stock data of a certain volatility as input to train different ML models to see which is best suitable for a certain degree of volatility.
 
 \chapter{Machine Learning}
-Artificial Intelligence (AI) refers to systems that are designed to simulate aspects of human intelligence such as decision, reasoning, perception and adaptation. The most important trait is that the system is capable of learning based on outcomes. With learning we mean that the system can update itself to make better predictions or decisions by comparing the predicted and the actual outcome. They don’t have to rely on silicon-based hardware but commonly do in the way we use the term AI. Machine Learning is a subset of Artificial Intelligence. As IBM puts it [48], “Machine learning is a branch of artificial intelligence focused on enabling computers and machines to imitate the way that humans learn, to perform tasks autonomously, and to improve their performance and accuracy through experience and exposure to more data.“. To understand that further we look at an example that clarifies where the difference between any algorithm and ML algorithms comes from. Let’s say we have two algorithms that are designed to tell how many years you can expect to further live. The first algorithm retrieves the average life expectancy for your country from the internet and then returns the difference your age as the number of years you can expect to have left to live. This algorithm would adapt in a sense where it updates its input which is the life expectancy but it still would not be considered a machine learning algorithm. In other words, although the input changes, the algorithm itself never updates based on the concrete outcome so it's considered non-ML. If the algorithm instead would get the number of years the individual actually had left to live once it died and then updates its parameters based on how much the prediction was off, then the algorithm would be considered Machine Learning. So, the important difference is that our algorithm directly learns and gets better in its predictions using the value and direction of the error between the predicted and the actual outcome.\\
+Artificial Intelligence (AI) refers to systems that are designed to simulate aspects of human intelligence such as decision, reasoning, perception and adaptation. The most important trait is that the system is capable of learning based on outcomes. With learning we mean that the system can update itself to make better predictions or decisions by comparing the predicted and the actual outcome. They don’t have to rely on silicon-based hardware but commonly do in the way we use the term AI. Machine Learning is a subset of Artificial Intelligence. As IBM puts it \cite{48}, “Machine learning is a branch of artificial intelligence focused on enabling computers and machines to imitate the way that humans learn, to perform tasks autonomously, and to improve their performance and accuracy through experience and exposure to more data.“. To understand that further we look at an example that clarifies where the difference between any algorithm and ML algorithms comes from. Let’s say we have two algorithms that are designed to tell how many years you can expect to further live. The first algorithm retrieves the average life expectancy for your country from the internet and then returns the difference your age as the number of years you can expect to have left to live. This algorithm would adapt in a sense where it updates its input which is the life expectancy but it still would not be considered a machine learning algorithm. In other words, although the input changes, the algorithm itself never updates based on the concrete outcome so it's considered non-ML. If the algorithm instead would get the number of years the individual actually had left to live once it died and then updates its parameters based on how much the prediction was off, then the algorithm would be considered Machine Learning. So, the important difference is that our algorithm directly learns and gets better in its predictions using the value and direction of the error between the predicted and the actual outcome.\\
 \\\	
 Machine Learning is widely accepted to be divided into 3 main subcategories. These subcategories are defined as Supervised Learning, Unsupervised Learning and Reinforcement Learning. There also exist hybrid approaches of these but we don't need to understand those for this thesis. These categories are often also referred to as machine learning paradigms. 
 	\section{Supervised Learning}
-	Supervised Learning is a machine learning technique where labeled data is used for the training. The model computes a prediction for the target variable based on the input and compares the predicted value with the actual value. This actual value is referred to as “label”. The direction and the amount of the error is then returned to the algorithm so that it can learn. We can imagine supervised learning very well as a linear function with multiple input variables and coefficients for every input variable. We have a set of input variables and an according label for each set of input variables. We feed it to the algorithm to make it learn the hidden patterns or in other words relations that exist between the input and output data. In the beginning the coefficients from our metaphorical linear function are random and not precise but with each training step we improve the accuracy of the function by adjusting the coefficients in a way so that the predicted value is as close to the label as possible for any input. In that way the algorithm adapts to the actual patterns and relations in the data allowing for predictions. [48]
+	Supervised Learning is a machine learning technique where labeled data is used for the training. The model computes a prediction for the target variable based on the input and compares the predicted value with the actual value. This actual value is referred to as “label”. The direction and the amount of the error is then returned to the algorithm so that it can learn. We can imagine supervised learning very well as a linear function with multiple input variables and coefficients for every input variable. We have a set of input variables and an according label for each set of input variables. We feed it to the algorithm to make it learn the hidden patterns or in other words relations that exist between the input and output data. In the beginning the coefficients from our metaphorical linear function are random and not precise but with each training step we improve the accuracy of the function by adjusting the coefficients in a way so that the predicted value is as close to the label as possible for any input. In that way the algorithm adapts to the actual patterns and relations in the data allowing for predictions. \cite{48}
 	\section{Unsupervised Learning}
 	Unsupervised Learning is a machine learning technique where data is used for the training that is not labeled. We have no target variable that is to be predicted but we instead just have input data. That means that the algorithm is not designed to predict a certain value based on an input such as in the example with predicting years one has to live but instead it’s supposed to just work with the input. It does that by detecting patterns among the data points. We look at an example to get a sense for its usefulness.\\\\
 	Assuming we have an online shop and we want to give recommendations for items that the customer would be likely to buy so that we sell more products. How can we know which products the customer might buy? Unsupervised learning can be used to improve these recommendations. There are relations or patterns among our items in terms of how they are bought together or separately. Of course, this is based on the taste and preferences of the customers. What we are learning is not an objective relation of items but rather how the customers choose them. Some of these patterns might be obvious such as “these chairs match with this table”, but there are many patterns some of which are very complex and hard to grasp for humans because they are simply not as obvious. As we are constantly adding and removing products from our store it would be infeasible to manually explore and then pick these patterns for a recommendation. What we do instead is clustering customers into groups. In our example scenario we say that customers within one cluster share the same taste or preference. The algorithm locates all customers in a multidimensional space where every information a customer can be described with makes up one dimension. the more similar customers are in terms of the information that we use to describe them the closer they are in this space. Areas where many customers are located closely together are called clusters. We look at one example for a cluster. For whatever reason many customers who buy item a and b also buy item c two weeks later. For humans it can be hard to find patterns as this or much more complex ones. The algorithm would see that there is a higher density of customers in the area of our multidimensional model space for which “bought item a”, “bought item b” and “bought item c” is true. The algorithm looks at how this information fit together and can see that item c is always bought after item a and b was bought and typically only if both were bought. Like that the simple conclusion is to recommend item c to customers about 2 weeks after they bought item a and b.\\\\
@@ -452,7 +534,7 @@ The convolutional layer applies filters on the input. These filters are supposed
   \label{fig:fullwidth}
 \end{figure}
 
-Figure 5.6 illustrates one example for that. We see our input on the left which seems to be an RGB image and we see two filters that have weights or values for every cell in every color channel. Unfortunately, we can only see the upper most channel in the image now so we only apply the upper most channel of the filter to the upper most channel of the input. Actually, at one position, every channel of the filter would be applied to the input or in other words to the according channel of the input and then the total sum of all filters constitutes the value for the one cell in the feature for that position but we only look at the upper most channel [51].\\
+Figure 5.6 illustrates one example for that. We see our input on the left which seems to be an RGB image and we see two filters that have weights or values for every cell in every color channel. Unfortunately, we can only see the upper most channel in the image now so we only apply the upper most channel of the filter to the upper most channel of the input. Actually, at one position, every channel of the filter would be applied to the input or in other words to the according channel of the input and then the total sum of all filters constitutes the value for the one cell in the feature for that position but we only look at the upper most channel \cite{51}.\\
 	
 We can see, that the green filter would result in the highest possible value if the cells on the left side are as big as possible while the cells on the right side of the filter are as close to zero as possible since they will be subtracted and the values on the left will be added. So, the spatial feature this filter could be looking at could be a vertical edge with low color levels in its right side but this is just a hypothetical interpretation to understand how these filters work.\\
 	
@@ -609,19 +691,19 @@ Like that we get the feature maps that will constitute the input channels for th
 	\subsubsection{Random Forests}
 	
 	Random forests come from a concept called “ensemble learning”. It is a concept that is based on the fact that more models sometimes can make better predictions than fewer models when aggregated together. We learned before, that decision trees perform classification or regression by recursively asking yes or no questions to the data that split the data into subsets of highest possible purity.
-When we apply ensemble learning to decision trees it means that we train multiple trees [55] – hence the name forest – and then combine their predictions by using them as votes for the final prediction. In order to make sense out of that we need to create different trees in the process and we need to make sure that we do not end up with the same tree multiple times since just having the same tree multiple times doesn’t improve our predictions. We can ensure that the trees are all slightly different with altering different parameters for each tree. The technical term for that is uncorrelatedness among the trees. One possibility to ensure uncorrelatedness is called bootstrapping. This is creating smaller data sets out of our original data set. With normal decision trees we feed the whole data set to the tree. However, with bootstrapping we create many slightly different subsets of the data and feed these different subsets to the trees. Being fed different data generally means that the trees are constructed differently. Combining the predictions of many trees that are different because bootstrapping was used is called bootstrap aggregating or for short “Bagging”.\\
+When we apply ensemble learning to decision trees it means that we train multiple trees \cite{55} – hence the name forest – and then combine their predictions by using them as votes for the final prediction. In order to make sense out of that we need to create different trees in the process and we need to make sure that we do not end up with the same tree multiple times since just having the same tree multiple times doesn’t improve our predictions. We can ensure that the trees are all slightly different with altering different parameters for each tree. The technical term for that is uncorrelatedness among the trees. One possibility to ensure uncorrelatedness is called bootstrapping. This is creating smaller data sets out of our original data set. With normal decision trees we feed the whole data set to the tree. However, with bootstrapping we create many slightly different subsets of the data and feed these different subsets to the trees. Being fed different data generally means that the trees are constructed differently. Combining the predictions of many trees that are different because bootstrapping was used is called bootstrap aggregating or for short “Bagging”.\\
 Another method we can use to introduce variation to our trees is by shuffling which features a certain tree sees. This concept is called “feature randomness”. While with bootstrapping we divided the data into many different subgroups of smaller size but with the same number of features, feature randomness relies on creating subspaces of features to make the trees behave differently. So, if we have features A, B and C in our data then one tree might only see features A and B while another tree only sees the features B and C.\\
 Every tree makes a contribution to the final prediction in form of a vote. In the case of regression, the overall prediction is the average of the predictions of the single trees while in classification the class that was predicted by most trees is the overall prediction. The idea behind it is straight forward. When we use multiple slightly different trees to average their outcome then we can benefit from statistically better and smoother performance. This is due to the fact that the ensembled prediction of those trees over many trials always outperforms the prediction of one single tree that it consists of.
 
 	\subsection{XGBoost}
 	
 	Ok, after getting to know decision trees and random forests we now look at how exactly an XGBoost model works. Its name is short for extreme gradient boosting. \\
-	XGBoost models use a principle called boosting. It works by combining weak learners sequentially to improve the predictive accuracy with each learner [55]. The model starts with one prediction for each data point. For regression tasks that prediction typically just is the mean of all target values. With the first prediction the model computes the errors from every data point to the prediction. After that the first tree is learned. It takes the computed errors as well as the first and second derivative of the loss function and learns splits that group similar errors together. After having the data points grouped by a similar error of the initial prediction, a correction for the initial prediction is computed for each group of data points in the leaf nodes by taking into consideration the first and second derivative of the loss function with the given input. The first derivative tells us simply how strong and in which direction we can reduce our error but it doesn’t tell us how far we can go until we again would worsen the prediction. To help with that, we use the second derivative that tells us how strong the course of the loss function is curved. In other words, it tells us how strong the gradient of the function changes. The extreme in extreme gradient boosting stands for a couple of mechanisms the model uses to make it fast, efficient and accurate. One of these mechanisms is to use the second derivative to compute the adjustment value. Another mechanism which is used is called L2- regularization. It regularizes the weights of leaf nodes by giving penalties for too large values at the leaves preventing the model from overfitting. Other regularizations are used to generalize the model and prevent overfitting for example a maximum tree depth value. After learned, the adjustment values are multiplied with a learning rate that is fix for the whole model and then added to the prediction. This process can repeat a lot of times. Every iteration creates a new tree that again adjusts the predictions of all data points slightly towards the right direction. If the learning rate is lower, one tree adjusts the prediction only slightly so more trees would be needed but they can have a better accuracy since they correct the predictions with a finer granularity. 
+	XGBoost models use a principle called boosting. It works by combining weak learners sequentially to improve the predictive accuracy with each learner \cite{55}. The model starts with one prediction for each data point. For regression tasks that prediction typically just is the mean of all target values. With the first prediction the model computes the errors from every data point to the prediction. After that the first tree is learned. It takes the computed errors as well as the first and second derivative of the loss function and learns splits that group similar errors together. After having the data points grouped by a similar error of the initial prediction, a correction for the initial prediction is computed for each group of data points in the leaf nodes by taking into consideration the first and second derivative of the loss function with the given input. The first derivative tells us simply how strong and in which direction we can reduce our error but it doesn’t tell us how far we can go until we again would worsen the prediction. To help with that, we use the second derivative that tells us how strong the course of the loss function is curved. In other words, it tells us how strong the gradient of the function changes. The extreme in extreme gradient boosting stands for a couple of mechanisms the model uses to make it fast, efficient and accurate. One of these mechanisms is to use the second derivative to compute the adjustment value. Another mechanism which is used is called L2- regularization. It regularizes the weights of leaf nodes by giving penalties for too large values at the leaves preventing the model from overfitting. Other regularizations are used to generalize the model and prevent overfitting for example a maximum tree depth value. After learned, the adjustment values are multiplied with a learning rate that is fix for the whole model and then added to the prediction. This process can repeat a lot of times. Every iteration creates a new tree that again adjusts the predictions of all data points slightly towards the right direction. If the learning rate is lower, one tree adjusts the prediction only slightly so more trees would be needed but they can have a better accuracy since they correct the predictions with a finer granularity. 
 	
 	
 	
 	\section{Volatility}
-	Because for our stock selection we rely on volatility, we have to define very detailed what we mean by volatility and how we measure it. Volatility is known as the degree to which data disperses over time or in other words “Volatility is a statistical measure of the dispersion of returns for a given security or market index. It is often measured from either the standard deviation or variance between those returns.” – Investopedia - [15]. We understand that the volatility has to be measured to deliver meaningful results. The most common way to measure the volatility of stock courses in finance is by calculating the standard deviation or more precise the sample standard deviation of logarithmic returns [16]. If we do that, we get a measure that tells us how strongly the data points differ on average from the mean of the values. That’s quite good to compare the volatility of different stocks or ETFs. \\
+	Because for our stock selection we rely on volatility, we have to define very detailed what we mean by volatility and how we measure it. Volatility is known as the degree to which data disperses over time or in other words “Volatility is a statistical measure of the dispersion of returns for a given security or market index. It is often measured from either the standard deviation or variance between those returns.” – Investopedia - \cite{15}. We understand that the volatility has to be measured to deliver meaningful results. The most common way to measure the volatility of stock courses in finance is by calculating the standard deviation or more precise the sample standard deviation of logarithmic returns \cite{16}. If we do that, we get a measure that tells us how strongly the data points differ on average from the mean of the values. That’s quite good to compare the volatility of different stocks or ETFs. \\
 	To do so, we first need to calculate the logarithmic returns. We choose to calculate logarithmic returns instead of simple returns. We can understand why we choose the logarithmic return over the simple return by looking at a simple example.
 We calculate the simple return with\\
 
@@ -684,7 +766,7 @@ Simple Return & –      & +50.00\% & –33.33\% & +50.00\% & –33.33\% & +50.0
 \end{tabularx}\\
 
 
-If we look at returns like these, we could easily think that we end up with a positive return overall but when looking at the actual stock price we see, that we are just oscillating between two values. When we use the logarithmic returns, it gets more intuitive. We calculate the logarithmic return using: [17]\\
+If we look at returns like these, we could easily think that we end up with a positive return overall but when looking at the actual stock price we see, that we are just oscillating between two values. When we use the logarithmic returns, it gets more intuitive. We calculate the logarithmic return using: \cite{17}\\
 
 
 \[
@@ -735,7 +817,7 @@ Having these metrics available we can now choose the stocks or ETFs and retrieve
 
 
 	\section{Stock Selection}
-	We have defined how we measure the volatility of a stock course. That enables us now to choose stock data based on which we want to train our models. We are using the alpaca-trade-api to retrieve our historical stock data. After we created ourself an account and retrieved the credentials, we now create a list which contains common stocks and ETFs listed on AMEX, ARCA, BATS, NYSE, NASDAQ or NYSEARCA [18]. After that we define the time frame for which we want to retrieve the historical data, we choose it to be the past 5 years. Like that we retrieve the historical prices of about 11500 stocks and ETFs. \\
+	We have defined how we measure the volatility of a stock course. That enables us now to choose stock data based on which we want to train our models. We are using the alpaca-trade-api to retrieve our historical stock data. After we created ourself an account and retrieved the credentials, we now create a list which contains common stocks and ETFs listed on AMEX, ARCA, BATS, NYSE, NASDAQ or NYSEARCA \cite{18}. After that we define the time frame for which we want to retrieve the historical data, we choose it to be the past 5 years. Like that we retrieve the historical prices of about 11500 stocks and ETFs. \\
 	We further process this data to be only left with a table with the stock symbols as columns, the timestamp as index and the close price as a column as well. During preprocessing we would need to account for missing values. It would be much easier to already now just choose the stocks and ETFs without missing values. We look how many of the stocks and ETFs are having missing values in their data and its about 5000. That means we have about 6500 stocks and ETFs left with no missing values. Since we only need a handful of historical courses, we simply decide to drop all that have missing values and just proceed with the ones without any missing value. Besides that, we also drop all historical courses that have the same closing price over at least 30 days. When a stock or ETF has the same closing price over a number of days it can have different reasons but it usually means that the asset hasn’t been traded during that time. If the price stays the same for a longer period, we don’t want the assets course in our data because it is obviously not natural behavior of the market and anomalies of this kind make it harder for the algorithm to learn. \\\\
 	
 	We want to extract information regarding volatility. To do so we apply the methods of calculating the volatility and calculating the volatility of the volatility for our assets as described in the previous section. We apply the functions and store the returned values in a table. As we understood before we want the volatility of the volatility to be as low as possible for all stock and ETF courses while at the same time having a wide range of different volatilities of which we choose stocks and ETFs to train our model. To filter out stocks and ETFs that have a higher volatility of volatility we need to visualize our data set. For that we draw a graph. The graph shows the measure of volatility (blue) and volatility of volatility (orange) on the y-axis for each stock or ETF and the number of the stocks on the x-axis. We sort the stocks by the volatility of their volatility in increasing order.\\
@@ -801,7 +883,7 @@ The other features are:
 \begin{itemize}
   \item \textbf{trade\_count} --- which tells how many transactions have been made in a period.
   \item \textbf{Volume} --- which is the number of shares that have been traded within a period.
-  \item \textbf{Volume Weighted Average Price (VWAP)} --- which is the typical price of a stock or ETF weighted by its volume \cite{ref36}.
+  \item \textbf{Volume Weighted Average Price (VWAP)} --- which is the typical price of a stock or ETF weighted by its volume \cite{36}.
   \item \textbf{Open} --- the price at which the first trade occurred during the period.
   \item \textbf{Close} --- the price at which the last trade occurred during the period.
   \item \textbf{High} --- the highest traded price during the period.
@@ -826,7 +908,7 @@ where:
 
 	So, if within one period particularly many trades are executed at a certain price than this price is weighted more than a price at which fewer trades were executed. That means while the close only tells you the price at which the last trade executed, VWAP is averaged over all trades in that day.\\\\
 	
-	The next step is to preprocess the historical data from each asset by adding other features. Some of those are retrieved from APIs and some are calculated using the existing features. We choose the features based on those, the review study by Kumbure et al. [5] has shown to be mainly used in stock price forecasting. We also add some indicators mentioned in the articles “Template:Technical analysis” from Wikipedia [20] and “Technical Indicator: Definition, Analyst Uses, Types and Examples” from Investopedia [21]. 
+	The next step is to preprocess the historical data from each asset by adding other features. Some of those are retrieved from APIs and some are calculated using the existing features. We choose the features based on those, the review study by Kumbure et al. \cite{5} has shown to be mainly used in stock price forecasting. We also add some indicators mentioned in the articles “Template:Technical analysis” from Wikipedia \cite{20} and “Technical Indicator: Definition, Analyst Uses, Types and Examples” from Investopedia \cite{21}. 
 	
 		\subsection{Feature Engineering}
 		
@@ -853,10 +935,10 @@ and\\
   Average Loss & average of all absolute losses over the last $n$ periods \\
 \end{tabularx}\\
 			
-Where Average Gain and Average Loss are Exponentially weighted moving averages [22]. Exponentially weighted moving averages are averages that weigh the recent component more than previous components. 
+Where Average Gain and Average Loss are Exponentially weighted moving averages \cite{22}. Exponentially weighted moving averages are averages that weigh the recent component more than previous components. 
 			
 			\subsubsection{Rate of Change (ROC)}
-			The ROC is an indicator that shows the return in percent compared to the price n periods ago. A common number for n is 14. [23]
+			The ROC is an indicator that shows the return in percent compared to the price n periods ago. A common number for n is 14. \cite{23}
 			
 \[
 \text{ROC}_t = \frac{P_t - P_{t-n}}{P_{t-n}} \times 100\%
@@ -871,7 +953,7 @@ where..:\\
 
 			
 			\subsubsection{Moving Average Convergence Divergence (MACD)}
-			The MACD is used to measure both the momentum and direction of a price movement. It consists of a the MACD line and the signal line. The MACD line measures the difference between a shorter exponential moving average and a longer exponential moving average. The signal line is again an exponential moving average of the MACD line. Due to the fact that both lines crossing has implications for the price movement and we want the model to better identify that relation, we also add a histogram feature that simply is calculated as the difference between MACD line and signal line. [24]\\
+			The MACD is used to measure both the momentum and direction of a price movement. It consists of a the MACD line and the signal line. The MACD line measures the difference between a shorter exponential moving average and a longer exponential moving average. The signal line is again an exponential moving average of the MACD line. Due to the fact that both lines crossing has implications for the price movement and we want the model to better identify that relation, we also add a histogram feature that simply is calculated as the difference between MACD line and signal line. \cite{24}\\
 			
 \[
 \text{MACD}(t) = \text{EMA}_{\text{short}}(t) - \text{EMA}_{\text{long}}(t)
@@ -898,7 +980,7 @@ where..:\\
 
 			\subsubsection{Stochastic Oscillator}
 			
-The stochastic Oscillator is another momentum indicator that measures where the current closing price lies in the range of the highest high of a certain past period and the lowest low of that same period in percent. This value is called %K. A second value which is called %D contains the moving average of %K for a short period. Since again the relation of those two lines is of importance to us and we need to make the machine learning model aware of it, we add a stochastic difference value that is calculated as the difference of these 2 values. [25]\\
+The stochastic Oscillator is another momentum indicator that measures where the current closing price lies in the range of the highest high of a certain past period and the lowest low of that same period in percent. This value is called %K. A second value which is called %D contains the moving average of %K for a short period. Since again the relation of those two lines is of importance to us and we need to make the machine learning model aware of it, we add a stochastic difference value that is calculated as the difference of these 2 values. \cite{25}\\
 
 \[
 \begin{aligned}
@@ -926,7 +1008,7 @@ where..:\\
 
 			\subsubsection{Commodity Channel Index (CCI)}
 
-The CCI measures how far a price is from its statistical average indicating overbought or oversold market conditions. [26]\\
+The CCI measures how far a price is from its statistical average indicating overbought or oversold market conditions. \cite{26}\\
 
 \[
 \begin{aligned}
@@ -963,31 +1045,31 @@ where..:\\
 			\subsubsection{On-Balance Volume (OBV)}
 			\subsubsection{Volume Price Trend (VPT)}
 		\subsection{Macro-economic features}
-		We add Macro-economic features to capture global or US wide circumstances and market context [38]. We use the “FRED API” version 0.5.2 to retrieve them [37]. Some of the indicators are not published daily. For example, the GDP is published quarterly. We therefore use the interpolate function that comes with the pandas library. It looks for brackets of NaN values and draws a line from the valid value before and the valid value after the bracket to fill the rows in between linearly. So, if we have a list such as [10, NaN, NaN, NaN, 18, NaN, 26] then the interpolation of this list would return this list: [10, 12, 14, 16, 18, 22, 26]. This allows us to simulate a realistic and smooth course of the features.
+		We add Macro-economic features to capture global or US wide circumstances and market context \cite{38}. We use the “FRED API” version 0.5.2 to retrieve them \cite{37}. Some of the indicators are not published daily. For example, the GDP is published quarterly. We therefore use the interpolate function that comes with the pandas library. It looks for brackets of NaN values and draws a line from the valid value before and the valid value after the bracket to fill the rows in between linearly. So, if we have a list such as [10, NaN, NaN, NaN, 18, NaN, 26] then the interpolation of this list would return this list: [10, 12, 14, 16, 18, 22, 26]. This allows us to simulate a realistic and smooth course of the features.
 			\subsubsection{S\&P 500}
 			One important macro-economic indicator is the S\&P 500 index. Since it includes the biggest 500 US companies it is an important measure of the health of the overall us economy.
 			\subsubsection{GDP (USA)}
-			The Gross domestic Product is the value of all goods and services produced by a country in a given period. It is a meaningful indicator since it reflects the economic performance of a country [38].
+			The Gross domestic Product is the value of all goods and services produced by a country in a given period. It is a meaningful indicator since it reflects the economic performance of a country \cite{38}.
 			\subsubsection{unemployment rate}
-			The unemployment rate can capture strengths and weaknesses in the economy. It is a great indicator for economic activity [38].
+			The unemployment rate can capture strengths and weaknesses in the economy. It is a great indicator for economic activity \cite{38}.
 			\subsubsection{Consumer price index (CPI)}
-			The consumer price index measures the monthly change in prices paid by urban US customers for different basic products and services [39].
+			The consumer price index measures the monthly change in prices paid by urban US customers for different basic products and services \cite{39}.
 			\subsubsection{Personal consumption expenditures (PCE)}
-			The personal consumption expenditures is an indicator that measures how much US households spend on goods and services [41].
+			The personal consumption expenditures is an indicator that measures how much US households spend on goods and services \cite{41}.
 			\subsubsection{Industrial Production index (IPI)}
-			The industrial production index measures the output in manufacturing, gas, oil, mining and electric industries [42].
+			The industrial production index measures the output in manufacturing, gas, oil, mining and electric industries \cite{42}.
 			\subsubsection{federal funds rate}
-			The federal funds rate is the target interest rate range at which commercial banks are supposed to borrow money [43].
+			The federal funds rate is the target interest rate range at which commercial banks are supposed to borrow money \cite{43}.
 			\subsubsection{10Y treasury rate}
-			The 10-year treasury is the interest rate which the US government pays to borrow money over a decade. It is an important benchmark for other interest rates and it talks about expectations of the US government about inflation and economic growth [44].
+			The 10-year treasury is the interest rate which the US government pays to borrow money over a decade. It is an important benchmark for other interest rates and it talks about expectations of the US government about inflation and economic growth \cite{44}.
 			\subsubsection{Retail sales}
-			Retail sales is a main indicator for economic health because it provides information about the buying power of consumers. Bigger retail sales usually lead to more profit for companies which has a positive effect on the stock price [40]. 
+			Retail sales is a main indicator for economic health because it provides information about the buying power of consumers. Bigger retail sales usually lead to more profit for companies which has a positive effect on the stock price \cite{40}. 
 			\subsubsection{housing starts}
-			Housing starts is the number of newly started construction projects in a given period that provides information about the housing market and general economic activity [45]. 
+			Housing starts is the number of newly started construction projects in a given period that provides information about the housing market and general economic activity \cite{45}. 
 			\subsubsection{exchange rates}
-Exchange rates are a good way to measure the economic health in comparison to economies from other countries [46] [47]. We include the exchange rates USD-EUR, USD-GBP and USD-JPY.
-		\subsubsection{Calendar features}
-We also add the following calendar features to capture patterns for example the Monday effect [28] and the January effect [29].
+Exchange rates are a good way to measure the economic health in comparison to economies from other countries \cite{46} \cite{47}. We include the exchange rates USD-EUR, USD-GBP and USD-JPY.
+			\subsubsection{Calendar features}
+We also add the following calendar features to capture patterns for example the Monday effect \cite{28} and the January effect \cite{29}.
 
 \begin{itemize}
   \item Day of week (1--7)
@@ -1001,7 +1083,301 @@ We also add the following calendar features to capture patterns for example the 
 In total we now have included 60 features in our data set that are products or byproducts of our calculations. We also add a ‘target’ column with the next days close price which will be our target value during training. We perform further preprocessing steps, but we have to perform them in separate pipelines since the LSTM and the CNN model need distinct preprocessing steps compared to an XGBoost model. 
 
 
-		\subsection{}
+		\subsection{Connection pipeline for LSTM and CNN preprocessing}
+One important step we need to perform on data for neural networks is normalization. This is due to the nature of neural networks – they are sensitive to the scale of input features. Without normalization features with large values would dominate features with small values which would lead to uneven learning. We look at an example to understand that dynamic. Neural networks as we learned before work by taking vectorized inputs. That means they take a list of numerical values as input. Each of these values is multiplied by the according weight and then typically added together. \\
+
+\begin{minipage}{\textwidth}
+Let’s say we have the following equation for one neuron and we assume that features x1 and x2 are equally important to the result. We define the value inside the neuron before activation as:\\
+We define a linear function as:
+
+\[
+y = w_1 x_1 + w_2 x_2 + b
+\]
+
+Suppose:
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}}X@{}}
+  $x_1 = 200$ & (e.g., size in m$^2$) \\
+  $x_2 = 3$   & (e.g., number of bedrooms) \\
+  $w_1 = 1$   & \\
+  $w_2 = 1$   & \\
+\end{tabularx}
+
+Then:
+
+\[
+y = 1\times200 + 1\times3 + b = 203+b
+\]
+\end{minipage}\\\\
+
+As we can see, the contribution of x1 to the result is much larger even though we know that both features are equally important, it’s just that x1 has a larger scale. One might argue that the network could compensate this larger scale by using a much smaller weight for input feature x1, but then we are interfering with the nature of the neural network which really is to weigh particular features heavier because they have been observed to have a greater impact on the result. This is not the case for us because we assume that our features both have an equal importance to the result. If we already have different scales for our inputs at the beginning of the network, it would be as if we predefine an importance for each feature. In case we know that particular features are in fact more important than others and we know the size of this importance among the features, than the practice to weigh the more impactful ones heavier would make sense, but that’s not common practice. Now it is totally true that you could simply have much smaller weights for those much larger inputs. But the problem with that lies in the nature of how the network learns its weights. They are computed based on a fixed learning rate which is an absolute value for the whole network and for the full training process. The learning rate tells us how much a weight is updated. If the learning rate is very small it means that we can converge our weights to very precise values with a fine granularity but it also means that we need more iterations to get to this correct value because we are doing much smaller steps. So, if the weights are forced to lie within different ranges because our input features have different scales, then the learning process within the whole network would be asymmetrical and some weights would learn very slow and barely reach a good value while others constantly overshoot and never converge to an accurate enough number. In short this is why normalization is necessary. \\
+
+
+\begin{minipage}{\textwidth}
+A scaler scales every input feature so that all features lie within the same scale. We use the StandardScaler() from the sklearn.preprocessing library in python \cite{49}. For each feature, centers the data by subtracting the mean ($\mu$). Then it divides by the standard deviation ($\sigma$). The formula is:\\
+
+
+
+\[
+z_i = \frac{x_i - \mu}{\sigma}
+\]
+
+where..:
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $z_i$      & is the standardized value \\
+  $x_i$      & is the original value \\
+  $\mu$      & is the mean of the feature values \\
+  $\sigma$   & is the standard deviation of the feature values \\
+\end{tabularx}
+\end{minipage}\\
+
+After applying that function the mean is always 0 and 68\% of the values lie within -1 and 1.\\
+To apply the scaler on our features we first have to fit it or in other words make it learn the scale by which it has to recalculate our values. If we would fit it on the whole data set then information about the scale of our validation and test data sets would leak through into the scaler. So, to maintain a clean pipeline we need to first split our data into training, validation and test sets, then fit the scaler only on the training set and after that apply it on all data sets. The target variable hereby is the only feature that doesn’t need to be scaled. In fact, it’s much easier to not scale it because we would otherwise need to revert the scaling for our predictions. \\
+The normalization or scaling is actually the only preprocessing step we are undertaking here. Another important step for neural networks for time series data is windowing. Windowing allows us to have a series of past x periods as input. We want to optimize the window size as a hyperparameter so we implement the windowing in the section hyperparameter tuning. 
+
+
+			\subsection{Connection pipeline for XGBoost preprocessing}
+
+
+The XGBoost model requires a different preprocessing pipeline. As we learned earlier the input for a tree-based has different characteristics compared to the input of an LSTM or CNN model. For our XGBoost model the data is not a collection of windows that have the shape (n\_periods x n\_features) but instead it’s a collection of single row features or 1D vectors that contain all features. That means we can’t simply use past periods as input. The way to work around that and still use XGBoost models for time series forecasting is to add lag values. Lag values always belong to a specific feature and they invoke the value of a past period of that feature. So, a lag value of three for the feature “close” would mean that we add three columns as new features where one is the “close” price three days ago, one is the “close” price two days ago and the third one is the “close” price from the previous day. Like that we can add different lag sizes for each feature and in that way add the necessary temporal context for our current period. Our concrete approach is documented in the codebase.\\
+As we learned before XGBoost is a tree-based model. When we looked at decision trees, we understood that they observe the features in the data independent from each other and choose one feature for a split. For the selected feature the algorithm again chooses a threshold which is used to split the data into two halves. When we normalize the data, the proportions of the values within one feature column don’t change but only their absolute value gets resized. So, the size ratios among the data points doesn’t change but only their scale. If we sorted the data by one feature and performed a split it would be at the same position regardless of the scale of the data. \\
+Since we have no windowing to perform on the data for the XGBoost model, the last preprocessing step is to split the data into train, validation and test set. We simply decide to use 80\% of the data for training, 10\% for validation and 10% for test purposes.
+
+			\subsection{Hyperparameter Tuning}
+When we looked at the different Machine Learning models that we are using, we partially got to know which adjustable hyperparameters there are. We will tune certain hyperparameters for each model and we will tune them for each data set of historical courses separately so that we conduct our experiment based on optimal performance. \\
+				\subsubsection{Optuna}
+For tuning we use the optuna library in python. It allows us to define a function that returns a float value and a direction in which we want to optimize that returned value. The directions can be to minimize or to maximize. 
+In the function which’s return value is to be optimized we can specify ranges for variables. The function later will be executed a number of times that is predefined and during every iteration the values from the specified ranges for the variables will be selected. The way these values are selected depends on the algorithm that is specified for the hyperparameter suggestion. It can simply suggest random combinations of hyperparameters or it chooses them based on prior performance.
+The function is executed multiple times with different variable values. The outer object which is called study and which executes the function stores the returned value and hyperparameter combination for each iteration and especially for the one iteration that led to the best result. That’s the general workflow of the optuna optimization library.\\
+				\subsubsection{Our Optuna use case}
+In our case the function which’s return value we want to optimize is defined to be the training and evaluation step for each model-stock combination. The variables that the study will pick values for are our hyperparameters. The returned value is the forecast error and the optimization direction is to minimize. Like that the study will look for the combination of hyperparameters that lead to the smallest error – exactly what we are looking for. \\
+Our sampler works in a way where it tries to pick combinations for the hyperparameters that have the highest probability to be another “good” guess. A “good” guess is a combination with a performance above a certain threshold and a “bad” guess is a combination that results in a performance below that threshold. That threshold is constantly update as trials are processed.\\
+The pruner aborts a trial when it foresees it to not be a good trial. After n\_startup trials it checks every trial on whether after 10 reports of one trial this trial is better or worse than the median trial so far. A report during a trial is a performance measure up until this point which is created regularly in between batches. If worse than the median trial, it prunes the current trial, if at least as good it keeps going. Like that, computational efficiency is ensured and the search space is further focused on promising combinations. \\\\
+
+Depending on the ML algorithm that we use, we need to tune different hyperparameters.\\
+\begin{minipage}{\textwidth}
+\underline{LSTM}
+\begin{itemize}
+  \item \textbf{N\_units} \\
+  The number of units in each LSTM layer which determines the size of the state vectors and the model’s capacity to learn patterns over time.
+
+  \item \textbf{N\_layers} \\
+  The number of stacked LSTM layers. More may facilitate capturing complex patterns while they risk overfitting. Fewer layers can be better in generalizing but may be less accurate.
+
+\end{itemize}
+\end{minipage}
+\begin{itemize}
+
+  \item \textbf{Dropout\_rate} \\
+  A fraction of total units that is randomly dropped during training to prevent overfitting. The approach is similar to feature randomness in random forests. By dropping certain units, we prevent the model from relying too much on single units. It helps generalize the model and increases its robustness.
+
+  \item \textbf{Learning rate} \\
+  Controls the degree to which the model updates its weights after each batch. Smaller values lead to slower, more stable learning, while large values speed up learning but may overshoot.
+
+  \item \textbf{Batch size} \\
+  Number of samples processed before the model updates its weights. Smaller sizes give more updates but noisier gradients, while larger values lead to more stable learning with less volatility in the loss function but require more memory.
+
+  \item \textbf{Dense units} \\
+  Number of neurons in the final dense (fully connected) layer. They determine the capacity of the model to combine learned patterns into predictions or classifications.
+
+  \item \textbf{Window size} \\
+  The size of the input window—in other words, the number of previous time steps you feed into the network to predict the next value. A window size of 20 means that you feed the past 20 periods into the network.
+\end{itemize}
+
+
+\begin{minipage}{\textwidth}
+\underline{CNN}
+\begin{itemize}
+  \item \textbf{N\_filters} \\
+  The number of convolutional filters in each convolutional layer. They determine the channel dimension of the input for the following layer. More filters can capture more features but increase model complexity and risk overfitting.
+
+  \item \textbf{N\_layers} \\
+  The number of convolutional layers followed by pooling layers in the CNN. More layers enable the model to capture more complex features but increase training time and risk overfitting.
+
+\end{itemize}
+\end{minipage}
+\begin{itemize}
+
+  \item \textbf{Kernel size} \\
+  The size of the filter that slides over the input. It determines the size of the temporal context that is captured to identify a pattern.
+
+  \item \textbf{Pool size} \\
+  The size of the max pooling window that downsamples the feature maps to reduce complexity and increase efficiency. A greater pool size reduces the complexity more.
+
+  \item \textbf{Dense units} \\
+  The number of neurons in the fully connected layer after convolutional and pooling layers. It determines the model’s capacity to form predictions out of the extracted features.
+
+  \item \textbf{Dropout rate} \\
+  The fraction of neurons in the fully connected layers randomly dropped during training to increase the model’s robustness and prevent overfitting.
+
+  \item \textbf{Learning rate} \\
+  Controls the degree to which the model updates its weights after each batch. Smaller values lead to slower, more stable learning, while large values speed up learning but may overshoot.
+
+  \item \textbf{Batch size} \\
+  Number of samples processed before the model updates its weights. Smaller sizes give more updates but noisier gradients, while larger values lead to more stable learning with less volatility in the loss function but require more memory.
+
+  \item \textbf{Window size} \\
+  The size of the input window—in other words, the number of previous time steps you feed into the network to predict the next value. A window size of 20 means that you feed the past 20 periods into the network.
+\end{itemize}
+
+
+
+\begin{minipage}{\textwidth}
+\underline{XGBoost}
+\begin{itemize}
+  \item \textbf{Max depth} \\
+  o The maximum depth of the decision trees. Deeper trees can learn more complex patterns but may overfit.
+
+  \item \textbf{Alpha} \\
+  o A regularization term on weights that gives a penalty for the absolute value of a weight. It gives an incentive for the trees to make smaller weights. This encourages sparsity which lets the model generalize better.
+
+\end{itemize}
+\end{minipage}
+\begin{itemize}
+
+  \item \textbf{Lambda} \\
+  o A regularization term on weights that gives a penalty for the square of the value. Like that it punishes larger weights more than smaller weights and encourages the tree to have smoother and smaller weights. It can reduce overfitting and prevent single trees to make overly confident predictions.
+
+  \item \textbf{Eta} \\
+  o The learning rate that determines the degree to which one tree contributes to the final prediction. A lower value means one tree contributes less to the final prediction. Following that, more trees would be needed which slows down training but improves generalization.
+
+  \item \textbf{Gamma} \\
+  o The minimum loss reduction that is required to perform a split. It forces the model to only perform helpful splits and like that reduces the size of the model and helps against overfitting.
+
+  \item \textbf{Subsample} \\
+  o The fraction of the training data randomly sampled for growing each tree. We earlier read about Bootstrapping to make the trees see different subsets of the data. This value decides how big the fraction from the random subset of the total data set is. It is important for generalization.
+
+  \item \textbf{Colsample\_bytree} \\
+  o Fraction of features randomly sampled for constructing different trees. This is the “feature randomness” we talked about earlier. Having our trees each considering a slightly different subset of the features helps the model to generalize and prevents overfitting.
+\end{itemize}
+
+
+
+
+
+
+		\section{Metrics}
+We want to choose a good metric to measure the predictive performance of tour models. A good measure needs to be accurate and tells us exactly how accurate a prediction is. Furthermore, we want to evaluate the models across different assets. Assets in general have very different scales so we need to use a metric which is scale invariant. One of the most used metrics to assess a prediction for stock prices with is the Mean Absolute Percentage Error (MAPE). It is well suited for our use case because it measures the error in percentage which makes it very comparable across different stocks. We look at one example to clarify what we mean by scale invariance. Let’s say we predict a price of 110\$ and the actual price is 100\$. We have a percentage error of 10\% and an absolute error of 10. If we predict 210\$ and the actual price is 200\$, then we have a percentage error of 5\% and an absolute error of 10. So, while the absolute error indicates a similar performance does the percentage error tell us that our second prediction is more accurate since we are closer to the actual price when we consider its scale.\\
+
+
+
+\[
+\text{MAPE} = \frac{100\%}{n} \sum_{t=1}^{n} \left| \frac{A_t - F_t}{A_t} \right|
+\]
+where..:\\
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $n$         & is the number of observations \\
+  $A_t$       & is the actual value at time $t$ \\
+  $F_t$       & is the forecasted value at time $t$ \\
+  $\text{MAPE}$ & is the mean absolute percentage error \\
+\end{tabularx}\\
+
+
+Besides the accuracy of the predictions, we are interested in the computational efficiency of the training and evaluation process. Therefore, we measured the time the models took to run the full training and evaluation pipeline on our computer. We didn't perform any other task on the computer while training which allows for a realistic measurement but background processes might still have interfered with the execution times a bit. 
+
+\chapter{Results \& Discussion}
+Before taking a longer shot at the predictive accuracy and the resulting data we first want to look at the execution times of the three models.\\
+
+\subsection*{Execution Times}
+\begin{itemize}
+  \item \textbf{XGBoost:} 59.455 minutes
+  \item \textbf{LSTM:} 1887.202 minutes
+  \item \textbf{CNN:} 280.319 minutes
+\end{itemize}
+
+\subsection*{System Specifications}
+\begin{itemize}
+  \item \textbf{CPU:} 13th Gen Intel(R) Core(TM) i5-13400F @ 2.50 GHz
+  \item \textbf{RAM:} 16.0 GB
+  \item \textbf{GPU:} None
+  \item \textbf{Operating System:} Windows 11, x86-64bit
+  \item \textbf{Storage:} 1 TB SSD (NVMe-M.2)
+  \item \textbf{Motherboard:} Gigabyte B760 Gaming X DDR4 (rev. 1.0) ATX
+\end{itemize}
+
+When we look at that the XGBoost model clearly is the fastest one with only taking about one hour to perform all the training and evaluation steps. Second is the CNN model that took about four hours and 40 minutes. The by far slowest model is the LSTM mode. It took a surprising time of about 31 hours and 27 minutes to perform the training and evaluation. We can clearly see that the XGBoost model runs incredibly faster with about an astonishing 31.5$\times$ speed-up over the LSTM model and a 4.7$\times$ speed-up over the CNN. That is definitely a relevant difference.\\
+
+
+\newpage
+
+
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \includegraphics[width=0.5\textwidth]{images/results_LSTM.png}
+  \caption{performance of the LSTM model trained on all assets}
+  \label{fig:wrapped}
+\end{wrapfigure}
+	
+
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great.We see that everything is great.
+We see that everything is great.We see that everything is great
+
+
+We see that everything is great.
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \includegraphics[width=0.5\textwidth]{images/results_CNN.png}
+  \caption{performance of the LSTM model trained on all assets}
+  \label{fig:wrapped}
+\end{wrapfigure}
+
+
+
+
+
+
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \includegraphics[width=0.5\textwidth]{images/results_XGBoost.png}
+  \caption{performance of the LSTM model trained on all assets}
+  \label{fig:wrapped}
+\end{wrapfigure}
+
+
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/results_combined.png}
+  \caption{Applying the convolutional filter}
+  \label{fig:fullwidth}
+\end{figure}
+
+
+
+
+\chapter{Further Research}
+
+
+
+\printbibliography
+
+
+\chapter{Abstract}
+
+
+
+
+
+
+
+
+
+
 
 
 

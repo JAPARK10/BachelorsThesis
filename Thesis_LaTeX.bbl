@@ -1,0 +1,225 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{1}{misc}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{note}{Ghazaleh Babanejaddehaki, Aijun An, and Manos Papagelis. 2025. Disease Outbreak Detection and Forecasting: A Review of Methods and Data Sources. ACM Trans. Comput. Healthcare 6, 2, Article 13 (April 2025), 40 pages. https://doi.org/10.1145/3708549}
+    \endentry
+    \entry{2}{misc}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{note}{Qureshi, M., Arbab, M.A. \& Rehman, S. Deep learning-based forecasting of electricity consumption. Sci Rep 14, 6489 (2024). https://doi.org/10.1038/s41598-024-56602-4}
+    \endentry
+    \entry{3}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{note}{Venkatesan, S., Lim, J., Ko, H., \& Cho, Y. (2022). A Machine Learning Based Model for Energy Usage Peak Prediction in Smart Farms. Electronics, 11(2), 218. https://doi.org/10.3390/electronics11020218}
+    \endentry
+    \entry{4}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{note}{https://www.ft.com/content/78d1314b-2879-40cc-bb87-ffad72c8a0f4}
+    \endentry
+    \entry{58}{misc}{}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{note}{https://stripe.com/de/resources/more/how-machine-learning-works-for-payment-fraud-detection-and-prevention}
+    \endentry
+    \entry{59}{misc}{}{}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{note}{https://www.datrics.ai/articles/the-essentials-of-ai-based-credit-scoring}
+    \endentry
+    \entry{60}{misc}{}{}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{note}{Fama, E. F. (1970). Efficient Capital Markets: A Review of Theory and Empirical Work. The Journal of Finance, 25(2), 383–417. https://doi.org/10.2307/2325486}
+    \endentry
+    \entry{5}{misc}{}{}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{note}{Mahinda Mailagaha Kumbure, Christoph Lohrmann, Pasi Luukka, Jari Porras, Machine learning techniques and data for stock market forecasting: A literature review, Expert Systems with Applications, Volume 197, 2022, 116659, ISSN 0957-4174, https://doi.org/10.1016/j.eswa.2022.116659}
+    \endentry
+    \entry{6}{misc}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{note}{T. Matharasi, S. Lakkaraju and I. Mukherjee, "A Comparative Analysis of Machine Learning Approaches for Stock Price Prediction," 2025 International Conference on Pervasive Computational Technologies (ICPCT), Greater Noida, India, 2025, pp. 975-979, doi: 10.1109/ICPCT64145.2025.10941156}
+    \endentry
+    \entry{13}{misc}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{note}{Teixeira, D. M., \& Barbosa, R. S. (2025). Stock Price Prediction in the Financial Market Using Machine Learning Models. Computation, 13(1), 3. https://doi.org/10.3390/computation13010003}
+    \endentry
+    \entry{7}{misc}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{note}{Li, Siyuan. (2024). Comparison of Machine Learning Models for Stock Prediction. Advances in Economics, Management and Political Sciences. 85. 76-84. 10.54254/2754-1169/85/20240846.}
+    \endentry
+    \entry{10}{misc}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{note}{Aiyegbeni Gifty, \& Dr. Yang Li. (2024). A Comparative Analysis of LSTM, ARIMA, XGBoost Algorithms in Predicting Stock Price Direction. Engineering And Technology Journal, 9(8), 4978–4986. https://doi.org/10.47191/etj/v9i08.50}
+    \endentry
+    \entry{48}{misc}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{note}{https://www.ibm.com/think/topics/machine-learning}
+    \endentry
+    \entry{51}{misc}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{note}{https://i.sstatic.net/ondvK.png}
+    \endentry
+    \entry{55}{misc}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{note}{https://www.ibm.com/de-de/think/topics/random-forest}
+    \endentry
+    \entry{15}{misc}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{note}{https://www.investopedia.com/terms/v/volatility.asp}
+    \endentry
+    \entry{16}{misc}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{note}{https://www.macroption.com/historical-volatility-calculation/}
+    \endentry
+    \entry{17}{misc}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{note}{https://medium.com/@manojkotary/simple-returns-vs-log-returns-a-comprehensive-comparative-analysis-for-financial-analysis-702403693bad}
+    \endentry
+    \entry{18}{misc}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{note}{https://alpaca.markets/deprecated/docs/api-documentation/api-v2/assets}
+    \endentry
+    \entry{36}{misc}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{note}{https://www.investopedia.com/terms/v/vwap.asp}
+    \endentry
+    \entry{20}{misc}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{note}{https://en.wikipedia.org/wiki/Template:Technical\_analysis}
+    \endentry
+    \entry{21}{misc}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{note}{https://www.investopedia.com/terms/t/technicalindicator.asp}
+    \endentry
+    \entry{22}{misc}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{note}{https://www.investopedia.com/terms/r/rsi.asp}
+    \endentry
+    \entry{23}{misc}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{note}{https://www.investopedia.com/terms/p/pricerateofchange.asp}
+    \endentry
+    \entry{24}{misc}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{note}{https://www.investopedia.com/terms/m/macd.asp}
+    \endentry
+    \entry{26}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{note}{https://www.boerse.de/technische-indikatoren/Commodity-Channel-Index-(CCI)-8}
+    \endentry
+    \entry{38}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{note}{https://www.investopedia.com/articles/investing/031413/economic-indicatiors-affect-us-stock-market.asp}
+    \endentry
+    \entry{37}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{note}{https://fred.stlouisfed.org/docs/api/fred/}
+    \endentry
+    \entry{39}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{note}{https://www.investopedia.com/terms/c/consumerpriceindex.asp}
+    \endentry
+    \entry{41}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{note}{https://www.investopedia.com/terms/p/pce.asp}
+    \endentry
+    \entry{42}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{note}{https://www.investopedia.com/terms/i/ipi.asp}
+    \endentry
+    \entry{43}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{note}{https://www.investopedia.com/terms/f/federalfundsrate.asp}
+    \endentry
+    \entry{44}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{note}{https://www.investopedia.com/articles/investing/100814/why-10-year-us-treasury-rates-matter.asp}
+    \endentry
+    \entry{40}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{note}{https://www.investopedia.com/terms/r/retail-sales.asp}
+    \endentry
+    \entry{45}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{note}{https://www.investopedia.com/terms/h/housingstarts.asp}
+    \endentry
+    \entry{46}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{note}{https://www.investopedia.com/articles/economics/08/leading-economic-indicators.asp}
+    \endentry
+    \entry{47}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{note}{https://www.investopedia.com/terms/e/exchangerate.asp}
+    \endentry
+    \entry{28}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{note}{https://www.investopedia.com/terms/m/mondayeffect.asp}
+    \endentry
+    \entry{29}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{note}{https://www.americancentury.com/insights/the-january-effect-and-stock-market-seasonality/}
+    \endentry
+    \entry{49}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{note}{https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

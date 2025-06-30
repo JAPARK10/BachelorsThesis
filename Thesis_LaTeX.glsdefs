@@ -1,0 +1,280 @@
+\glsdefs@newdocentry{systemlearn}%
+{%
+name={A system updates itself (to learn)},%
+sort={A system updates itself (to learn)},%
+type={main},%
+first={A system updates itself (to learn)},%
+firstplural={A system updates itself (to learn)s},%
+text={A system updates itself (to learn)},%
+plural={A system updates itself (to learn)s},%
+description={Ein System aktualisiert seine internen Parameter basierend auf eingehenden Daten, d. h. es „lernt“},%
+descriptionplural={Ein System aktualisiert seine internen Parameter basierend auf eingehenden Daten, d. h. es „lernt“},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{error}%
+{%
+name={Error (in prediction)},%
+sort={Error (in prediction)},%
+type={main},%
+first={Error (in prediction)},%
+firstplural={Error (in prediction)s},%
+text={Error (in prediction)},%
+plural={Error (in prediction)s},%
+description={Abweichung zwischen vorhergesagtem und tatsächlichem Wert},%
+descriptionplural={Abweichung zwischen vorhergesagtem und tatsächlichem Wert},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{learn}%
+{%
+name={To learn},%
+sort={To learn},%
+type={main},%
+first={To learn},%
+firstplural={To learns},%
+text={To learn},%
+plural={To learns},%
+description={Parameteranpassung aufgrund von Vorhersagefehlern, um die Modellleistung zu verbessern},%
+descriptionplural={Parameteranpassung aufgrund von Vorhersagefehlern, um die Modellleistung zu verbessern},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{datapoint}%
+{%
+name={Data point},%
+sort={Data point},%
+type={main},%
+first={Data point},%
+firstplural={Data points},%
+text={Data point},%
+plural={Data points},%
+description={Eine einzelne Beobachtung im Datensatz – ein Merkmalsvektor},%
+descriptionplural={Eine einzelne Beobachtung im Datensatz – ein Merkmalsvektor},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{period}%
+{%
+name={Period},%
+sort={Period},%
+type={main},%
+first={Period},%
+firstplural={Periods},%
+text={Period},%
+plural={Periods},%
+description={Ein Zeitintervall, das eine einzelne Messinstanz repräsentiert},%
+descriptionplural={Ein Zeitintervall, das eine einzelne Messinstanz repräsentiert},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{dataset}%
+{%
+name={Data set},%
+sort={Data set},%
+type={main},%
+first={Data set},%
+firstplural={Data sets},%
+text={Data set},%
+plural={Data sets},%
+description={Tabelle mit Perioden als Zeilen und Merkmalen als Spalten},%
+descriptionplural={Tabelle mit Perioden als Zeilen und Merkmalen als Spalten},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{addfeature}%
+{%
+name={Adding a feature},%
+sort={Adding a feature},%
+type={main},%
+first={Adding a feature},%
+firstplural={Adding a features},%
+text={Adding a feature},%
+plural={Adding a features},%
+description={Hinzufügen einer neuen Variable/Spalte zu jedem Datenpunkt},%
+descriptionplural={Hinzufügen einer neuen Variable/Spalte zu jedem Datenpunkt},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{classification}%
+{%
+name={Classification},%
+sort={Classification},%
+type={main},%
+first={Classification},%
+firstplural={Classifications},%
+text={Classification},%
+plural={Classifications},%
+description={Überwachtes Lernproblem mit kategorialer Ausgabe},%
+descriptionplural={Überwachtes Lernproblem mit kategorialer Ausgabe},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{regression}%
+{%
+name={Regression},%
+sort={Regression},%
+type={main},%
+first={Regression},%
+firstplural={Regressions},%
+text={Regression},%
+plural={Regressions},%
+description={Überwachtes Lernproblem mit kontinuierlicher Ausgabe},%
+descriptionplural={Überwachtes Lernproblem mit kontinuierlicher Ausgabe},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{generalization}%
+{%
+name={Generalization},%
+sort={Generalization},%
+type={main},%
+first={Generalization},%
+firstplural={Generalizations},%
+text={Generalization},%
+plural={Generalizations},%
+description={Fähigkeit eines Modells, auf ungesehenen Daten gut zu funktionieren},%
+descriptionplural={Fähigkeit eines Modells, auf ungesehenen Daten gut zu funktionieren},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
