@@ -9,6 +9,8 @@
 \usepackage{wrapfig}
 \usepackage{float}
 \usepackage{calc}
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
 \usepackage{enumitem}
 \usepackage{etoolbox}
 \usepackage{tabularx}
@@ -97,11 +99,33 @@ Institute of Computer Science
 \end{minipage}
 
 
-\chapter*{Abstract}
+\newpage
+\vspace*{\fill}
+
+{\fontsize{20}{23}\selectfont\textbf{Abstract}}\\\\\\\\
+
+
+
+
+In the financial world various machine learning techniques are applied to different tasks. They are used to manage risk and predict price movements for every kind of asset. Forecasting accuracy as well as efficiency thereby play a major role. Therefore in this thesis we wanted to evaluate the performance of three machine learning models that were trained on stocks and ETFs with different volatility. This thesis compares their performance and investigates what impact the volatility of the training data has. The models we used are LSTM, CNN and XGBoost. A variety of technical and macro-economic indicators was added as features. The XGBoost model performed outstandingly. With approximately one hour execution time it was 32 times faster than the LSTM and about 4.5 times faster than the CNN model while having the best overall error. The LSTM is close behind the XGBoost in terms of predictive accuracy and the CNN has a much higher error. The thesis was aimed to show relations of predictive accuracy and certain characteristics in the data while focusing on the volatility as a characteristic. This can help to clarify strengths and weaknesses of certain models when applied to more or less volatile assets. Some further research questions are suggested in the end.
+\vspace{6cm}
+\vspace*{\fill}
+
+
+
+
+
+
+
+
+
+
+
 
 \newpage
 \begin{center}
-\begin{minipage}{0.8\textwidth}
+\begin{minipage}{\textwidth}
+\vspace{2cm}
 \section*{Acknowledgment}
 
 \vspace{1cm}
@@ -117,7 +141,7 @@ I would like to thank Professor Gregory Provan from the School of Computer Scien
 
 \newpage
 
-\section*{Glossary}
+\chapter*{Glossary}
 
 \begin{description}
   \item[Self‑updating system] A system that automatically adjusts its internal parameters based on incoming data (i.e.\ it “learns”).
@@ -175,7 +199,7 @@ As mentioned in the previous section, to make useful statements about predictive
 
 \chapter{Machine Learning}
 Artificial Intelligence (AI) refers to systems that are designed to simulate aspects of human intelligence such as decision, reasoning, perception and adaptation. The most important trait is that the system is capable of learning based on outcomes. With learning we mean that the system can update itself to make better predictions or decisions by comparing the predicted and the actual outcome. They don’t have to rely on silicon-based hardware but commonly do in the way we use the term AI. Machine Learning is a subset of Artificial Intelligence. As IBM puts it \cite{48}, “Machine learning is a branch of artificial intelligence focused on enabling computers and machines to imitate the way that humans learn, to perform tasks autonomously, and to improve their performance and accuracy through experience and exposure to more data.“. To understand that further we look at an example that clarifies where the difference between any algorithm and ML algorithms comes from. Let’s say we have two algorithms that are designed to tell how many years you can expect to further live. The first algorithm retrieves the average life expectancy for your country from the internet and then returns the difference your age as the number of years you can expect to have left to live. This algorithm would adapt in a sense where it updates its input which is the life expectancy but it still would not be considered a machine learning algorithm. In other words, although the input changes, the algorithm itself never updates based on the concrete outcome so it's considered non-ML. If the algorithm instead would get the number of years the individual actually had left to live once it died and then updates its parameters based on how much the prediction was off, then the algorithm would be considered Machine Learning. So, the important difference is that our algorithm directly learns and gets better in its predictions using the value and direction of the error between the predicted and the actual outcome.\\
-\\\	
+
 Machine Learning is widely accepted to be divided into 3 main subcategories. These subcategories are defined as Supervised Learning, Unsupervised Learning and Reinforcement Learning. There also exist hybrid approaches of these but we don't need to understand those for this thesis. These categories are often also referred to as machine learning paradigms. 
 	\section{Supervised Learning}
 	Supervised Learning is a machine learning technique where labeled data is used for the training. The model computes a prediction for the target variable based on the input and compares the predicted value with the actual value. This actual value is referred to as “label”. The direction and the amount of the error is then returned to the algorithm so that it can learn. We can imagine supervised learning very well as a linear function with multiple input variables and coefficients for every input variable. We have a set of input variables and an according label for each set of input variables. We feed it to the algorithm to make it learn the hidden patterns or in other words relations that exist between the input and output data. In the beginning the coefficients from our metaphorical linear function are random and not precise but with each training step we improve the accuracy of the function by adjusting the coefficients in a way so that the predicted value is as close to the label as possible for any input. In that way the algorithm adapts to the actual patterns and relations in the data allowing for predictions. \cite{48}
@@ -184,7 +208,7 @@ Machine Learning is widely accepted to be divided into 3 main subcategories. The
 	Assuming we have an online shop and we want to give recommendations for items that the customer would be likely to buy so that we sell more products. How can we know which products the customer might buy? Unsupervised learning can be used to improve these recommendations. There are relations or patterns among our items in terms of how they are bought together or separately. Of course, this is based on the taste and preferences of the customers. What we are learning is not an objective relation of items but rather how the customers choose them. Some of these patterns might be obvious such as “these chairs match with this table”, but there are many patterns some of which are very complex and hard to grasp for humans because they are simply not as obvious. As we are constantly adding and removing products from our store it would be infeasible to manually explore and then pick these patterns for a recommendation. What we do instead is clustering customers into groups. In our example scenario we say that customers within one cluster share the same taste or preference. The algorithm locates all customers in a multidimensional space where every information a customer can be described with makes up one dimension. the more similar customers are in terms of the information that we use to describe them the closer they are in this space. Areas where many customers are located closely together are called clusters. We look at one example for a cluster. For whatever reason many customers who buy item a and b also buy item c two weeks later. For humans it can be hard to find patterns as this or much more complex ones. The algorithm would see that there is a higher density of customers in the area of our multidimensional model space for which “bought item a”, “bought item b” and “bought item c” is true. The algorithm looks at how this information fit together and can see that item c is always bought after item a and b was bought and typically only if both were bought. Like that the simple conclusion is to recommend item c to customers about 2 weeks after they bought item a and b.\\\\
 	The ways unsupervised learning algorithms work differs from architecture to architecture. One common way is to locate the data points in a multidimensional space for which every information about the data is one dimension. Clusters can then be defined in different ways. One common approach is to define them as areas where the density of data points is higher than elsewhere and above a certain threshold.\\
 	\section{Reinforcement Learning}
-	Reinforcement learning is a little bit similar to Supervised Learning but the algorithm doesn't use labeled input data. Instead, the algorithm works with trial and error. Successful results will be rewarded and, in that way, reinforced so the algorithm strengthens the rewarded behavior while at the same time bad moves are punished with a penalty and the algorithm learns to avoid that certain behavior. One example for that can be an algorithm that plays snake. The algorithm gets every cell coordination of the board which is filled by the snake's body. It gets every cell coordination which is filled with fruits, it gets the position of the current head and it gets the dimensions of the board. The algorithm now evaluates how good certain reactions are and constantly tries to optimize the internal score. This score is rewarded points when something positive happens, which could be that the snake ate a fruit and grew. The score is deducted points when something bad happens, for example when the snake bites of part of its body or if it runs into the wall. Like that the algorithm learns to react in a score optimizing way. Based on the coordinates the algorithm would for example know when the snake is about to run into a wall and it would suffer a penalty if not changed the snake's direction.\\\\\\\\
+	Reinforcement learning is a little bit similar to Supervised Learning but the algorithm doesn't use labeled input data. Instead, the algorithm works with trial and error. Successful results will be rewarded and, in that way, reinforced so the algorithm strengthens the rewarded behavior while at the same time bad moves are punished with a penalty and the algorithm learns to avoid that certain behavior. One example for that can be an algorithm that plays snake. The algorithm gets every cell coordination of the board which is filled by the snake's body. It gets every cell coordination which is filled with fruits, it gets the position of the current head and it gets the dimensions of the board. The algorithm now evaluates how good certain reactions are and constantly tries to optimize the internal score. This score is rewarded points when something positive happens, which could be that the snake ate a fruit and grew. The score is deducted points when something bad happens, for example when the snake bites of part of its body or if it runs into the wall. Like that the algorithm learns to react in a score optimizing way. Based on the coordinates the algorithm would for example know when the snake is about to run into a wall and it would suffer a penalty if not changed the snake's direction.\\
 	
 	
 These 3 Subsets describe how we train a machine learning system. They categorize the data we see, what feedback we get and what objectives to optimize. There is a clear distinction between the paradigms and concrete ML algorithms. We will in detail explain the 3 algorithms that we are using in this study in the section methodology. The 3 subsets we just mentioned, specify how the algorithms learn in a conceptualized way, the algorithms themselves define the rules and operations that happen during the learning.\\
@@ -233,9 +257,9 @@ y = a x + b
 \end{equation}
 Linear functions let us solve linear problems. They always are a straight line when drawn as a graph. For example, the relation of euros to cents is a linear function. You always multiply the amount of euros by 100 to get the number of cents that have the same worth.\\
 A nonlinear relationship between two variables is every relationship but a linear relationship. All of those functions are nonlinear. 
-\[
+\begin{equation}
 f(x) = |x|,\quad f(x) = x^2,\quad f(x) = \sin(x)\,.
-\]
+\end{equation}
 
 If we want to model nonlinear relationships, we need a nonlinear function to do that. One example that actually fits nicely to the stock market is compound of interest. If you want to model the course of an investment given a certain interest rate greater than zero, you are facing a nonlinear problem which is only solvable with a non-linear function. \\
 In the fewest cases the problem we want to solve using a neural network is linear. More precisely we usually don’t know the exact relation between the input and output data which is exactly why we are applying a machine learning algorithm to learn it. We have to assume nonlinearity. Even in the case that the relation is perfectly linear, then we can still use nonlinear functions since they can also model linear relations.\\
@@ -263,15 +287,15 @@ When we stack the functions:
 \end{align*}
 
 Since \(a_1,a_2,a_3,b_1,b_2,b_3\) are fixed constants from the linear functions, we can compute them together to their effective values.
-\[
+\begin{equation}
   W_{\mathrm{eff}} = a_1\,a_2\,a_3,
   \qquad
   b_{\mathrm{eff}} = a_1a_2b_3 + a_1b_2 + b_1,
-\]
+\end{equation}
 The resulting function is:
-\[
+\begin{equation}
   f_4(z) = W_{\mathrm{eff}}\,z + b_{\mathrm{eff}}.
-\]
+\end{equation}
 This shows that no matter how many layers of purely linear neurons you stack, you end up with a single affine map—and thus can never capture any nonlinear relations between input and output.  That is why neural networks require nonlinear activation functions (e.g.\ ReLU) between layers. \\
 
 We talked about the connections between the neurons and we understood that these connections are defined by their weight. The weights which are stored in the connection and the biases which are stored in the neuron are learned during training through backpropagation. The weights, biases and the concrete architecture, so the number of neurons per layer the number of layers and the activation functions, is what constitutes the knowledge of the network. With this information you can reconstruct the network with its current knowledge state. 
@@ -353,9 +377,9 @@ Our calculated output $y$ with 2.79 is what our neural network predicts as outpu
 \noindent
 The loss $E$ is calculated as:
 
-\[
+\begin{equation}
 E = \frac{1}{2}(y - t)^2
-\]
+\end{equation}
 
 \noindent
 Where..:\\\\
@@ -372,7 +396,7 @@ In our case that’s:
 E = \frac{1}{2}(2.79 - 2.1)^2 = \frac{1}{2}(0.69)^2 = \frac{1}{2}(0.4761) = 0.23805
 \]
 
-In order to now perform backpropagation, we need to calculate the derivates of the loss function in respect to the weights.\\\\\\
+In order to now perform backpropagation, we need to calculate the derivates of the loss function in respect to the weights.\\\\
 	
 	
 	
@@ -415,7 +439,7 @@ The structure we just looked at is a very basic version of a neural network. It 
 	\begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/RNN.png}
-  \caption{ReLU activation function}
+  \caption{RNN}
   \label{fig:fullwidth}
 \end{figure}
 	
@@ -435,7 +459,7 @@ In figure 5.5 we can see how the LSTM cell processes the input. The equations fo
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/LSTM.png}
-  \caption{ReLU activation function}
+  \caption{LSTM cell}
   \label{fig:fullwidth}
 \end{figure}
 
@@ -542,28 +566,28 @@ In the following starting with figure 5.7, we see a series of images that illust
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/CNN_filters_0.png}
-  \caption{Applying the convolutional filter}
+  \caption{Applying the convolutional filter 1}
   \label{fig:fullwidth}
 \end{figure}
 	
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/CNN_filters_1.png}
-  \caption{Applying the convolutional filter}
+  \caption{Applying the convolutional filter 2}
   \label{fig:fullwidth}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/CNN_filters_2.png}
-  \caption{Applying the convolutional filter}
+  \caption{Applying the convolutional filter 3}
   \label{fig:fullwidth}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/CNN_filters_3.png}
-  \caption{Applying the convolutional filter to the rest of the positions}
+  \caption{Applying the convolutional filter to the remaining positions}
   \label{fig:fullwidth}
 \end{figure}
 \FloatBarrier
@@ -581,14 +605,14 @@ Right after adding the bias, we apply activation functions to the feature maps t
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/CNN_filters_4.png}
-  \caption{Apply the activation function}
+  \caption{Apply the activation function 1}
   \label{fig:fullwidth}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/CNN_filters_5.png}
-  \caption{Apply the activation function}
+  \caption{Apply the activation function 2}
   \label{fig:fullwidth}
 \end{figure}
 
@@ -596,7 +620,7 @@ Right after adding the bias, we apply activation functions to the feature maps t
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/CNN_filters_6.png}
-  \caption{Apply the activation function}
+  \caption{Apply the activation function 3}
   \label{fig:fullwidth}
 \end{figure}
 	
@@ -616,35 +640,35 @@ Like that we get the feature maps that will constitute the input channels for th
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/CNN_Max_Pooling_0.png}
-  \caption{Max Pooling}
+  \caption{Max Pooling 1}
   \label{fig:fullwidth}
 \end{figure}
 	
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/CNN_Max_Pooling_1.png}
-  \caption{Max Pooling}
+  \caption{Max Pooling 2}
   \label{fig:fullwidth}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/CNN_Max_Pooling_2.png}
-  \caption{Max Pooling}
+  \caption{Max Pooling 3}
   \label{fig:fullwidth}
 \end{figure}
 \FloatBarrier
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/CNN_Max_Pooling_3.png}
-  \caption{Max Pooling}
+  \caption{Max Pooling 4}
   \label{fig:fullwidth}
 \end{figure}
 	
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/CNN_Max_Pooling_4.png}
-  \caption{Max Pooling}
+  \caption{Max Pooling 5}
   \label{fig:fullwidth}
 \end{figure}
 	
@@ -658,7 +682,7 @@ Like that we get the feature maps that will constitute the input channels for th
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/full_CNN.png}
-  \caption{Full CNN}
+  \caption{Overview CNN}
   \label{fig:fullwidth}
 \end{figure}
 	
@@ -681,10 +705,9 @@ Like that we get the feature maps that will constitute the input channels for th
   \label{fig:fullwidth}
 \end{figure}
 	
-	That is a simple example for a decision tree. It is designed to tell whether a person is fit based on its age, its pizza eating behavior and its exercise routine. The root node splits the data into two subsets. One subset contains all people who are under 30 years of age and the other one contains every person who is at least 30 years of age. The subset with the people who are younger than 30 years is split again into subsets of people who are younger than 30 and eat a lot of pizza and into a subset with people who are younger than 30 and don’t eat a lot of pizza. Every person in the subset in which people are younger than 30 and eat a lot of pizza is considered unfit according to the decision tree and every person who is younger than 30 but doesn’t eat a lot of pizza is considered fit. The same practice is applied to the people that are at least 30 years of age and either exercise in the morning and don’t exercise in the morning.\\\\
-	
-	How are they constructed based on the data? In general, for Boolean features in the data a simple yes or no question if sufficient. If we have continuous values for a feature, we simply split the data using a threshold in the scale of that feature. We ask “is the value smaller than our threshold or is it greater than or equal to our threshold?”. How do we decide what our threshold is? To solve that we follow a simple rule which is supposed to measure the quality of the split. One common rule that is used is the entropy-based information gain. This rule defines that the splits are chosen in a way so that the entropy of the data within the two created subsets is as low as possible. We can understand the entropy in a subset to be low when the class concentration in this subset is high. When 80% of the data belongs to one class and the other 20% belong to another class than the entropy is higher as if we have 5 different class belongings that each make up 20% of the data set. In other words, the splits are chosen so that the emerging subsets are as pure as possible. In practice we define a list of parameters that limit the tree in certain dimensions or its splitting behavior to prevent it from overfitting. We can specify the maximum depth of a tree, the minimum number of samples per leaf and the minimum impurity decrease required to perform a split. In the section hyperparameter tuning we will discover what concrete parameters we tune for our tree-based XGBoost model.\\
-	We shortly emphasize the behavior of a decision tree. It “learns” from the data in the moment it is created by recursively splitting the data into subsets that are increasingly pure in terms of their classification. \\\\
+	That is a simple example for a decision tree. It is designed to tell whether a person is fit based on its age, its pizza eating behavior and its exercise routine. The root node splits the data into two subsets. One subset contains all people who are under 30 years of age and the other one contains every person who is at least 30 years of age. The subset with the people who are younger than 30 years is split again into subsets of people who are younger than 30 and eat a lot of pizza and into a subset with people who are younger than 30 and don’t eat a lot of pizza. Every person in the subset in which people are younger than 30 and eat a lot of pizza is considered unfit according to the decision tree and every person who is younger than 30 but doesn’t eat a lot of pizza is considered fit. The same practice is applied to the people that are at least 30 years of age and either exercise in the morning and don’t exercise in the morning.\\	
+	How are they constructed based on the data? In general, for Boolean features in the data a simple yes or no question if sufficient. If we have continuous values for a feature, we simply split the data using a threshold in the scale of that feature. We ask “is the value smaller than our threshold or is it greater than or equal to our threshold?”. How do we decide what our threshold is? To solve that we follow a simple rule which is supposed to measure the quality of the split. One common rule that is used is the entropy-based information gain. This rule defines that the splits are chosen in a way so that the entropy of the data within the two created subsets is as low as possible. We can understand the entropy in a subset to be low when the class concentration in this subset is high. When 80\% of the data belongs to one class and the other 20\% belong to another class than the entropy is higher as if we have 5 different class belongings that each make up 20\% of the data set. In other words, the splits are chosen so that the emerging subsets are as pure as possible. In practice we define a list of parameters that limit the tree in certain dimensions or its splitting behavior to prevent it from overfitting. We can specify the maximum depth of a tree, the minimum number of samples per leaf and the minimum impurity decrease required to perform a split. In the section hyperparameter tuning we will discover what concrete parameters we tune for our tree-based XGBoost model.\\
+	We shortly emphasize the behavior of a decision tree. It “learns” from the data in the moment it is created by recursively splitting the data into subsets that are increasingly pure in terms of their classification. \\
 	
 	The other concept we need to understand is called random forests.
 	
@@ -708,9 +731,9 @@ Every tree makes a contribution to the final prediction in form of a vote. In th
 We calculate the simple return with\\
 
 
-\[
+\begin{equation}
 R_i = \frac{P_i - P_{j}}{P_{j}}
-\]
+\end{equation}
 
 where:\\\\
 \begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
@@ -769,9 +792,9 @@ Simple Return & –      & +50.00\% & –33.33\% & +50.00\% & –33.33\% & +50.0
 If we look at returns like these, we could easily think that we end up with a positive return overall but when looking at the actual stock price we see, that we are just oscillating between two values. When we use the logarithmic returns, it gets more intuitive. We calculate the logarithmic return using: \cite{17}\\
 
 
-\[
+\begin{equation}
   R_i = \ln\left( \frac{C_i}{C_{i-1}} \right)
-\]
+\end{equation}
 \medskip
 where..:\\
 \begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
@@ -799,9 +822,9 @@ If we add up the logarithmic returns, we are left with $3 \times (0.405) - 3 \ti
 
 The most common way to calculate the volatility is by calculating the sample standard deviation. We use the following formula.\\
 
-\[
+\begin{equation}
 s = \sqrt{\frac{1}{n - 1} \sum_{i=1}^{n} (x_i - \bar{x})^2}
-\]
+\end{equation}
 where..:\\
 \begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
   $n$      & number of data points the sample standard deviation is calculated for \\
@@ -891,14 +914,16 @@ The other features are:
 \end{itemize}
 
 \vspace{1em}
+\begin{minipage}{\textwidth}
 
 The VWAP is calculated as:
 
-\[
+\begin{equation}
 \mathrm{VWAP} = \frac{\sum_{i=1}^n P_i \cdot V_i}{\sum_{i=1}^n V_i}
-\]
+\end{equation}
+\end{minipage}
 
-where:
+where..:\\
 
 \begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
   $P_i$ & the price of the trade $i$ \\
@@ -917,9 +942,9 @@ where:
 The RSI is a way to measure speed and directions of price movements. The RSI always lies in the range of zero to 100 and it is commonly considered overbought when above 70 and oversold when below 30. It is a measure that carries a value for every period and is calculated as:\\
 
 
-\[
+\begin{equation}
 \mathrm{RSI} = 100 - \frac{100}{1 + RS}
-\]
+\end{equation}
 
 where
 
@@ -940,9 +965,9 @@ Where Average Gain and Average Loss are Exponentially weighted moving averages \
 			\subsubsection{Rate of Change (ROC)}
 			The ROC is an indicator that shows the return in percent compared to the price n periods ago. A common number for n is 14. \cite{23}
 			
-\[
+\begin{equation}
 \text{ROC}_t = \frac{P_t - P_{t-n}}{P_{t-n}} \times 100\%
-\]
+\end{equation}
 where..:\\
 
 \begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
@@ -955,17 +980,17 @@ where..:\\
 			\subsubsection{Moving Average Convergence Divergence (MACD)}
 			The MACD is used to measure both the momentum and direction of a price movement. It consists of a the MACD line and the signal line. The MACD line measures the difference between a shorter exponential moving average and a longer exponential moving average. The signal line is again an exponential moving average of the MACD line. Due to the fact that both lines crossing has implications for the price movement and we want the model to better identify that relation, we also add a histogram feature that simply is calculated as the difference between MACD line and signal line. \cite{24}\\
 			
-\[
+\begin{equation}
 \text{MACD}(t) = \text{EMA}_{\text{short}}(t) - \text{EMA}_{\text{long}}(t)
-\]
+\end{equation}
 
-\[
+\begin{equation}
 \text{Signal}(t) = \text{EMA}_{\text{signal period}} \big(\text{MACD}(t)\big)
-\]
+\end{equation}
 
-\[
+\begin{equation}
 \text{Histogram}(t) = \text{MACD}(t) - \text{Signal}(t)
-\]
+\end{equation}
 
 where..:\\
 
@@ -982,13 +1007,13 @@ where..:\\
 			
 The stochastic Oscillator is another momentum indicator that measures where the current closing price lies in the range of the highest high of a certain past period and the lowest low of that same period in percent. This value is called \%K. A second value which is called \%D contains the moving average of \%K for a short period. Since again the relation of those two lines is of importance to us and we need to make the machine learning model aware of it, we add a stochastic difference value that is calculated as the difference of these 2 values. \cite{25}\\
 
-\[
+\begin{equation}
 \begin{aligned}
-  \%K(t) &= 100 \times \frac{P(t) - L_n(t)}{H_n(t) - L_n(t)} \quad & \text{(fast stochastic)} \\
-  \%D(t) &= \text{SMA}_m(\%K(t)) \quad & \text{(slow stochastic or signal line)} \\
-  \text{StochDiff}(t) &= \%K(t) - \%D(t) \quad & \text{(difference between \%K and \%D)} \\
+  \%K(t) &= 100 \times \frac{P(t) - L_n(t)}{H_n(t) - L_n(t)}  \\
+  \%D(t) &= \text{SMA}_m(\%K(t))\\
+  \text{StochDiff}(t) &= \%K(t) - \%D(t)\\
 \end{aligned}
-\]
+\end{equation}
 
 \begin{minipage}{\textwidth}
 
@@ -1010,14 +1035,14 @@ where..:\\
 
 The CCI measures how far a price is from its statistical average indicating overbought or oversold market conditions. \cite{26}\\
 
-\[
+\begin{equation}
 \begin{aligned}
   TP(t) &= \frac{H(t) + L(t) + C(t)}{3} \\\\
   SMA_{TP}(t) &= \frac{1}{n} \sum_{i=0}^{n-1} TP(t-i) \\\\
   MAD(t) &= \frac{1}{n} \sum_{i=0}^{n-1} |TP(t-i) - SMA_{TP}(t)| \\\\
   CCI(t) &= \frac{TP(t) - SMA_{TP}(t)}{0.015 \times MAD(t)} \\\\
 \end{aligned}
-\]
+\end{equation}
 
 
 \begin{minipage}{\textwidth}
@@ -1042,11 +1067,11 @@ where..:\\
 			We add multiple simple moving averages with different window sizes. Moving averages smooth out price data and indicate an upwards trend when increasing and a downwards trend when decreasing. Besides that, they can indicate overbought or oversold conditions \cite{27}. \\
 			
 			
-\[
+\begin{equation}
 \begin{aligned}
   \text{SMA}_n(t) &= \frac{1}{n} \sum_{i=0}^{n-1} P(t - i)
 \end{aligned}
-\]
+\end{equation}
 
 \begin{minipage}{\textwidth}
 
@@ -1063,12 +1088,14 @@ where..:\\
 			The ATR is a volatility indicator that tells how much the price moves on average per period. We therefore first look at the True Range (TR) for every period. This is the maximum price difference within that period. We add that difference to our feature set. We use the previous day’s close price because the current day’s open price can differ from the previous day’s close price due to overnight news and market shift \cite{30}. After that we use wilder’s smoothing to smooth out the True Range over a certain windows size, usually 14, so that we understand how volatile certain periods are \cite{31}. 
 			
 			
-\[
+\begin{equation}
 \begin{aligned}
-  \text{TR}(t) &= \max \big( H(t) - L(t), |H(t) - C(t-1)|, |L(t) - C(t-1)| \big) \\\\
-  \text{ATR}_n(t) = \frac{1}{n} \sum_{i=0}^{n-1} \text{TR}(t - i)
+  \text{TR}(t) &= \max \big( H(t) - L(t), |H(t) - C(t-1)|, |L(t) - C(t-1)| \big) \\
+  \text{ATR}_n(t) &= \frac{1}{n} \sum_{i=0}^{n-1} \text{TR}(t - i)\\
+  \text{ATR}_n(t) &= \frac{(\text{ATR}_n(t-1) \times (n - 1)) + \text{TR}(t)}{n}\\
 \end{aligned}
-\]
+\end{equation}
+
 
 \begin{minipage}{\textwidth}
 
@@ -1088,8 +1115,9 @@ where..:\\
 			
 			
 			\subsubsection{Average Directional Index (ADX)}
+			The ADI uses the ATR as a component. The ADI and its components measure how much of the Average movement within a certain window which we derive from the ATR is upwards movement and how much is downwards movement. We calculate the up and downwards movement like this \cite{32}. +DM now stores all absolute increases in the high value for periods in which the low value decreased less than the high value increased. -DM works vice versa. We now average these two values over a window that must have the same size as the window size n from our ATR. Like that we get the average up and down movement in absolute values for the given window. We derive the overall movement from the ATR and calculate the percent to which it is upwards movement or downwards movement. The next step lets us calculate the Directional Movement Index (DX). DX tells us in percent how one-sided a movement is. If up and down movement have the same portion of the overall movement then DX is 0%. If DX is positive then upwards movements have a greater proportion of the overall movement. The last step is to calculate the actual ADX. We again use wilder’s smoothing. That is a recursive function so we need to calculate the first ADX value manually by simply averaging the previous n DX values. Any further ADX value is calculated recursively.\\
 			
-\[
+\begin{equation}
 \begin{aligned}
   \text{+DM}(t) &= 
     \begin{cases} 
@@ -1111,10 +1139,11 @@ where..:\\
   \\
   \text{ADX}_n(t) &= \frac{(\text{ADX}_n(t-1) \times (n - 1)) + \text{DX}(t)}{n} \quad & \text{(recursive smoothing)} \\
 \end{aligned}
-\]
+\end{equation}
 
 
 
+\begin{minipage}{\textwidth}
 
 where..:\\
 
@@ -1133,10 +1162,78 @@ where..:\\
   $n$              & is the number of periods used for smoothing and calculation \\
   \text{Smoothed } & refers to applying Wilder’s smoothing\\
 \end{tabularx}
+\end{minipage}
 
 			\subsubsection{Bollinger Bands}
+			The Bollinger Bands are indicators to gauge the volatility of a stock to understand whether they are over or undervalued \cite{33}. Since we use this indicator for machine learning purposes, we will add the following features to emphasize relations among the bands or between our close price and the bands.\\
+\begin{equation}
+\begin{aligned}
+  \text{MiddleBand}_n(t) &= \frac{1}{n} \sum_{i=0}^{n-1} C(t - i)\\
+  \text{StdDev}_n(t) &= \sqrt{\frac{1}{n} \sum_{i=0}^{n-1} \big(C(t - i) - \text{MiddleBand}_n(t)\big)^2}\\
+  \text{UpperBand}_n(t) &= \text{MiddleBand}_n(t) + k \times \text{StdDev}_n(t) \\
+  \text{LowerBand}_n(t) &= \text{MiddleBand}_n(t) - k \times \text{StdDev}_n(t)  \\
+  \\
+  \%B(t) &= \frac{C(t) - \text{LowerBand}_n(t)}{\text{UpperBand}_n(t) - \text{LowerBand}_n(t)}\\
+  \text{Bandwidth}_n(t) &= \frac{\text{UpperBand}_n(t) - \text{LowerBand}_n(t)}{\text{MiddleBand}_n(t)}\\
+  \\
+  \text{DistToUpper}_n(t) &= \text{UpperBand}_n(t) - C(t)\\
+  \text{DistToLower}_n(t) &= C(t) - \text{LowerBand}_n(t)\\
+\end{aligned}
+\end{equation}
+where..:\\
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $C(t)$                 & is the closing price at time $t$ \\
+  $n$                    & is the number of periods used for calculation\\
+  $k$                    & is the number of standard deviations for the bands \\
+\end{tabularx}
+
+	
 			\subsubsection{On-Balance Volume (OBV)}
+			The On-Balance Volume Indicator is a momentum indicator that uses volume flow to predict price movement. It assumes that volume precedes the price – so a rising OBV signals buying pressure and a falling OBV signals selling pressure \cite{34}. Besides the absolute OBV we add a normalized OBV for better machine learning suitability and an OBV momentum that compares the OBV to the OBV n periods before. \\
+			
+\begin{equation}
+\begin{aligned}
+  \text{OBV}(t) &= 
+    \begin{cases}
+      \text{OBV}(t-1) + V(t) & \text{if } C(t) > C(t-1) \\
+      \text{OBV}(t-1) - V(t) & \text{if } C(t) < C(t-1) \\
+      \text{OBV}(t-1)         & \text{otherwise}
+    \end{cases}
+    \\
+  \text{OBV}(t_0) &= 0 
+\end{aligned}
+\end{equation}
+where..:\\
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $C(t)$           & is the closing price at time $t$ \\
+  $V(t)$           & is the trading volume at time $t$ \\
+\end{tabularx}
+
+			
 			\subsubsection{Volume Price Trend (VPT)}
+			The VPT is a momentum indicator that combines the price change with volume. Its purpose is to track how strongly volume aligns with or contradicts price changes \cite{35}. For Machine Learning purposes we also add the VPT in a normalized way and the VPT momentum.\\
+			
+\begin{equation}
+\begin{aligned}
+  \text{VPT}(t) &= \text{VPT}(t-1)
+    + V(t)\,\frac{C(t) - C(t-1)}{C(t-1)}
+    \\
+  \text{VPT}(t_0) &= 0    
+\end{aligned}
+\end{equation}
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $C(t)$            & is the closing price at time $t$ \\
+  $V(t)$            & is the trading volume at time $t$ \\
+\end{tabularx}\\
+
+
+
+
+
+			
 		\subsection{Macro-economic features}
 		We add Macro-economic features to capture global or US wide circumstances and market context \cite{38}. We use the “FRED API” version 0.5.2 to retrieve them \cite{37}. Some of the indicators are not published daily. For example, the GDP is published quarterly. We therefore use the interpolate function that comes with the pandas library. It looks for brackets of NaN values and draws a line from the valid value before and the valid value after the bracket to fill the rows in between linearly. So, if we have a list such as [10, NaN, NaN, NaN, 18, NaN, 26] then the interpolation of this list would return this list: [10, 12, 14, 16, 18, 22, 26]. This allows us to simulate a realistic and smooth course of the features.
 			\subsubsection{S\&P 500}
@@ -1348,14 +1445,14 @@ The pruner aborts a trial when it foresees it to not be a good trial. After n\_s
 
 
 
-		\section{Metrics}
+		\section{Metric}
 We want to choose a good metric to measure the predictive performance of tour models. A good measure needs to be accurate and tells us exactly how accurate a prediction is. Furthermore, we want to evaluate the models across different assets. Assets in general have very different scales so we need to use a metric which is scale invariant. One of the most used metrics to assess a prediction for stock prices with is the Mean Absolute Percentage Error (MAPE). It is well suited for our use case because it measures the error in percentage which makes it very comparable across different stocks. We look at one example to clarify what we mean by scale invariance. Let’s say we predict a price of 110\$ and the actual price is 100\$. We have a percentage error of 10\% and an absolute error of 10. If we predict 210\$ and the actual price is 200\$, then we have a percentage error of 5\% and an absolute error of 10. So, while the absolute error indicates a similar performance does the percentage error tell us that our second prediction is more accurate since we are closer to the actual price when we consider its scale.\\
 
 
 
-\[
+\begin{equation}
 \text{MAPE} = \frac{100\%}{n} \sum_{t=1}^{n} \left| \frac{A_t - F_t}{A_t} \right|
-\]
+\end{equation}
 where..:\\
 
 \begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
@@ -1534,8 +1631,13 @@ In this thesis we showed the importance of qualitative preprocessing, accurate p
 
 
 
+\newpage
 
-\chapter*{Erklärung}
+
+
+\vspace*{\fill}         % push down to vertical center
+
+{\fontsize{20}{23}\selectfont\textbf{Erklärung}}\\\\
 
 Ich versichere, dass ich die vorliegende Arbeit selbstständig und nur unter Verwendung der
 angegebenen Quellen und Hilfsmittel angefertigt habe, insbesondere sind wörtliche oder
@@ -1547,7 +1649,21 @@ Ort:\\\\\\
 
 Datum:\\\\\\
 
-Unterschrift:
+Unterschrift:\\\\\\\\\\
+
+{\fontsize{20}{23}\selectfont\textbf{Declaration}}\\\\
+
+
+I declare that I wrote this Thesis independently and only with usage of the specified aids and sources. Especially quotes are markes as such. I am aware that violation of that rule may lead to a revocation of my degree. I ensure that the electronic version is identical to the printed books.\\\\
+
+Place:\\\\\\
+
+Date:\\\\\\
+
+Signature:
+\vspace*{\fill}         % push the rest of the page down
+
+
 
 
 
