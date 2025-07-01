@@ -7,32 +7,32 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Fully connected feed-forward neural network}}{16}{}%
 \contentsline {figure}{\numberline {5.2}{\ignorespaces ReLU activation function}}{17}{}%
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Example neural network}}{19}{}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces RNN}}{22}{}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces RNN}}{23}{}%
 \contentsline {figure}{\numberline {5.5}{\ignorespaces LSTM cell}}{24}{}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces First convolutional layer}}{26}{}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces First convolutional layer}}{27}{}%
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Applying the convolutional filter 1}}{27}{}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Applying the convolutional filter 2}}{27}{}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Applying the convolutional filter 2}}{28}{}%
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Applying the convolutional filter 3}}{28}{}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Applying the convolutional filter to the remaining positions}}{28}{}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Applying the convolutional filter to the remaining positions}}{29}{}%
 \contentsline {figure}{\numberline {5.11}{\ignorespaces Add a bias of two to every cell}}{29}{}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Apply the activation function 1}}{29}{}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Apply the activation function 1}}{30}{}%
 \contentsline {figure}{\numberline {5.13}{\ignorespaces Apply the activation function 2}}{30}{}%
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Apply the activation function 3}}{30}{}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Apply the activation function 3}}{31}{}%
 \contentsline {figure}{\numberline {5.15}{\ignorespaces Finalized feature map is part of the output}}{31}{}%
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Max Pooling 1}}{31}{}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Max Pooling 1}}{32}{}%
 \contentsline {figure}{\numberline {5.17}{\ignorespaces Max Pooling 2}}{32}{}%
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Max Pooling 3}}{32}{}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Max Pooling 3}}{33}{}%
 \contentsline {figure}{\numberline {5.19}{\ignorespaces Max Pooling 4}}{33}{}%
-\contentsline {figure}{\numberline {5.20}{\ignorespaces Max Pooling 5}}{33}{}%
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Max Pooling 5}}{34}{}%
 \contentsline {figure}{\numberline {5.21}{\ignorespaces Overview CNN}}{34}{}%
 \contentsline {figure}{\numberline {5.22}{\ignorespaces Decision Tree}}{35}{}%
 \contentsline {figure}{\numberline {5.23}{\ignorespaces Assets sorted by volatility of their volatility}}{42}{}%
 \contentsline {figure}{\numberline {5.24}{\ignorespaces Distribution of assets according to volatility intervals}}{43}{}%
 \contentsline {figure}{\numberline {5.25}{\ignorespaces approximate selected ranges for 5 bins}}{44}{}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces top: LSTM mape of single assets. bottom: 3/5 outliers }}{61}{}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces 2/5 outliers}}{62}{}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces CNN mape of single assets}}{63}{}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces XGBoost mape of single assets}}{64}{}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces top: combined mape of single assets. bottom: combined mape, averaged bin wise}}{65}{}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces bin wise average performance scaled with volatility}}{66}{}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces top: LSTM mape of single assets. bottom: 3/5 outliers }}{62}{}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces 2/5 outliers}}{63}{}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces CNN mape of single assets}}{64}{}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces XGBoost mape of single assets}}{65}{}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces top: combined mape of single assets. bottom: combined mape, averaged bin wise}}{66}{}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces bin wise average performance scaled with volatility}}{67}{}%
