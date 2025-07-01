@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.30)  30 JUN 2025 17:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.30)  1 JUL 2025 17:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1004,10 +1004,16 @@ LaTeX Warning: Label `fig:wrapped' multiply defined.
 LaTeX Warning: Label `fig:wrapped' multiply defined.
 
 
-LaTeX Warning: Label `fig:fullwidth' multiply defined.
+LaTeX Warning: Label `fig:wrapped' multiply defined.
 
 
 LaTeX Warning: Label `fig:wrapped' multiply defined.
+
+
+LaTeX Warning: Label `fig:wrapped' multiply defined.
+
+
+LaTeX Warning: Label `fig:fullwidth' multiply defined.
 
 )
 \openout1 = `Thesis_LaTeX.aux'.
@@ -1105,35 +1111,47 @@ Package biblatex Info: ... file 'Thesis_LaTeX.bbl' found.
 Package biblatex Info: Reference section=0 on input line 41.
 Package biblatex Info: Reference segment=0 on input line 41.
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--113
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 110--113
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 110--113
-
- []
-
-
 
 [1
 
 {C:/Users/jerem/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 
-[2]
+[2
 
-[3] (Thesis_LaTeX.toc)
+]
+Underfull \hbox (badness 10000) in paragraph at lines 110--113
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--113
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--113
+
+ []
+
+
+
+[3]
+
+[4] (Thesis_LaTeX.toc)
 \tf@toc=\write5
 \openout5 = `Thesis_LaTeX.toc'.
 
 
 
-[4
+[5
+
+] (Thesis_LaTeX.lof)
+\tf@lof=\write6
+\openout6 = `Thesis_LaTeX.lof'.
+
+
+
+[6
 
 ]
 Chapter 1.
@@ -1144,11 +1162,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 159--162
 
 
 
-[5
+[7
 
 ]
 
-[6]
+[8]
 Chapter 2.
 
 Underfull \hbox (badness 10000) in paragraph at lines 166--172
@@ -1162,15 +1180,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 166--172
 
 
 
-[7
+[9
 
 ]
 
-[8]
+[10]
 Chapter 3.
 
 
-[9
+[11
 
 ]
 Chapter 4.
@@ -1181,7 +1199,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 177--180
 
 
 
-[10
+[12
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 183--186
@@ -1200,31 +1218,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 183--186
 
 
 
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
-
- []
-
-
-
-[12]
-
 [13]
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
+
+ []
+
+
+
+[14]
+
+[15]
 Chapter 5.
 
 Underfull \hbox (badness 10000) in paragraph at lines 199--202
@@ -1238,10 +1256,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 203--204
 
 
 
-[14
+[16
 
 ]
-<images/Colored_neural_network.svg.png, id=57, 436.63126pt x 525.965pt>
+<images/Colored_neural_network.svg.png, id=63, 436.63126pt x 525.965pt>
 File: images/Colored_neural_network.svg.png Graphic file (type png)
 <use images/Colored_neural_network.svg.png>
 Package pdftex.def Info: images/Colored_neural_network.svg.png  used on input l
@@ -1264,8 +1282,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 217--218
 
 
 
-[15 <./images/Colored_neural_network.svg.png>]
-<images/ReLU.png, id=64, 1029.8475pt x 468.75125pt>
+[17 <./images/Colored_neural_network.svg.png>]
+<images/ReLU.png, id=70, 1029.8475pt x 468.75125pt>
 File: images/ReLU.png Graphic file (type png)
 <use images/ReLU.png>
 Package pdftex.def Info: images/ReLU.png  used on input line 223.
@@ -1277,15 +1295,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 240--245
 
 
 
-[16 <./images/ReLU.png>]
+[18 <./images/ReLU.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 274--276
 
  []
 
 
 
-[17]
-<images/Neural_Network.png, id=77, 853.1875pt x 561.09625pt>
+[19]
+<images/Neural_Network.png, id=84, 853.1875pt x 561.09625pt>
 File: images/Neural_Network.png Graphic file (type png)
 <use images/Neural_Network.png>
 Package pdftex.def Info: images/Neural_Network.png  used on input line 287.
@@ -1312,7 +1330,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 313--314
 
 
 
-[18 <./images/Neural_Network.png>]
+[20 <./images/Neural_Network.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 316--317
 
  []
@@ -1344,7 +1362,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 351--355
 
 
 
-[19]
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 360--370
 
  []
@@ -1372,16 +1390,16 @@ ent neu-ral net-works (RNNs).
 
 
 
-[20]
-<images/RNN.png, id=90, 1456.69218pt x 863.47594pt>
+[22]
+<images/RNN.png, id=96, 1456.69218pt x 863.47594pt>
 File: images/RNN.png Graphic file (type png)
 <use images/RNN.png>
 Package pdftex.def Info: images/RNN.png  used on input line 417.
 (pdftex.def)             Requested size: 426.79137pt x 252.98402pt.
 
 
-[21 <./images/RNN.png>]
-<images/LSTM.png, id=95, 788.9475pt x 480.79625pt>
+[23 <./images/RNN.png>]
+<images/LSTM.png, id=101, 788.9475pt x 480.79625pt>
 File: images/LSTM.png Graphic file (type png)
 <use images/LSTM.png>
 Package pdftex.def Info: images/LSTM.png  used on input line 437.
@@ -1413,9 +1431,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 497--498
 
 
 
-[22]
+[24]
 
-[23 <./images/LSTM.png>]
+[25 <./images/LSTM.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 507--508
 
  []
@@ -1432,8 +1450,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 528--529
 
 
 
-[24]
-<images/CNN_filters.png, id=107, 982.67125pt x 470.75874pt>
+[26]
+<images/CNN_filters.png, id=114, 982.67125pt x 470.75874pt>
 File: images/CNN_filters.png Graphic file (type png)
 <use images/CNN_filters.png>
 Package pdftex.def Info: images/CNN_filters.png  used on input line 532.
@@ -1450,97 +1468,97 @@ Underfull \hbox (badness 10000) in paragraph at lines 539--540
 
 
 
-[25 <./images/CNN_filters.png>]
-<images/CNN_filters_0.png, id=113, 589.60275pt x 282.45525pt>
+[27 <./images/CNN_filters.png>]
+<images/CNN_filters_0.png, id=119, 589.60275pt x 282.45525pt>
 File: images/CNN_filters_0.png Graphic file (type png)
 <use images/CNN_filters_0.png>
 Package pdftex.def Info: images/CNN_filters_0.png  used on input line 544.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
-<images/CNN_filters_1.png, id=114, 589.60275pt x 282.45525pt>
+<images/CNN_filters_1.png, id=120, 589.60275pt x 282.45525pt>
 File: images/CNN_filters_1.png Graphic file (type png)
 <use images/CNN_filters_1.png>
 Package pdftex.def Info: images/CNN_filters_1.png  used on input line 551.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
-<images/CNN_filters_2.png, id=115, 589.60275pt x 282.45525pt>
+<images/CNN_filters_2.png, id=121, 589.60275pt x 282.45525pt>
 File: images/CNN_filters_2.png Graphic file (type png)
 <use images/CNN_filters_2.png>
 Package pdftex.def Info: images/CNN_filters_2.png  used on input line 558.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
-<images/CNN_filters_3.png, id=116, 589.60275pt x 282.45525pt>
+<images/CNN_filters_3.png, id=122, 589.60275pt x 282.45525pt>
 File: images/CNN_filters_3.png Graphic file (type png)
 <use images/CNN_filters_3.png>
 Package pdftex.def Info: images/CNN_filters_3.png  used on input line 565.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
 
 
-[26 <./images/CNN_filters_0.png> <./images/CNN_filters_1.png>]
+[28 <./images/CNN_filters_0.png> <./images/CNN_filters_1.png>]
 
-[27 <./images/CNN_filters_2.png> <./images/CNN_filters_3.png>]
-<images/CNN_filters_3_5.png, id=127, 589.60275pt x 282.45525pt>
+[29 <./images/CNN_filters_2.png> <./images/CNN_filters_3.png>]
+<images/CNN_filters_3_5.png, id=133, 589.60275pt x 282.45525pt>
 File: images/CNN_filters_3_5.png Graphic file (type png)
 <use images/CNN_filters_3_5.png>
 Package pdftex.def Info: images/CNN_filters_3_5.png  used on input line 574.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
-<images/CNN_filters_4.png, id=128, 589.60275pt x 282.45525pt>
+<images/CNN_filters_4.png, id=134, 589.60275pt x 282.45525pt>
 File: images/CNN_filters_4.png Graphic file (type png)
 <use images/CNN_filters_4.png>
 Package pdftex.def Info: images/CNN_filters_4.png  used on input line 583.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
-<images/CNN_filters_5.png, id=129, 589.60275pt x 282.45525pt>
+<images/CNN_filters_5.png, id=135, 589.60275pt x 282.45525pt>
 File: images/CNN_filters_5.png Graphic file (type png)
 <use images/CNN_filters_5.png>
 Package pdftex.def Info: images/CNN_filters_5.png  used on input line 590.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
 
 
-[28 <./images/CNN_filters_3_5.png> <./images/CNN_filters_4.png>]
-<images/CNN_filters_6.png, id=135, 589.60275pt x 282.45525pt>
+[30 <./images/CNN_filters_3_5.png> <./images/CNN_filters_4.png>]
+<images/CNN_filters_6.png, id=141, 589.60275pt x 282.45525pt>
 File: images/CNN_filters_6.png Graphic file (type png)
 <use images/CNN_filters_6.png>
 Package pdftex.def Info: images/CNN_filters_6.png  used on input line 598.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
-<images/CNN_filters_7.png, id=136, 589.60275pt x 282.45525pt>
+<images/CNN_filters_7.png, id=142, 589.60275pt x 282.45525pt>
 File: images/CNN_filters_7.png Graphic file (type png)
 <use images/CNN_filters_7.png>
 Package pdftex.def Info: images/CNN_filters_7.png  used on input line 605.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
 
 
-[29 <./images/CNN_filters_5.png> <./images/CNN_filters_6.png>]
-<images/CNN_Max_Pooling_0.png, id=142, 589.60275pt x 282.45525pt>
+[31 <./images/CNN_filters_5.png> <./images/CNN_filters_6.png>]
+<images/CNN_Max_Pooling_0.png, id=149, 589.60275pt x 282.45525pt>
 File: images/CNN_Max_Pooling_0.png Graphic file (type png)
 <use images/CNN_Max_Pooling_0.png>
 Package pdftex.def Info: images/CNN_Max_Pooling_0.png  used on input line 618.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
-<images/CNN_Max_Pooling_1.png, id=143, 589.60275pt x 282.45525pt>
+<images/CNN_Max_Pooling_1.png, id=150, 589.60275pt x 282.45525pt>
 File: images/CNN_Max_Pooling_1.png Graphic file (type png)
 <use images/CNN_Max_Pooling_1.png>
 Package pdftex.def Info: images/CNN_Max_Pooling_1.png  used on input line 625.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
-<images/CNN_Max_Pooling_2.png, id=144, 589.60275pt x 282.45525pt>
+<images/CNN_Max_Pooling_2.png, id=151, 589.60275pt x 282.45525pt>
 File: images/CNN_Max_Pooling_2.png Graphic file (type png)
 <use images/CNN_Max_Pooling_2.png>
 Package pdftex.def Info: images/CNN_Max_Pooling_2.png  used on input line 632.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
 
 
-[30 <./images/CNN_filters_7.png> <./images/CNN_Max_Pooling_0.png>]
+[32 <./images/CNN_filters_7.png> <./images/CNN_Max_Pooling_0.png>]
 
-[31 <./images/CNN_Max_Pooling_1.png> <./images/CNN_Max_Pooling_2.png>]
-<images/CNN_Max_Pooling_3.png, id=156, 589.60275pt x 282.45525pt>
+[33 <./images/CNN_Max_Pooling_1.png> <./images/CNN_Max_Pooling_2.png>]
+<images/CNN_Max_Pooling_3.png, id=162, 589.60275pt x 282.45525pt>
 File: images/CNN_Max_Pooling_3.png Graphic file (type png)
 <use images/CNN_Max_Pooling_3.png>
 Package pdftex.def Info: images/CNN_Max_Pooling_3.png  used on input line 639.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
-<images/CNN_Max_Pooling_4.png, id=157, 589.60275pt x 282.45525pt>
+<images/CNN_Max_Pooling_4.png, id=163, 589.60275pt x 282.45525pt>
 File: images/CNN_Max_Pooling_4.png Graphic file (type png)
 <use images/CNN_Max_Pooling_4.png>
 Package pdftex.def Info: images/CNN_Max_Pooling_4.png  used on input line 646.
 (pdftex.def)             Requested size: 426.79137pt x 204.45802pt.
 
 
-[32 <./images/CNN_Max_Pooling_3.png> <./images/CNN_Max_Pooling_4.png>]
-<images/full_CNN.png, id=163, 1405.25pt x 631.35875pt>
+[34 <./images/CNN_Max_Pooling_3.png> <./images/CNN_Max_Pooling_4.png>]
+<images/full_CNN.png, id=169, 1405.25pt x 631.35875pt>
 File: images/full_CNN.png Graphic file (type png)
 <use images/full_CNN.png>
 Package pdftex.def Info: images/full_CNN.png  used on input line 660.
@@ -1552,8 +1570,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 665--667
 
 
 
-[33 <./images/full_CNN.png>]
-<images/Decision-Trees.png, id=168, 308.65312pt x 192.72pt>
+[35 <./images/full_CNN.png>]
+<images/Decision-Trees.png, id=174, 308.65312pt x 192.72pt>
 File: images/Decision-Trees.png Graphic file (type png)
 <use images/Decision-Trees.png>
 Package pdftex.def Info: images/Decision-Trees.png  used on input line 679.
@@ -1580,16 +1598,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 686--688
 
 
 
-[34 <./images/Decision-Trees.png>]
+[36 <./images/Decision-Trees.png>]
 
-[35]
+[37]
 Underfull \hbox (badness 10000) in paragraph at lines 706--709
 
  []
 
 
 
-[36]
+[38]
 Underfull \hbox (badness 10000) in paragraph at lines 715--721
 
  []
@@ -1656,7 +1674,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 769--770
 
 
 
-[37]
+[39]
 Underfull \hbox (badness 10000) in paragraph at lines 774--783
 
  []
@@ -1723,7 +1741,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 812--815
 
 
 
-[38]
+[40]
 Underfull \hbox (badness 10000) in paragraph at lines 820--822
 
  []
@@ -1735,12 +1753,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 820--822
 
 
 
-[39]
+[41]
 Underfull \hbox (badness 10000) in paragraph at lines 823--824
 
  []
 
-<images/vol_of_vol.png, id=190, 1582.713pt x 1438.173pt>
+<images/vol_of_vol.png, id=196, 1582.713pt x 1438.173pt>
 File: images/vol_of_vol.png Graphic file (type png)
 <use images/vol_of_vol.png>
 Package pdftex.def Info: images/vol_of_vol.png  used on input line 827.
@@ -1752,23 +1770,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 832--834
 
 
 
-[40 <./images/vol_of_vol.png>]
-<images/bins.png, id=195, 732.8178pt x 438.6789pt>
+[42 <./images/vol_of_vol.png>]
+<images/bins.png, id=201, 732.8178pt x 438.6789pt>
 File: images/bins.png Graphic file (type png)
 <use images/bins.png>
 Package pdftex.def Info: images/bins.png  used on input line 837.
 (pdftex.def)             Requested size: 426.79137pt x 255.48483pt.
 
 
-[41 <./images/bins.png>]
-<images/volatility_bins.png, id=200, 732.8178pt x 438.6789pt>
+[43 <./images/bins.png>]
+<images/volatility_bins.png, id=207, 732.8178pt x 438.6789pt>
 File: images/volatility_bins.png Graphic file (type png)
 <use images/volatility_bins.png>
 Package pdftex.def Info: images/volatility_bins.png  used on input line 869.
 (pdftex.def)             Requested size: 426.79137pt x 255.48483pt.
 
 
-[42 <./images/volatility_bins.png>]
+[44 <./images/volatility_bins.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 909--910
 
  []
@@ -1785,7 +1803,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 917--918
 
 
 
-[43]
+[45]
 Underfull \hbox (badness 10000) in paragraph at lines 930--931
 
  []
@@ -1807,8 +1825,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 956--957
 
 
 
-[44]
+[46]
 Underfull \hbox (badness 10000) in paragraph at lines 970--971
+
+ []
+
+
+LaTeX Warning: Citation '25' on page 47 undefined on input line 983.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 983--984
 
  []
 
@@ -1824,287 +1850,457 @@ Underfull \hbox (badness 10000) in paragraph at lines 1011--1012
 
 
 
-[45]
+[47]
 Underfull \hbox (badness 10000) in paragraph at lines 1025--1026
 
  []
 
 
-
-[46]
-
-[47]
-Underfull \hbox (badness 10000) in paragraph at lines 1087--1088
-
- []
+LaTeX Warning: Citation '27' on page 48 undefined on input line 1042.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1089--1112
+Underfull \hbox (badness 10000) in paragraph at lines 1042--1043
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1089--1112
+Underfull \hbox (badness 10000) in paragraph at lines 1053--1054
 
  []
 
 
 
 [48]
-Underfull \hbox (badness 10000) in paragraph at lines 1113--1114
+
+LaTeX Warning: Citation '30' on page 49 undefined on input line 1063.
+
+
+LaTeX Warning: Citation '31' on page 49 undefined on input line 1063.
+
+
+Overfull \hbox (8.70084pt too wide) detected at line 1071
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1075--1076
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1117--1118
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1116--1134
-
+Overfull \hbox (262.86163pt too wide) detected at line 1115
+[][]
  []
 
 
 
 [49]
+Underfull \hbox (badness 10000) in paragraph at lines 1120--1121
+
+ []
+
+
 
 [50]
-Underfull \hbox (badness 10000) in paragraph at lines 1148--1149
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1150--1153
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1154--1157
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1154--1157
-
- []
-
-
 
 [51]
+Underfull \hbox (badness 10000) in paragraph at lines 1181--1182
+
+ []
+
+
 
 [52]
+Underfull \hbox (badness 10000) in paragraph at lines 1183--1206
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1183--1206
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1207--1208
+
+ []
+
+
 
 [53]
-Underfull \hbox (badness 10000) in paragraph at lines 1261--1262
+Underfull \hbox (badness 10000) in paragraph at lines 1211--1212
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1210--1228
 
  []
 
 
 
 [54]
-Underfull \hbox (badness 10000) in paragraph at lines 1267--1269
+Underfull \hbox (badness 10000) in paragraph at lines 1242--1243
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1275--1276
+Underfull \hbox (badness 10000) in paragraph at lines 1244--1247
 
  []
 
 
 
 [55]
+
+[56]
+
+[57]
+Underfull \hbox (badness 10000) in paragraph at lines 1353--1354
+
+ []
+
+
+
+[58]
+Underfull \hbox (badness 10000) in paragraph at lines 1359--1361
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1367--1368
+
+ []
+
+
+
+[59]
 Chapter 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1281--1282
+Underfull \hbox (badness 10000) in paragraph at lines 1373--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1300--1301
+Underfull \hbox (badness 10000) in paragraph at lines 1392--1393
 
  []
 
-
-
-[56
-
-]
-<images/results_LSTM.png, id=251, 426.393pt x 714.7503pt>
-File: images/results_LSTM.png Graphic file (type png)
-<use images/results_LSTM.png>
-Package pdftex.def Info: images/results_LSTM.png  used on input line 1308.
-(pdftex.def)             Requested size: 213.39568pt x 357.70146pt.
-<images/results_CNN.png, id=252, 426.393pt x 714.7503pt>
-File: images/results_CNN.png Graphic file (type png)
-<use images/results_CNN.png>
-Package pdftex.def Info: images/results_CNN.png  used on input line 1334.
-(pdftex.def)             Requested size: 213.39568pt x 357.70146pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1332--1337
-[]\T1/cmr/m/n/12 We see that ev-ery-thing is great.
- []
-
-
-Package wrapfig Warning: Collision between wrapping environments on input line 
-1345.
-
-<images/results_XGBoost.png, id=253, 426.393pt x 714.7503pt>
-File: images/results_XGBoost.png Graphic file (type png)
-<use images/results_XGBoost.png>
-Package pdftex.def Info: images/results_XGBoost.png  used on input line 1346.
-(pdftex.def)             Requested size: 213.39568pt x 357.70146pt.
-<images/results_combined.png, id=254, 426.393pt x 714.7503pt>
-File: images/results_combined.png Graphic file (type png)
-<use images/results_combined.png>
-Package pdftex.def Info: images/results_combined.png  used on input line 1355.
-(pdftex.def)             Requested size: 213.39568pt x 357.70146pt.
-
-
-[57 <./images/results_LSTM.png> <./images/results_CNN.png>]
-
-[58 <./images/results_combined.png>]
-
-[59 <./images/results_XGBoost.png>]
-Chapter 7.
 
 
 [60
 
 ]
-Overfull \hbox (15.0839pt too wide) in paragraph at lines 1368--1368
+<images/results_LSTM.png, id=263, 426.393pt x 714.7503pt>
+File: images/results_LSTM.png Graphic file (type png)
+<use images/results_LSTM.png>
+Package pdftex.def Info: images/results_LSTM.png  used on input line 1400.
+(pdftex.def)             Requested size: 213.39568pt x 357.70146pt.
+<images/outlier1.png, id=264, 614.295pt x 284.0211pt>
+File: images/outlier1.png Graphic file (type png)
+<use images/outlier1.png>
+Package pdftex.def Info: images/outlier1.png  used on input line 1401.
+(pdftex.def)             Requested size: 213.39568pt x 98.66345pt.
+<images/outlier2.png, id=265, 607.7907pt x 284.0211pt>
+File: images/outlier2.png Graphic file (type png)
+<use images/outlier2.png>
+Package pdftex.def Info: images/outlier2.png  used on input line 1402.
+(pdftex.def)             Requested size: 213.39568pt x 99.7209pt.
+<images/outlier3.png, id=266, 607.7907pt x 284.0211pt>
+File: images/outlier3.png Graphic file (type png)
+<use images/outlier3.png>
+Package pdftex.def Info: images/outlier3.png  used on input line 1403.
+(pdftex.def)             Requested size: 213.39568pt x 99.7209pt.
+
+Overfull \hbox (0.93509pt too wide) in paragraph at lines 1408--1409
+\T1/cmr/m/n/12 In fig-ure 6.1(top) we see the per-for-mance
+ []
+
+
+Overfull \hbox (6.68219pt too wide) in paragraph at lines 1408--1409
+\T1/cmr/m/n/12 is the mape so that we can com-pare stocks
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1408--1409
+
+ []
+
+
+
+[61 <./images/results_LSTM.png> <./images/outlier1.png> <./images/outlier2.png>
+ <./images/outlier3.png>]
+<images/outlier4.png, id=275, 614.295pt x 284.0211pt>
+File: images/outlier4.png Graphic file (type png)
+<use images/outlier4.png>
+Package pdftex.def Info: images/outlier4.png  used on input line 1415.
+(pdftex.def)             Requested size: 213.39568pt x 98.66345pt.
+<images/outlier5.png, id=276, 607.7907pt x 284.0211pt>
+File: images/outlier5.png Graphic file (type png)
+<use images/outlier5.png>
+Package pdftex.def Info: images/outlier5.png  used on input line 1416.
+(pdftex.def)             Requested size: 213.39568pt x 99.7209pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1421--1433
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1421--1433
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1434--1435
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1434--1435
+
+ []
+
+
+
+[62 <./images/outlier4.png> <./images/outlier5.png>]
+<images/results_CNN.png, id=282, 426.393pt x 714.7503pt>
+File: images/results_CNN.png Graphic file (type png)
+<use images/results_CNN.png>
+Package pdftex.def Info: images/results_CNN.png  used on input line 1441.
+(pdftex.def)             Requested size: 213.39568pt x 357.70146pt.
+
+Underfull \hbox (badness 1320) in paragraph at lines 1447--1459
+\T1/cmr/m/n/12 very heavy out-liers at the top and
+ []
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 1447--1459
+\T1/cmr/m/n/12 ity per bin for the CNN model is:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1447--1459
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1447--1459
+
+ []
+
+
+Underfull \hbox (badness 1515) in paragraph at lines 1461--1462
+[]\T1/cmr/m/n/12 We can con-firm the cor-re-la-tion be-
+ []
+
+
+Underfull \hbox (badness 1728) in paragraph at lines 1461--1462
+\T1/cmr/m/n/12 up to 88 is very much and pos-si-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1461--1462
+
+ []
+
+<images/results_XGBoost.png, id=283, 426.393pt x 714.7503pt>
+File: images/results_XGBoost.png Graphic file (type png)
+<use images/results_XGBoost.png>
+Package pdftex.def Info: images/results_XGBoost.png  used on input line 1473.
+(pdftex.def)             Requested size: 213.39568pt x 357.70146pt.
+
+
+[63 <./images/results_CNN.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1493
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1493
+
+ []
+
+
+Underfull \hbox (badness 1478) in paragraph at lines 1479--1493
+\T1/cmr/m/n/12 ing well with this task. Again it
+ []
+
+
+Underfull \hbox (badness 2229) in paragraph at lines 1479--1493
+\T1/cmr/m/n/12 smaller mape than bin 4. If we
+ []
+
+
+Underfull \hbox (badness 1831) in paragraph at lines 1479--1493
+\T1/cmr/m/n/12 look at the per-for-mance per stock,
+ []
+
+
+Underfull \hbox (badness 4608) in paragraph at lines 1479--1493
+\T1/cmr/m/n/12 we see that is mostly due to a
+ []
+
+
+Underfull \hbox (badness 1308) in paragraph at lines 1479--1493
+\T1/cmr/m/n/12 few very heavy out-liers. Since we
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1493
+
+ []
+
+
+
+[64 <./images/results_XGBoost.png>]
+<images/results_combined.png, id=292, 426.393pt x 714.7503pt>
+File: images/results_combined.png Graphic file (type png)
+<use images/results_combined.png>
+Package pdftex.def Info: images/results_combined.png  used on input line 1502.
+(pdftex.def)             Requested size: 213.39568pt x 357.70146pt.
+<images/results_averaged.png, id=293, 424.2249pt x 281.853pt>
+File: images/results_averaged.png Graphic file (type png)
+<use images/results_averaged.png>
+Package pdftex.def Info: images/results_averaged.png  used on input line 1503.
+(pdftex.def)             Requested size: 213.39568pt x 141.7777pt.
+
+
+[65 <./images/results_combined.png> <./images/results_averaged.png>]
+<images/averages_rescaled.png, id=299, 424.9476pt x 281.853pt>
+File: images/averages_rescaled.png Graphic file (type png)
+<use images/averages_rescaled.png>
+Package pdftex.def Info: images/averages_rescaled.png  used on input line 1520.
+
+(pdftex.def)             Requested size: 213.39568pt x 141.53685pt.
+
+
+[66 <./images/averages_rescaled.png>]
+Overfull \hbox (15.0839pt too wide) in paragraph at lines 1533--1533
 \T1/cmr/m/n/12 elec-tric-ity con-sump-tion. Sci Rep 14, 6489 (2024). https://do
 i.org/10.1038/s41598-
  []
 
 
-Overfull \hbox (19.92851pt too wide) in paragraph at lines 1368--1368
+Overfull \hbox (19.92851pt too wide) in paragraph at lines 1533--1533
 []\T1/cmr/m/n/12 https://stripe.com/de/resources/more/how-machine-learning-work
 s-for-payment-
  []
 
 
-Overfull \hbox (27.18767pt too wide) in paragraph at lines 1368--1368
+Overfull \hbox (27.18767pt too wide) in paragraph at lines 1533--1533
 \T1/cmr/m/n/12 cal Work. The Jour-nal of Fi-nance, 25(2), 383^^U417. https://do
 i.org/10.2307/2325486. 
  []
 
 
-Overfull \hbox (2.83673pt too wide) in paragraph at lines 1368--1368
+Overfull \hbox (2.83673pt too wide) in paragraph at lines 1533--1533
 \T1/cmr/m/n/12 Con-fer-ence on Per-va-sive Com-pu-ta-tional Tech-nolo-gies (ICP
 CT), Greater Noida,
  []
 
 
-Overfull \hbox (190.62547pt too wide) in paragraph at lines 1368--1368
+Overfull \hbox (190.62547pt too wide) in paragraph at lines 1533--1533
 \T1/cmr/m/n/12 cial Mar-ket Us-ing Ma-chine Learn-ing Mod-els. Com-pu-ta-tion, 
 13(1), 3. https://doi.org/10.3390/computation13010003. 
  []
 
 
-Overfull \hbox (33.87128pt too wide) in paragraph at lines 1368--1368
+Overfull \hbox (33.87128pt too wide) in paragraph at lines 1533--1533
 \T1/cmr/m/n/12 ing And Tech-nol-ogy Jour-nal, 9(8), 4978^^U4986. https://doi.or
 g/10.47191/etj/v9i08.50. 
  []
 
 
 
-[61
+[67
 
 ]
-Overfull \hbox (35.65656pt too wide) in paragraph at lines 1368--1368
+Overfull \hbox (35.65656pt too wide) in paragraph at lines 1533--1533
 []\T1/cmr/m/n/12 https://medium.com/@manojkotary/simple-returns-vs-log-returns-
 a-comprehensive-
  []
 
 
-Overfull \hbox (24.35791pt too wide) in paragraph at lines 1368--1368
+Overfull \hbox (24.35791pt too wide) in paragraph at lines 1533--1533
 []\T1/cmr/m/n/12 https://www.boerse.de/technische-indikatoren/Commodity-Channel
 -Index-(CCI)-
  []
 
 
-Overfull \hbox (10.13905pt too wide) in paragraph at lines 1368--1368
+Overfull \hbox (10.13905pt too wide) in paragraph at lines 1533--1533
 []\T1/cmr/m/n/12 https://www.investopedia.com/articles/investing/031413/economi
 c-indicatiors-
  []
 
 
-Overfull \hbox (28.804pt too wide) in paragraph at lines 1368--1368
+Overfull \hbox (28.804pt too wide) in paragraph at lines 1533--1533
 []\T1/cmr/m/n/12 https://www.investopedia.com/articles/investing/100814/why-10-
 year-us-treasury-
  []
 
 
-Overfull \hbox (49.68768pt too wide) in paragraph at lines 1368--1368
+Overfull \hbox (49.68768pt too wide) in paragraph at lines 1533--1533
 []\T1/cmr/m/n/12 https://www.investopedia.com/articles/economics/08/leading-eco
 nomic-indicators.asp. 
  []
 
 
-Overfull \hbox (19.21056pt too wide) in paragraph at lines 1368--1368
+Overfull \hbox (19.21056pt too wide) in paragraph at lines 1533--1533
 []\T1/cmr/m/n/12 https://www.americancentury.com/insights/the-january-effect-an
 d-stock-market-
  []
 
 
-Overfull \hbox (85.97334pt too wide) in paragraph at lines 1368--1368
+Overfull \hbox (85.97334pt too wide) in paragraph at lines 1533--1533
 []\T1/cmr/m/n/12 https://scikit-learn.org/stable/modules/generated/sklearn.prep
 rocessing.StandardScaler.html. 
  []
 
 
 
-[62]
-Chapter 8.
-
-
-[63
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 1379--1384
+[68]
+Underfull \hbox (badness 10000) in paragraph at lines 1541--1546
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1379--1384
+Underfull \hbox (badness 10000) in paragraph at lines 1541--1546
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1385--1386
+Underfull \hbox (badness 10000) in paragraph at lines 1547--1548
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1385--1386
+Underfull \hbox (badness 10000) in paragraph at lines 1547--1548
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1385--1386
+Underfull \hbox (badness 10000) in paragraph at lines 1547--1548
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1388--1389
+Underfull \hbox (badness 10000) in paragraph at lines 1549--1550
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1388--1389
+Underfull \hbox (badness 10000) in paragraph at lines 1549--1550
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1388--1389
+Underfull \hbox (badness 10000) in paragraph at lines 1549--1550
 
  []
 
 
 
-[64
+[69
 
 ] (Thesis_LaTeX.aux)
  ***********
@@ -2113,27 +2309,35 @@ L3 programming layer <2025-06-09>
  ***********
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                Thesis_LaTeX
+(biblatex)                and rerun LaTeX afterwards.
 
 Package logreq Info: Writing requests to 'Thesis_LaTeX.run.xml'.
 \openout1 = `Thesis_LaTeX.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26058 strings out of 468221
- 535031 string characters out of 5432891
- 1352457 words of memory out of 5000000
- 54208 multiletter control sequences out of 15000+600000
- 641378 words of font info for 67 fonts, out of 8000000 for 9000
+ 26119 strings out of 468221
+ 536948 string characters out of 5432891
+ 1352481 words of memory out of 5000000
+ 54266 multiletter control sequences out of 15000+600000
+ 641605 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,13n,105p,4001b,1765s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,15n,105p,4001b,1767s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm
 0800.pk> <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm1200.pk> <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
 /dpi600\ecbx1440.pk> <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ecbx2488.pk> <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/
-ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\jerem\AppData\Local\MiKTeX\fon
+pen/ec/dpi600\ecbx1200.pk> <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\jerem\AppData\Local\MiKTeX\fonts/pk/
+ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\jerem\AppData\Local\MiKTeX\fon
 ts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\jerem\AppData\Local\MiKT
 eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\jerem\AppData\Loca
 l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\jerem\AppDat
@@ -2147,9 +2351,9 @@ s/cm/cmmi8.pfb><C:/Users/jerem/AppData/Local/Programs/MiKTeX/fonts/type1/public
 1/public/amsfonts/cm/cmr8.pfb><C:/Users/jerem/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jerem/AppData/Local/Programs/M
 iKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Thesis_LaTeX.pdf (64 pages, 2811179 bytes).
+Output written on Thesis_LaTeX.pdf (69 pages, 3040697 bytes).
 PDF statistics:
- 756 PDF objects out of 1000 (max. 8388607)
+ 786 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 158 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 193 words of extra memory for PDF output out of 10000 (max. 10000000)
 

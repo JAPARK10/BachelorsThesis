@@ -17,8 +17,8 @@
 \usepackage{booktabs}
 \usepackage{tcolorbox}
 \usepackage[
-  inner=3cm,        % gewünschter Innenrand
-  outer=2.5cm,      % Außenrand
+  inner=3cm,       
+  outer=2.5cm,     
   top=2.5cm,
   bottom=2.5cm,
   bindingoffset=5mm,% extra Einzug für Bindung, wenn benötigt
@@ -97,9 +97,9 @@ Institute of Computer Science
 \end{minipage}
 
 
+\chapter*{Abstract}
 
-
-
+\newpage
 \begin{center}
 \begin{minipage}{0.8\textwidth}
 \section*{Acknowledgment}
@@ -148,7 +148,7 @@ I would like to thank Professor Gregory Provan from the School of Computer Scien
 
 
 \tableofcontents
-
+\listoffigures
 \newpage
 
 
@@ -228,9 +228,9 @@ In our experiment we will evaluate different ML algorithms based on their predic
 	It “rectifies” or cuts off the negative part and sets every value in it to zero. Every value greater than or equal to zero is retained by a linear function. That's a very simple understanding of the activation behavior.
 	\subsubsection{Non-linearity}
 	We need to introduce the concept of non-linearity here. A linear relation between two variables x and y always has this structure:
-\[
-  y = a x + b
-\]
+\begin{equation}
+y = a x + b
+\end{equation}
 Linear functions let us solve linear problems. They always are a straight line when drawn as a graph. For example, the relation of euros to cents is a linear function. You always multiply the amount of euros by 100 to get the number of cents that have the same worth.\\
 A nonlinear relationship between two variables is every relationship but a linear relationship. All of those functions are nonlinear. 
 \[
@@ -980,7 +980,7 @@ where..:\\
 
 			\subsubsection{Stochastic Oscillator}
 			
-The stochastic Oscillator is another momentum indicator that measures where the current closing price lies in the range of the highest high of a certain past period and the lowest low of that same period in percent. This value is called %K. A second value which is called %D contains the moving average of %K for a short period. Since again the relation of those two lines is of importance to us and we need to make the machine learning model aware of it, we add a stochastic difference value that is calculated as the difference of these 2 values. \cite{25}\\
+The stochastic Oscillator is another momentum indicator that measures where the current closing price lies in the range of the highest high of a certain past period and the lowest low of that same period in percent. This value is called \%K. A second value which is called \%D contains the moving average of \%K for a short period. Since again the relation of those two lines is of importance to us and we need to make the machine learning model aware of it, we add a stochastic difference value that is calculated as the difference of these 2 values. \cite{25}\\
 
 \[
 \begin{aligned}
@@ -1039,8 +1039,101 @@ where..:\\
 \end{minipage}
 
 			\subsubsection{Moving Averages}
+			We add multiple simple moving averages with different window sizes. Moving averages smooth out price data and indicate an upwards trend when increasing and a downwards trend when decreasing. Besides that, they can indicate overbought or oversold conditions \cite{27}. \\
+			
+			
+\[
+\begin{aligned}
+  \text{SMA}_n(t) &= \frac{1}{n} \sum_{i=0}^{n-1} P(t - i)
+\end{aligned}
+\]
+
+\begin{minipage}{\textwidth}
+
+where..:\\
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $P(t)$ & is the price (e.g. closing price) at time $t$ \\
+  $n$    & is the number of periods used in the moving average \\
+\end{tabularx}
+\end{minipage}
+
 			\subsubsection{Average True Range (ATR)}
-			\subsubsection{Average Directional Index (ADI)}
+			
+			The ATR is a volatility indicator that tells how much the price moves on average per period. We therefore first look at the True Range (TR) for every period. This is the maximum price difference within that period. We add that difference to our feature set. We use the previous day’s close price because the current day’s open price can differ from the previous day’s close price due to overnight news and market shift \cite{30}. After that we use wilder’s smoothing to smooth out the True Range over a certain windows size, usually 14, so that we understand how volatile certain periods are \cite{31}. 
+			
+			
+\[
+\begin{aligned}
+  \text{TR}(t) &= \max \big( H(t) - L(t), |H(t) - C(t-1)|, |L(t) - C(t-1)| \big) \\\\
+  \text{ATR}_n(t) = \frac{1}{n} \sum_{i=0}^{n-1} \text{TR}(t - i)
+\end{aligned}
+\]
+
+\begin{minipage}{\textwidth}
+
+where..:\\
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $H(t)$       & is the highest price at time $t$ \\
+  $L(t)$       & is the lowest price at time $t$ \\
+  $C(t)$       & is the closing price at time $t$ \\
+  $\text{TR}(t)$ & is the true range at time $t$, defined as the maximum of: the current high minus low, the absolute difference between current high and previous close, and the absolute difference between current low and previous close \\
+  $n$          & is the number of periods over which the ATR is calculated \\
+  $\text{ATR}_n(t)$ & is the average true range at time $t$, computed as the simple average of the true range over the last $n$ periods \\
+\end{tabularx}
+\end{minipage}
+
+			
+			
+			
+			\subsubsection{Average Directional Index (ADX)}
+			
+\[
+\begin{aligned}
+  \text{+DM}(t) &= 
+    \begin{cases} 
+      H(t) - H(t-1) & \text{if } H(t) - H(t-1) > L(t-1) - L(t) \text{ and } H(t) - H(t-1) > 0 \\
+      0 & \text{otherwise}
+    \end{cases}
+    \quad & \text{(positive directional movement)} \\
+  \text{-DM}(t) &= 
+    \begin{cases} 
+      L(t-1) - L(t) & \text{if } L(t-1) - L(t) > H(t) - H(t-1) \text{ and } L(t-1) - L(t) > 0 \\
+      0 & \text{otherwise}
+    \end{cases}
+    \quad & \text{(negative directional movement)} \\
+  \text{TR}(t) &= \max \big( H(t) - L(t), |H(t) - C(t-1)|, |L(t) - C(t-1)| \big) \quad & \text{(true range)} \\
+  \text{+DI}_n(t) &= 100 \times \frac{\text{Smoothed } +DM_n(t)}{\text{ATR}_n(t)} \quad & \text{(positive directional index)} \\
+  \text{-DI}_n(t) &= 100 \times \frac{\text{Smoothed } -DM_n(t)}{\text{ATR}_n(t)} \quad & \text{(negative directional index)} \\
+  \text{DX}(t) &= 100 \times \frac{|\text{+DI}_n(t) - \text{-DI}_n(t)|}{\text{+DI}_n(t) + \text{-DI}_n(t)} \quad & \text{(directional movement index)} \\
+  \text{ADX}_n(t) &= \frac{1}{n} \sum_{i=0}^{n-1} \text{DX}(t - i) \quad & \text{(average directional index, initial)} \\
+  \\
+  \text{ADX}_n(t) &= \frac{(\text{ADX}_n(t-1) \times (n - 1)) + \text{DX}(t)}{n} \quad & \text{(recursive smoothing)} \\
+\end{aligned}
+\]
+
+
+
+
+where..:\\
+
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{2em}--\hspace{2em}}X@{}}
+  $H(t)$           & is the highest price at time $t$ \\
+  $L(t)$           & is the lowest price at time $t$ \\
+  $C(t)$           & is the closing price at time $t$ \\
+  $\text{+DM}(t)$  & is the positive directional movement at time $t$ \\
+  $\text{-DM}(t)$  & is the negative directional movement at time $t$ \\
+  $\text{TR}(t)$   & is the true range at time $t$ (see ATR formula) \\
+  $\text{ATR}_n(t)$ & is the average true range over $n$ periods \\
+  $\text{+DI}_n(t)$ & is the positive directional index over $n$ periods \\
+  $\text{-DI}_n(t)$ & is the negative directional index over $n$ periods \\
+  $\text{DX}(t)$   & is the directional movement index at time $t$ \\
+  $\text{ADX}_n(t)$ & is the average directional index over $n$ periods, indicating trend strength \\
+  $n$              & is the number of periods used for smoothing and calculation \\
+  \text{Smoothed } & refers to applying Wilder’s smoothing\\
+\end{tabularx}
+
 			\subsubsection{Bollinger Bands}
 			\subsubsection{On-Balance Volume (OBV)}
 			\subsubsection{Volume Price Trend (VPT)}
@@ -1142,7 +1235,7 @@ The normalization or scaling is actually the only preprocessing step we are unde
 
 The XGBoost model requires a different preprocessing pipeline. As we learned earlier the input for a tree-based has different characteristics compared to the input of an LSTM or CNN model. For our XGBoost model the data is not a collection of windows that have the shape (n\_periods x n\_features) but instead it’s a collection of single row features or 1D vectors that contain all features. That means we can’t simply use past periods as input. The way to work around that and still use XGBoost models for time series forecasting is to add lag values. Lag values always belong to a specific feature and they invoke the value of a past period of that feature. So, a lag value of three for the feature “close” would mean that we add three columns as new features where one is the “close” price three days ago, one is the “close” price two days ago and the third one is the “close” price from the previous day. Like that we can add different lag sizes for each feature and in that way add the necessary temporal context for our current period. Our concrete approach is documented in the codebase.\\
 As we learned before XGBoost is a tree-based model. When we looked at decision trees, we understood that they observe the features in the data independent from each other and choose one feature for a split. For the selected feature the algorithm again chooses a threshold which is used to split the data into two halves. When we normalize the data, the proportions of the values within one feature column don’t change but only their absolute value gets resized. So, the size ratios among the data points doesn’t change but only their scale. If we sorted the data by one feature and performed a split it would be at the same position regardless of the scale of the data. \\
-Since we have no windowing to perform on the data for the XGBoost model, the last preprocessing step is to split the data into train, validation and test set. We simply decide to use 80\% of the data for training, 10\% for validation and 10% for test purposes.
+Since we have no windowing to perform on the data for the XGBoost model, the last preprocessing step is to split the data into train, validation and test set. We simply decide to use 80\% of the data for training, 10\% for validation and 10\% for test purposes.
 
 			\subsection{Hyperparameter Tuning}
 When we looked at the different Machine Learning models that we are using, we partially got to know which adjustable hyperparameters there are. We will tune certain hyperparameters for each model and we will tune them for each data set of historical courses separately so that we conduct our experiment based on optimal performance. \\
@@ -1153,23 +1246,21 @@ The function is executed multiple times with different variable values. The oute
 				\subsubsection{Our Optuna use case}
 In our case the function which’s return value we want to optimize is defined to be the training and evaluation step for each model-stock combination. The variables that the study will pick values for are our hyperparameters. The returned value is the forecast error and the optimization direction is to minimize. Like that the study will look for the combination of hyperparameters that lead to the smallest error – exactly what we are looking for. \\
 Our sampler works in a way where it tries to pick combinations for the hyperparameters that have the highest probability to be another “good” guess. A “good” guess is a combination with a performance above a certain threshold and a “bad” guess is a combination that results in a performance below that threshold. That threshold is constantly update as trials are processed.\\
-The pruner aborts a trial when it foresees it to not be a good trial. After n\_startup trials it checks every trial on whether after 10 reports of one trial this trial is better or worse than the median trial so far. A report during a trial is a performance measure up until this point which is created regularly in between batches. If worse than the median trial, it prunes the current trial, if at least as good it keeps going. Like that, computational efficiency is ensured and the search space is further focused on promising combinations. \\\\
-
-Depending on the ML algorithm that we use, we need to tune different hyperparameters.\\
+The pruner aborts a trial when it foresees it to not be a good trial. After n\_startup trials it checks every trial on whether after 10 reports of one trial this trial is better or worse than the median trial so far. A report during a trial is a performance measure up until this point which is created regularly in between batches. If worse than the median trial, it prunes the current trial, if at least as good it keeps going. Like that, computational efficiency is ensured and the search space is further focused on promising combinations. Depending on the ML algorithm that we use, we need to tune different hyperparameters.\\
 \begin{minipage}{\textwidth}
 \underline{LSTM}
 \begin{itemize}
-  \item \textbf{N\_units} \\
+  \item \textbf{n units} \\
   The number of units in each LSTM layer which determines the size of the state vectors and the model’s capacity to learn patterns over time.
 
-  \item \textbf{N\_layers} \\
+  \item \textbf{n layers} \\
   The number of stacked LSTM layers. More may facilitate capturing complex patterns while they risk overfitting. Fewer layers can be better in generalizing but may be less accurate.
 
 \end{itemize}
 \end{minipage}
 \begin{itemize}
 
-  \item \textbf{Dropout\_rate} \\
+  \item \textbf{Dropout rate} \\
   A fraction of total units that is randomly dropped during training to prevent overfitting. The approach is similar to feature randomness in random forests. By dropping certain units, we prevent the model from relying too much on single units. It helps generalize the model and increases its robustness.
 
   \item \textbf{Learning rate} \\
@@ -1189,10 +1280,10 @@ Depending on the ML algorithm that we use, we need to tune different hyperparame
 \begin{minipage}{\textwidth}
 \underline{CNN}
 \begin{itemize}
-  \item \textbf{N\_filters} \\
+  \item \textbf{n filters} \\
   The number of convolutional filters in each convolutional layer. They determine the channel dimension of the input for the following layer. More filters can capture more features but increase model complexity and risk overfitting.
 
-  \item \textbf{N\_layers} \\
+  \item \textbf{n layers} \\
   The number of convolutional layers followed by pooling layers in the CNN. More layers enable the model to capture more complex features but increase training time and risk overfitting.
 
 \end{itemize}
@@ -1248,7 +1339,7 @@ Depending on the ML algorithm that we use, we need to tune different hyperparame
   \item \textbf{Subsample} \\
   o The fraction of the training data randomly sampled for growing each tree. We earlier read about Bootstrapping to make the trees see different subsets of the data. This value decides how big the fraction from the random subset of the total data set is. It is important for generalization.
 
-  \item \textbf{Colsample\_bytree} \\
+  \item \textbf{Colsample\ bytree} \\
   o Fraction of features randomly sampled for constructing different trees. This is the “feature randomness” we talked about earlier. Having our trees each considering a slightly different subset of the features helps the model to generalize and prevents overfitting.
 \end{itemize}
 
@@ -1297,7 +1388,7 @@ Before taking a longer shot at the predictive accuracy and the resulting data we
   \item \textbf{Motherboard:} Gigabyte B760 Gaming X DDR4 (rev. 1.0) ATX
 \end{itemize}
 
-When we look at that the XGBoost model clearly is the fastest one with only taking about one hour to perform all the training and evaluation steps. Second is the CNN model that took about four hours and 40 minutes. The by far slowest model is the LSTM mode. It took a surprising time of about 31 hours and 27 minutes to perform the training and evaluation. We can clearly see that the XGBoost model runs incredibly faster with about an astonishing 31.5$\times$ speed-up over the LSTM model and a 4.7$\times$ speed-up over the CNN. That is definitely a relevant difference.\\
+When we look at that the XGBoost model clearly is the fastest one with only taking about one hour to perform all the training and evaluation steps. Second is the CNN model that took about four hours and 40 minutes. The by far slowest model is the LSTM mode. It took a surprising time of about 31 hours and 27 minutes to perform the training and evaluation. We can clearly see that the XGBoost model runs incredibly faster with about an astonishing 31.5$\times$ speed-up over the LSTM model and a 4.7$\times$ speed-up over the CNN. These are definitely relevant differences.\\
 
 
 \newpage
@@ -1306,68 +1397,138 @@ When we look at that the XGBoost model clearly is the fastest one with only taki
 
 \begin{wrapfigure}{r}{0.5\textwidth}
   \includegraphics[width=0.5\textwidth]{images/results_LSTM.png}
-  \caption{performance of the LSTM model trained on all assets}
+  \includegraphics[width=0.5\textwidth]{images/outlier1.png}
+  \includegraphics[width=0.5\textwidth]{images/outlier2.png}
+  \includegraphics[width=0.5\textwidth]{images/outlier3.png}
+  \caption{top: LSTM mape of single assets. bottom: 3/5 outliers }
   \label{fig:wrapped}
 \end{wrapfigure}
+		\subsubsection*{LSTM}
+	In figure 6.1(top) we see the performance of forecasts for every single asset made by the LSTM model. The error which the performance is measured with here is the mape so that we can compare stocks across different scale. It is clearly visible that the average predictive performance is worse for assets of higher volatility. That makes absolute sense since noisier courses are harder to predict. We see some heavy outliers in bin 4 and bin 5. \\
+	
 	
 
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great.We see that everything is great.
-We see that everything is great.We see that everything is great
-
-
-We see that everything is great.
+		In figure 6.1(bottom) and 6.2 we look at the courses of these 5 assets and interestingly enough they all look very similar. It seems as if they all experience an uptrend throughout roughly the first quarter of the course and then a consistent downtrend. Another similarity is that it seems they are more volatile throughout the first half of the course and less volatile throughout the second half. These patterns might be especially hard for the model to learn because it first learns a highly volatile slight uptrend and then has to predict a rather smooth downtrend. If we take into consideration that we split the training data in a way where roughly the first 80\% of the course is training and only the last 10\% is test data, then this makes even more sense. Future research could focus on differentiating on this by evaluating average stocks against stocks with the described behavior. Another similarity seems to lie in the concrete price which the assets reach at the end of the captured time. All the courses seem to end below 10, some below 5. We know that the mape can explode for very low absolute values. We can not say for sure whether 10 would be small enough to cause trouble and lead to such heavy outliers. It could also be the case that this has nothing to do with the scale of these assets but that the model is just not performing as good as with the other assets. 
+		
 \begin{wrapfigure}{r}{0.5\textwidth}
-  \includegraphics[width=0.5\textwidth]{images/results_CNN.png}
-  \caption{performance of the LSTM model trained on all assets}
+  \includegraphics[width=0.5\textwidth]{images/outlier4.png}
+  \includegraphics[width=0.5\textwidth]{images/outlier5.png}
+  \caption{2/5 outliers}
   \label{fig:wrapped}
 \end{wrapfigure}
 
+Future research could focus on investigating this question by maybe predicting returns or log returns instead of raw prices. That would eliminate the problem of scale. Beyond that predicting returns and log returns in general has been observed to be good as forecasting target. In order to investigate these two questions we will conduct a little experiment. For that we modify our preprocessing pipeline to add the simple and logarithmic return of the close price. Once we have that we train the CNN and the XGBoost model again to evaluate them with better target engineering. We will include the results in the next sections when we look at the results for those two models. If we zoom out a bit and look at the mape averaged per bin, we get these results:\\\\
+\begin{tabular}{|c|c|}
+  \hline
+  \textbf{Bin} & \textbf{Mean MAPE (\%)} \\
+  \hline
+  1 & 2.42 \\
+  2 & 5.97 \\
+  3 & 12.72 \\
+  4 & 29.72 \\
+  5 & 29.30 \\
+  \hline
+\end{tabular}\\
+
+We can clearly confirm our statement from the beginning that the relative error correlates with the volatility. Besides that we want to understand how good our results are. A mape of 2.4 for bin 1 means that a prediction is on average off by 2.4\%. In order to say whether 2.4\% is good or bad we need to consider the volatility of the assets. \\\\
+
+For that we pick two stocks out of bin 1 that have an approximate mape of 2.4, one has 3.1 and the other one has 2.1. We extract the ticker symbols and the volatility that we calculated in our stock selection pipeline and we see that their volatility is 0.24\% and 0.25\%. If the average forecast is off 2.1\% and one average period to period movement is 0.24\% then our forecast is not very useful. To be clear, an average error of 2.1\% at a volatility of 0.24\% is worse than just predicting the current days close price as tomorrows price. It underlines again how important a clear task formulation, good preprocessing and through thought model design is. 
+
+\newpage
+		\subsubsection*{CNN}
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \includegraphics[width=0.5\textwidth]{images/results_CNN.png}
+  \caption{CNN mape of single assets}
+  \label{fig:wrapped}
+\end{wrapfigure}
+
+	
+	Let’s now take a look at the CNN data. We first look at the performance based on predicting raw prices. We identify that the scale of this chart is much bigger. We see again two very heavy outliers at the top and also the correlation between the volatility and the mape seems to occur for the CNN model. The average volatility per bin for the CNN model is:
+	\begin{tabular}{|c|c|}
+  \hline
+  \textbf{Bin} & \textbf{Mean MAPE (\%)} \\
+  \hline
+  1 & 10.32 \\
+  2 & 13.98 \\
+  3 & 18.21 \\
+  4 & 77.21 \\
+  5 & 88.99 \\
+  \hline
+\end{tabular}\\\\
+
+	
+	We can confirm the correlation between the relative error and volatility. The CNN model is worse than the LSTM model in terms of predictive accuracy. We can especially notice an immense increase in the error for bin 4 and 5. An mape of up to 88 is very much and possibly a consequence of predicting raw prices. \\
+	
+	When we zoom in on the predictive performance of the CNN when trained on the 5 stocks that led to outliers for the LSTM model, then we can see that it again has very bad performance for those. Two interesting things is that the outliers are not the same throughout. For example the CNN has a very high error for stock 1 and 2 from bin 5 while the performance of the LSTM model on this stocks is not very remarkable. This might be due to different strengths in the models regarding different data and could be further investigated by gathering more assets for which this unsymmetrical performance is occurring and then comparing these stocks against each other. 
+	
+
+		\subsubsection*{XGBoost}
 
 
 
-
-
+When we look at the performance of the XGBoost model we again see a clear correlation between mape and volatility. We again see some outliers. When we look at the number it is interesting enough that the outliers we investigated for the LSTM model again are outliers for the XGBoost model. 
 
 \begin{wrapfigure}{r}{0.5\textwidth}
   \includegraphics[width=0.5\textwidth]{images/results_XGBoost.png}
-  \caption{performance of the LSTM model trained on all assets}
+  \caption{XGBoost mape of single assets}
   \label{fig:wrapped}
 \end{wrapfigure}
+
+
+If all of the three models struggle to predict these assets accurately then it might be true that they have characteristics to them that make it much harder for the models to make precise forecasts. Let’s as well look at the forecasting performance averaged per bin:\\\\
+	\begin{tabular}{|c|c|}
+  \hline
+  \textbf{Bin} & \textbf{Mean MAPE (\%)} \\
+  \hline
+  1 & 1.78 \\
+  2 & 6.40 \\
+  3 & 7.14 \\
+  4 & 33.25 \\
+  5 & 15.52 \\
+  \hline
+\end{tabular}\\\\
+The XGBoost model seems to be dealing well with this task. Again it underperforms a simple baseline comparison as for example just predicting the current days close price as tomorrows. \\
+We also notice that bin 5 has a much smaller mape than bin 4. If we look at the performance per stock, we see that is mostly due to a few very heavy outliers. Since we have not understood what causes this much worse performance for these certain stocks we can’t just leave them out. \\
+
+		\subsubsection*{Comparison}
+
+
+
+In figure 6.5(top) the performance of all three models is drawn in one graph. We can very clearly see the correlation between mape and volatility. It seems as the mape is increasing at the lowest rate with the volatility for the XGBoost model. So, the XGBoost model seems to be the best among our candidates to deal with high volatility data. To get a more precise comparison across the models we plot the averaged performance for all models bin wise. We see this bin wise performance in figure 6.5(bottom) First we notice that all courses have a similar shape. All have a slight increase in the mape over the first 3 bins and then suddenly the error increases by a lot for bin 4 and is about the same for bin 5 depending on the model. We see that the CNN model clearly performs worst among our candidates. The XGBoost and LSTM model seem to be very even in terms of their predictive accuracy. Remarkable is a sudden decrease in error of the XGBoost model for bin 5. That definitely is an interesting behavior and it underlines that the models have different strengths and weaknesses depending on the nature of data. As mentioned in our research question, in this thesis we aimed for understanding at which volatility the models perform best. Saying that the models perform best for a lower volatility seems to be the logical conclusion but if we want to precisely answer that question we would need to put the predictive performance into relation with the volatility.
+
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \includegraphics[width=0.5\textwidth]{images/results_combined.png}
+  \includegraphics[width=0.5\textwidth]{images/results_averaged.png}
+  \caption{top: combined mape of single assets. bottom: combined mape, averaged bin wise}
+  \label{fig:wrapped}
+\end{wrapfigure}
+
+In other words, a model that is evaluated on two different stocks and has a similar predictive accuracy for both stocks performs better on the stock that has a higher volatility, since historical data with higher volatility is generally speaking more difficult to predict. To do so we simply divide the average mape for each bin by the volatility of that bin. In figure 6.6 the result of this transformation is drawn. Again the general shapes of all three models are similar. That indicates that characteristics in the data outweigh characteristics of the models. In fact the direction in which the mape moves between bins is for every pair of adjacent bins the same except for the difference of bin 2 and bin 3 where the mape of the LSTM increases slightly and the mape of CNN and XGBoost decreases. That shows beautifully how similar relative performance is between the models. Considering the execution times we can say that the XGBoost model clearly is the best performing model in this experiment. It has the shortest training duration among the three models in this experiment with 59 minutes. The LSTM model took about 32 times as long with about 1887 minutes. That is a relevant difference and definitely to be considered as part of the overall performance. The CNN model is in the middle field in terms of execution times with about 280 minutes but is clearly the worst in predictive accuracy which makes it a bad trade-off. The clear outperformer in this experiment is the XGBoost model. With the best average performance it is only challenged by the LSTM that has on average slightly less accurate predictions. If we also consider the fact that the XGBoost model had by far the shortest execution time with only one hour which is 32 times faster than the LSTM model, then it is clear that it is the preferred choice for similar tasks. The LSTM model had also a strong but not as good performance compared to the XGBoost model. The CNN model is far worse than both in forecasting accuracy. If we look at the execution time than we are left to say that the CNN model is much quicker compared to the LSTM model but performs much worse. A concrete trade-off point is hard to define here. For that we would need to precisely investigate how much more accurate the CNN model would make forecasts when trained and tuned for a longer time. The same applies to the LSTM model. How much worse would it be if only trained and tuned as long as the CNN model took? Would it still be better than the CNN model? This seems to be a rather complicated question and is not part of this thesis but could be subject of further research. 
+
+
+
+
+
+
 
 
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.5\textwidth]{images/results_combined.png}
-  \caption{Applying the convolutional filter}
+  \includegraphics[width=0.5\textwidth]{images/averages_rescaled.png}
+  \caption{bin wise average performance scaled with volatility}
   \label{fig:fullwidth}
 \end{figure}
 
 
 
+\subsection*{Future research}
 
-\chapter{Further Research}
-
+In this thesis we showed the importance of qualitative preprocessing, accurate problem framing and model design. We showed how big the difference in predictive performance can be between a well selected, well-tuned model that is trained on clean preprocessed data and a model which seems to not be very suitable for such a task under these circumstances. There are many ways to get more insights in Future research could focus on further optimizing these tasks. This would be possible by tuning more hyperparameters for the models. For the XGBoost model this could for example be to also tune the size of lag values for each feature. In general the ranges from which the optuna study suggests values could be extended. 
 
 
 \printbibliography
-
-
-\chapter{Abstract}
 
 
 
@@ -1387,7 +1548,6 @@ Ort:\\\\\\
 Datum:\\\\\\
 
 Unterschrift:
-
 
 
 
