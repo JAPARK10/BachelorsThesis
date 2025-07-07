@@ -1,5 +1,7 @@
 *.csv
 *.pdf
 preprocessed_data/
+api_Keys.json
 
+!Thesis_LaTeX.pdf
 !results/
